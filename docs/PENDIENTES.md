@@ -42,3 +42,11 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 ## 🔴 4. Deuda Técnica & Backlog
 - [ ] **Simulador de Tráfico en Tiempo Real:** Interconectar el dashboard ejecutivo (`index.html` / `dashboard.html`) con APIs de prueba de N2A una vez formalizado el contrato.
 - [ ] **Sincronización con Repositorio de Presentaciones:** Homologar `brief-tecnico-n2a.html` dentro de `presentaciones-ejecutivas/Direccion-General/TIP/` si Dirección General requiere acceso centralizado.
+
+---
+
+## 🔗 5. Enlaces de Referencia Documental (RFQs Oficiales TIP)
+> *Nota: Enlaces guardados exclusivamente para consulta y referencia futura. El contexto operativo vigente se rige por los acuerdos de Fase 1 en la Sección 0.*
+- 📄 **RFQ Inicial (Sin IA — Atención Tradicional Humana):** [Google Drive — Archivo Original](https://drive.google.com/file/d/1cksp1mvkVlPeUK5Sw5rgm-FMFvlSx9ZJ/view?usp=drive_link)
+- 🤖 **RFQ Secundario (Con IA & Herramientas Operativas):** [Google Docs — Documento con IA y Ecosistema](https://docs.google.com/document/d/12GegljllArpjdFR3eRtZrH7RVJDmL1eFrONFKLCQHvY/edit?usp=drive_link)
+
