@@ -16,12 +16,16 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ---
 
-## 🟢 1. Verificaciones en Caliente & Hitos Completados
-- [x] **Generación de Pliego Técnico para N2A (v1.2):** Creación de `brief-tecnico-n2a.html` calibrado en exactamente 2 páginas Carta para PDF con branding oficial Telat (*The Voice of Your Company*).
-- [x] **Alineación de Alianza Estratégica:** Definición de roles (Telat BPO = 8 agentes en piso; N2A = DIDs, Cloud CommServer, Cloud IntelliNet, Call Intelligence).
-- [x] **Gobierno de Memoria:** Registro permanente de **Efrén Torres** (Ejecutivo de Cuenta N2A) y **Javier Jaime** (Director General N2A) en `.agents/AGENTS.md`.
-- [x] **Pruebas de Telefonía Exitosas con TIP:** Validación de viabilidad de desvío (*call forwarding*) a través de troncales SIP hacia cabeceras de conmutador cloud.
-- [x] **Definición de Requerimientos Técnicos para TIP México (Sept 2026):** Formulación de solicitud técnica precisa (inventario de 800, DNIS en SIP Header, y lógica/árbol de WhatsApp actual).
+## 🔴 1. VERIFICACIONES PENDIENTES EN CALIENTE (seguras, no urgentes)
+
+> 💡 **Validación Rápida con 1 Clic en Obsidian:** Haz clic directamente sobre la casilla `[ ]` para marcarla como `[x]` una vez probada en producción.
+
+- [x] **P-01: Generación de Pliego Técnico para N2A (v1.2):** Creación de `brief-tecnico-n2a.html` calibrado en exactamente 2 páginas Carta para PDF con branding oficial Telat (*The Voice of Your Company*). *(✅ Validado)*
+- [x] **P-02: Alineación de Alianza Estratégica:** Definición de roles (Telat BPO = 8 agentes en piso; N2A = DIDs, Cloud CommServer, Cloud IntelliNet, Call Intelligence). *(✅ Validado)*
+- [x] **P-03: Gobierno de Memoria:** Registro permanente de **Efrén Torres** (Ejecutivo de Cuenta N2A) y **Javier Jaime** (Director General N2A) en `.agents/AGENTS.md`. *(✅ Validado)*
+- [x] **P-04: Pruebas de Telefonía Exitosas con TIP:** Validación de viabilidad de desvío (*call forwarding*) a través de troncales SIP hacia cabeceras de conmutador cloud. *(✅ Validado)*
+- [x] **P-05: Definición de Requerimientos Técnicos para TIP México (Sept 2026):** Formulación de solicitud técnica precisa (inventario de 800, DNIS en SIP Header, y lógica/árbol de WhatsApp actual). *(✅ Validado)*
+
 
 ---
 
