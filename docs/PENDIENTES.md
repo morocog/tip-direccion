@@ -29,17 +29,36 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ---
 
-## 🟡 2. En Espera de Respuesta del Cliente (TIP México)
-- [ ] **Inventario de Líneas 800:** Recepción del desglose de números 800 y líneas locales de TIP con su tema/departamento asignado (Siniestros, Mantenimiento, Gestorías, Facturación, Conmutador General).
-- [ ] **Confirmación de DNIS / SIP Header en Forwarding:** Validación por el equipo de telecomunicaciones de TIP de que las llamadas desviadas transmitirán el identificador original del 800 marcado para auto-enrutamiento en el conmutador.
-- [ ] **Lógica & Flujo de WhatsApp de Proveedor Actual:** Recepción del árbol de decisiones, menú de bienvenida y reglas de asignación de su proveedor actual (inConcert) para replicarlo de forma nativa en la infraestructura provista por Telat.
+## 🟡 2. Respuestas Oficiales del Cliente (TIP México — 09/Sept/2026)
+- [x] **Inventario de Líneas 800 & Locales Recibido:** Mapeo de 9 líneas de entrada oficiales (8 líneas 800 y 1 línea local directa CDMX):
+  - `Bitcar`: **800 999 2136**
+  - `OFS`: **55 5093 7300** (Línea local CDMX)
+  - `CARNOT`: **800 122 7668**
+  - `CHIREY`: **800 649 0084**
+  - `JAC`: **800 649 0751**
+  - `MG`: **800 999 2057**
+  - `KIA`: **800 999 1151**
+  - `TIP MÉXICO`: **800 908 6700** (Conmutador General)
+  - `GCO`: **800 967 0527**
+- [x] **Gobernanza de IVR Aclarada (TIP México administra su IVR):**
+  - TIP aloja y gestiona su propio IVR de bienvenida (Menú: *Opción 1: Atención a Clientes* / *Opción 9: Cabina de Siniestros*).
+  - **Alcance Operativo TELAT:** TELAT atiende exclusivamente **Opción 1** (Siniestros queda fuera del alcance y lo atiende TIP).
+  - **TELAT NO tiene que replicar ni administrar el IVR de bienvenida.** TIP coordinará el desvío directo hacia la troncal de TELAT preservando el identificador.
+- [ ] **Confirmación Técnica de DNIS / SIP Header en Forwarding:** TI/Telecomunicaciones de TIP en proceso de validar la preservación del identificador durante el desvío hacia TELAT/N2A.
+- [x] **Lógica & Flujo de WhatsApp (Plataforma Zenvia de TIP):**
+  - TIP cuenta con menú de 4 opciones en Zenvia. Las opciones 2 y 4 las atiende TIP directamente.
+  - **TELAT NO requiere replicar ni configurar el flujo de WhatsApp en Zenvia.** Los agentes atenderán dentro del horario de 08:30 a 18:00 hrs.
+- [x] **Gestión de Correo Electrónico (Salesforce Service Cloud):**
+  - La atención de `contactcenter@tipmexico.com` NO se gestiona en bandeja de correo tradicional, sino mediante tickets en **Salesforce Service Cloud** provisto por TIP con accesos y plantillas tras capacitación.
+- [ ] **Envío de Contrato Formal por TIP:** TIP concluye observaciones internas de Dirección para enviar la nueva versión la próxima semana.
+- [ ] **Ajuste Presupuestal de Propuesta Económica (8 FTEs):** TIP solicitó la actualización de la cotización formal dimensionada a 8 posiciones humanas.
 
 ---
 
 ## 🔵 3. Siguientes Pasos con Net2Alliance (N2A)
-- [ ] **Recepción y Análisis de Cotización N2A:** Comparar la propuesta económica y técnica integral de N2A (Voz + WhatsApp + Correo) contra los SLAs (85% SL, ASA $\le$ 20s, AHT 7:00 min).
-- [ ] **Integración de Costo de Telefonía en Oferta Final:** Sumar el costo de DIDs, troncales y módulos N2A a la tarifa de posición de los 8 FTEs para la entrega formal del RFQ a TIP México.
-- [ ] **Aprovisionamiento y Réplica de WhatsApp:** Una vez recibida la lógica de TIP, montar el árbol de atención en el broker WABA de N2A.
+- [ ] **Entrega de Mapeo de 9 Líneas a N2A:** Proveer el inventario de las 9 cabeceras para aprovisionamiento de troncal SIP y enrutamiento con preservación de DNIS.
+- [ ] **Recepción y Análisis de Cotización N2A:** Comparar la propuesta económica y técnica integral de N2A contra los SLAs (85% SL, ASA $\le$ 20s, AHT 7:00 min).
+- [ ] **Integración de Costo de Telefonía en Oferta Final de 8 FTEs:** Sumar el costo de DIDs y troncales N2A a la tarifa de posición de los 8 FTEs para la entrega formal del RFQ ajustado a TIP México.
 
 ---
 
