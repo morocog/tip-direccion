@@ -52,6 +52,14 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - La atención de `contactcenter@tipmexico.com` NO se gestiona en bandeja de correo tradicional, sino mediante tickets en **Salesforce Service Cloud** provisto por TIP con accesos y plantillas tras capacitación.
 - [ ] **Firma y Formalización de Contrato por TIP:** En espera de la entrega y firma del contrato formal por parte de la Dirección de TIP México ajustado a **6 FTEs**.
 - [x] **Dimensionamiento Económico Consolidado (6 FTEs):** Ajuste de estructura comercial a 6 posiciones humanas en vivo acordado con Dirección Comercial.
+- [x] **Arranque Oficial de Capacitación Presencial (Lunes 5 de Octubre, 10:00 a.m.):**
+  - **Instructora:** Laura Mercado (`laura.mercado@...`) de TIP México impartirá el curso presencial en instalaciones de TELAT.
+  - **Horario Oficial:** Lunes a Viernes de 10:00 a.m. a 5:00 p.m.
+  - **Gobernanza Operativa:** Alineación directa liderada por **Mauricio Cruz** (Operations Director) en coordinación con Ricardo García (Subdirector de Operaciones), Ricardo Morales (TI) y Lic. Julio Torres (Legal).
+- [x] **Estrategia y Contingencia de Talento — Arranque con 7 Candidatos TELAT:**
+  - **Situación Colaboradores Transferidos:** Los ~4 agentes del proveedor anterior que TIP contemplaba transferir no contaban con datos ni expedientes listos para el lunes 5.
+  - **Acuerdo Telefónico y Escrito (Mauricio Cruz ➔ Laura Mercado, 02/Oct/2026):** Se arranca la capacitación el lunes 5 a las 10:00 a.m. con **7 candidatos nuevos contratados directamente por TELAT**.
+  - **Ventana de Sustitución:** La transferencia del personal de TIP se pospone para revisión en la semana (agendados tentativamente para el miércoles 7 de octubre). Si se integran, se sustituirán durante la semana aquellos candidatos de TELAT con menor desempeño en capacitación.
 
 ---
 
