@@ -90,6 +90,10 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
     * El panel de operación y reportes para tráfico entrante está prácticamente listo para liberarse.
     * N2A solicita compartir en detalle el alcance previsto de llamadas salientes para evaluar ajustes en telefonía y en el panel sin retrasar la liberación del tráfico entrante.
   - **Acción Inmediata Requerida:** Responder a Ricardo Morales / Efrén Torres acotando el alcance: marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets por los agentes de piso (sin discador masivo sobre este flujo), de modo que no interfiera con la entrega del panel entrante.
+- [x] **Directorio y Gobernanza de Canales Oficiales N2A & TI Telat:**
+  - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
+  - **Ejecutivo de Cuenta N2A:** Efrén Torres (`efren.torres@net2alliance.com`).
+  - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
 
 ---
 
