@@ -73,9 +73,23 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ---
 
-## 🔵 4. Siguientes Pasos con Net2Alliance (N2A)
+## 🔵 4. Siguientes Pasos con Net2Alliance (N2A) & Telecomunicaciones
 - [x] **Mapeo de 9 Líneas Integrado:** Cabeceras y DIDs listos para aprovisionamiento de troncal SIP con preservación de DNIS.
 - [ ] **Aprovisionamiento Final de Troncal y DIDs N2A:** Ejecutar la configuración de Cloud CommServer (6 softphones) una vez formalizada la firma del contrato con TIP.
+- [ ] **Requerimiento 1: Blaster Interactivo de Llamadas Salientes (Voice Broadcasting con Transferencia):**
+  - **Origen:** Laura Mercado (TIP Corporativo) proporcionará la base de datos de clientes que ningún humano ha contactado.
+  - **Mecanismo:** El blaster ejecuta las llamadas automáticas con un mensaje informativo pregrabado (ej. inicio de temporada de trámites de tenencias).
+  - **Opciones de Menú (DTMF):** Configurar "Presione 1 para ser transferido con un asesor" (transfiere la llamada en caliente a la cola de agentes de Telat) o mensaje de cierre indicando números y correo oficial para seguimiento.
+  - **Objetivo Operativo:** Filtrar la base para evitar que los agentes en piso desgasten su jornada en llamadas infructuosas (buzones, tonos ocupados o números no contestados).
+- [ ] **Requerimiento 2: Exploración de Monitoreo en Vivo de Llamadas con N2A:**
+  - **Objetivo:** Consultar con Efrén Torres / N2A la factibilidad técnica y operativa para habilitar monitoreo en tiempo real sobre Cloud CommServer (escucha silenciosa / *silent monitoring*, susurro / *whisper* para coaching en vivo, o intervención / *barge-in* para supervisores y calidad).
+- [ ] **Requerimiento 3: Habilitación de Marcación Saliente Manual a 10 Dígitos (Outbound para Seguimientos):**
+  - **Estado:** Solicitado formalmente por Ricardo García a Ricardo Morales (TI Telat), quien lo escaló a Efrén Torres (N2A).
+  - **Respuesta Oficial Recibida de N2A (Efrén Torres):**
+    * N2A confirma disponibilidad para apoyar con llamadas salientes considerando 3 troncales iniciales y DIDs contratados.
+    * El panel de operación y reportes para tráfico entrante está prácticamente listo para liberarse.
+    * N2A solicita compartir en detalle el alcance previsto de llamadas salientes para evaluar ajustes en telefonía y en el panel sin retrasar la liberación del tráfico entrante.
+  - **Acción Inmediata Requerida:** Responder a Ricardo Morales / Efrén Torres acotando el alcance: marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets por los agentes de piso (sin discador masivo sobre este flujo), de modo que no interfiera con la entrega del panel entrante.
 
 ---
 
