@@ -46,7 +46,6 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Alcance Operativo TELAT:** TELAT atiende exclusivamente **Opción 1** (Siniestros queda fuera del alcance y lo atiende TIP).
   - **TELAT NO tiene que replicar ni administrar el IVR de bienvenida.** TIP coordinará el desvío directo hacia la troncal de TELAT preservando el identificador.
 - [x] **Confirmación de Mapeo de 9 Líneas 800 & Locales:** Inventario de las 9 líneas canónicas totalmente confirmado y acordado para aprovisionamiento.
-- [ ] **Preservación de Cabeceras DNIS / SIP en Forwarding (Acuerdo Técnico en Memoria):** Solicitar formalmente al área de Telecomunicaciones de TIP la preservación obligatoria del identificador/cabecera en el desvío hacia TELAT/N2A.
 - [x] **Exclusión de WhatsApp Acordada con TIP (Óscar Gómez / TIP):** TIP retiene el canal WhatsApp en su plataforma Zenvia; Telat no lo operará ni aprovisionará licencias.
 - [x] **Gestión de Correo Electrónico (Salesforce Service Cloud):**
   - La atención de `contactcenter@tipmexico.com` NO se gestiona en bandeja de correo tradicional, sino mediante tickets en **Salesforce Service Cloud** provisto por TIP con accesos y plantillas tras capacitación.
@@ -56,26 +55,37 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Instructora:** Laura Mercado (`laura.mercado@...`) de TIP México impartirá el curso presencial en instalaciones de TELAT.
   - **Horario Oficial:** Lunes a Viernes de 10:00 a.m. a 5:00 p.m.
   - **Gobernanza Operativa:** Alineación directa liderada por **Mauricio Cruz** (Operations Director) en coordinación con Ricardo García (Subdirector de Operaciones), Ricardo Morales (TI) y Lic. Julio Torres (Legal).
-- [x] **Estrategia y Contingencia de Talento — Arranque con 7 Candidatos TELAT:**
-  - **Situación Colaboradores Transferidos:** Los ~4 agentes del proveedor anterior que TIP contemplaba transferir no contaban con datos ni expedientes listos para el lunes 5.
-  - **Acuerdo Telefónico y Escrito (Mauricio Cruz ➔ Laura Mercado, 02/Oct/2026):** Se arranca la capacitación el lunes 5 a las 10:00 a.m. con **7 candidatos nuevos contratados directamente por TELAT**.
-  - **Ventana de Sustitución:** La transferencia del personal de TIP se pospone para revisión en la semana (agendados tentativamente para el miércoles 7 de octubre). Si se integran, se sustituirán durante la semana aquellos candidatos de TELAT con menor desempeño en capacitación.
+- [x] **Estrategia y Contingencia de Talento: Arranque con 7 Candidatos TELAT:**
+  - Capacitación arrancó con 7 candidatos nuevos contratados directamente por TELAT bajo acuerdo de Mauricio Cruz y Laura Mercado.
 
 ---
 
-## 🔵 3. Siguientes Pasos con Net2Alliance (N2A)
+## 📞 3. Implementación PBX, Telecomunicaciones & Ventana de Corte (Octubre 2026)
+- [x] **Interconexión PBX y Troncal a Servidor Propio (14-Oct-2026):** Ricardo Morales confirmó la migración exitosa de la troncal SIP a servidor propio con IP definitiva (mismas credenciales). Cero pendientes de interconexión física/red.
+- [x] **Aprovisionamiento y Prueba de 9 Extensiones (9001 a 9009):** Extensiones operativas y probadas en ambos sentidos: saliente Telat ➔ TIP y entrante TIP ➔ Telat recibida exitosamente en extensión 9005.
+- [x] **Calendario de Corte y Redirección de 8 IVR (Viernes 18:00 h):** Se acordó migrar este viernes al cierre de turno las 8 líneas secundarias (Bitcar, OFS, CARNOT, CHIREY, JAC, MG, KIA, GCO) a la troncal Telat. El conmutador general de TIP México (800 908 6700) se migrará en fecha posterior definida por Laura Mercado. Regla de fuera de horario activa hasta el lunes por la mañana.
+- [ ] **Resolución Urgente de Caller ID / DNIS (Llamadas como "Desconocido"):** Sesión técnica urgente solicitada con Iván Ramírez y Rafael Quintero (TIP) para inyectar cabecera DNIS / Caller ID en pantalla del agente antes del viernes, asegurando que el agente reconozca la marca y el speech adecuado.
+- [x] **Horario de Operación Oficial (Lunes a Viernes / Sábados Descartados):** Laura Mercado y la dirección de Operaciones confirmaron que el servicio opera exclusivamente de Lunes a Viernes en sus horarios establecidos. Los sábados quedan formalmente descartados (tráfico residual de ~10 llamadas y áreas resolutivas de TIP cerradas; carece de lógica operativa). WFM y todas las áreas internas de Telat ya fueron debidamente actualizadas.
+- [ ] **Selección de Audio y Música Institucional en Espera:** En espera de la definición final por parte de Laura Mercado para la música/audio de espera.
+- [ ] **Activación de Cuentas de Plataforma y Protocolo 2FA:** Envío de cuentas de agentes a Laura Mercado para plataformas TIP (Salesforce); acordar esquema de contraseñas y doble factor de autenticación que evite celulares personales en piso.
+- [ ] **Solicitud de Dispositivo Físico 2FA a Ricardo Morales (Fecha límite 26-Oct-2026):** Jatzyri Yepez (Gerente de Capacitación) notificó la necesidad de una tablet o smartphone corporativo para la autenticación 2FA de los agentes en TIP. Durante las semanas del 12 y 19 de octubre se operará en préstamo con la tablet asignada a Carvana. Se debe solicitar a Ricardo Morales (TI/Enlaces) un dispositivo dedicado disponible a partir del lunes 26 de octubre.
+- [ ] **Homologación de Marcación Interna (Serie 7100+):** Confirmar regla general de extensiones de cuatro dígitos que inicien con 7 propuesta por Telat.
+
+---
+
+## 🔵 4. Siguientes Pasos con Net2Alliance (N2A)
 - [x] **Mapeo de 9 Líneas Integrado:** Cabeceras y DIDs listos para aprovisionamiento de troncal SIP con preservación de DNIS.
 - [ ] **Aprovisionamiento Final de Troncal y DIDs N2A:** Ejecutar la configuración de Cloud CommServer (6 softphones) una vez formalizada la firma del contrato con TIP.
 
 ---
 
-## 🔴 4. Deuda Técnica & Backlog
+## 🔴 5. Deuda Técnica & Backlog
 - [ ] **Simulador de Tráfico en Tiempo Real:** Interconectar el dashboard ejecutivo (`index.html` / `dashboard.html`) con APIs de prueba de N2A una vez formalizado el contrato.
 - [ ] **Sincronización con Repositorio de Presentaciones:** Homologar `brief-tecnico-n2a.html` dentro de `presentaciones-ejecutivas/Direccion-General/TIP/` si Dirección General requiere acceso centralizado.
 
 ---
 
-## 🔗 5. Enlaces de Referencia Documental (RFQs Oficiales TIP)
+## 🔗 6. Enlaces de Referencia Documental (RFQs Oficiales TIP)
 > *Nota: Enlaces guardados exclusivamente para consulta y referencia futura. El contexto operativo vigente se rige por los acuerdos de Fase 1 en la Sección 0.*
 - 📄 **RFQ Inicial (Sin IA — Atención Tradicional Humana):** [Google Drive — Archivo Original](https://drive.google.com/file/d/1cksp1mvkVlPeUK5Sw5rgm-FMFvlSx9ZJ/view?usp=drive_link)
 - 🤖 **RFQ Secundario (Con IA & Herramientas Operativas):** [Google Docs — Documento con IA y Ecosistema](https://docs.google.com/document/d/12GegljllArpjdFR3eRtZrH7RVJDmL1eFrONFKLCQHvY/edit?usp=drive_link)
