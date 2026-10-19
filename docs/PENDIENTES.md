@@ -90,10 +90,17 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
     * El panel de operación y reportes para tráfico entrante está prácticamente listo para liberarse.
     * N2A solicita compartir en detalle el alcance previsto de llamadas salientes para evaluar ajustes en telefonía y en el panel sin retrasar la liberación del tráfico entrante.
   - **Acción Inmediata Requerida:** Responder a Ricardo Morales / Efrén Torres acotando el alcance: marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets por los agentes de piso (sin discador masivo sobre este flujo), de modo que no interfiera con la entrega del panel entrante.
-- [x] **Directorio y Gobernanza de Canales Oficiales N2A & TI Telat:**
+- [ ] **Requerimiento 4: Transferencia Crítica de Llamadas a Cabina de Siniestros:**
+  - **Solicitante Cliente:** Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, Analista de Experiencia del Cliente) con copia a Laura Mercado.
+  - **Destino Crítico:** Cabina de Siniestros de TIP México: **`55 4195 6614`**.
+  - **Objetivo:** Cuando un usuario llame por contingencia o siniestro vehicular a los números atendidos por Telat, el agente debe poder transferir la llamada de forma inmediata, limpia y rápida hacia la cabina externa (55 4195 6614) desde Bria o Cloud CommServer.
+  - **Acción con N2A:** Solicitar soporte para configurar la regla de transferencia saliente a este número específico, evaluando la asignación de una marcación rápida o extensión virtual (ej. tecla rápida o marcación corta) para que el agente transfiera con 1 clic sin margen de error.
+- [x] **Directorio y Gobernanza de Canales Oficiales N2A, TI & TIP México:**
   - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
   - **Ejecutivo de Cuenta N2A:** Efrén Torres (`efren.torres@net2alliance.com`).
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
+  - **Contrapartes Operativas TIP México:** Laura Mercado (`laura.mercado@tipmexico.com`) y Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, T: 55 5093 7200 ext. 7649, C: 55 2764 6811).
+  - **Línea de Emergencia Cabina de Siniestros TIP:** `55 4195 6614`.
 
 ---
 
