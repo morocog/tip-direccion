@@ -1,4 +1,4 @@
-# 📌 PENDIENTES & HOJA DE RUTA — TIP DIRECCIÓN & ALIANZA N2A
+# 📌 PENDIENTES & HOJA DE RUTA, TIP DIRECCIÓN & ALIANZA N2A
 
 Este documento mantiene el estado de verificación, roadmap y deuda técnica para la cuenta de **TIP México** y la infraestructura con **Net2Alliance (N2A)**.
 
@@ -6,8 +6,8 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ## 🏛️ 0. Arquitectura Canónica & Directrices de Fase 1 (Septiembre 2026)
 
-* **Fase 1 Estricta — Cero Inteligencia Artificial & Plantilla Ajustada (6 FTEs):** La operación inicial para TIP México se basa **exclusivamente en agentes humanos dedicados en piso (6 FTEs)** (5 agentes de piso + 1 supervisor/híbrido) atendiendo 2 canales: Voz (2,800 llamadas/mes) y Correo (500 tickets/mes). Queda estrictamente excluida cualquier automatización con IA en esta primera fase.
-* **Exclusión de Canal WhatsApp (Acuerdo Comercial — Óscar Gómez / TIP):** El cliente TIP México determinó retener la atención del canal WhatsApp directamente en su plataforma Zenvia; **Telat NO operará WhatsApp**, concentrando el 100% de la plantilla de 6 FTEs en Voz y Correo/Salesforce.
+* **Fase 1 Estricta, Cero Inteligencia Artificial & Plantilla Ajustada (6 FTEs):** La operación inicial para TIP México se basa **exclusivamente en agentes humanos dedicados en piso (6 FTEs)** (5 agentes de piso + 1 supervisor/híbrido) atendiendo 2 canales: Voz (2,800 llamadas/mes) y Correo (500 tickets/mes). Queda estrictamente excluida cualquier automatización con IA en esta primera fase.
+* **Exclusión de Canal WhatsApp (Acuerdo Comercial, Óscar Gómez / TIP):** El cliente TIP México determinó retener la atención del canal WhatsApp directamente en su plataforma Zenvia; **Telat NO operará WhatsApp**, concentrando el 100% de la plantilla de 6 FTEs en Voz y Correo/Salesforce.
 * **Gobernanza White-Label Absoluta:** De cara a TIP México, **Telat Group es el proveedor único e integral** tanto del talento BPO como de la plataforma tecnológica y de telecomunicaciones. TIP México **NO debe tener conocimiento de la existencia de Net2Alliance (N2A)**. N2A actúa exclusivamente como carrier y partner tecnológico en back-to-back con Telat.
 * **Infraestructura Requerida N2A (Voz & Telecom):** Net2Alliance provee la suite unificada en **Cloud CommServer** que abarca:
   1. Troncales SIP y softphones para telefonía de voz (2,800 llamadas/mes, 6 agentes concurrentes).
@@ -30,7 +30,7 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ---
 
-## 🟡 2. Respuestas Oficiales del Cliente (TIP México — Sept/2026)
+## 🟡 2. Respuestas Oficiales del Cliente (TIP México, Sept/2026)
 - [x] **Inventario de Líneas 800 & Locales Recibido:** Mapeo de 9 líneas de entrada oficiales (8 líneas 800 y 1 línea local directa CDMX):
   - `Bitcar`: **800 999 2136**
   - `OFS`: **55 5093 7300** (Línea local CDMX)
@@ -83,13 +83,10 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Objetivo Operativo:** Filtrar la base para evitar que los agentes en piso desgasten su jornada en llamadas infructuosas (buzones, tonos ocupados o números no contestados).
 - [ ] **Requerimiento 2: Exploración de Monitoreo en Vivo de Llamadas con N2A:**
   - **Objetivo:** Consultar con Efrén Torres / N2A la factibilidad técnica y operativa para habilitar monitoreo en tiempo real sobre Cloud CommServer (escucha silenciosa / *silent monitoring*, susurro / *whisper* para coaching en vivo, o intervención / *barge-in* para supervisores y calidad).
-- [ ] **Requerimiento 3: Habilitación de Marcación Saliente Manual a 10 Dígitos (Outbound para Seguimientos):**
-  - **Estado:** Solicitado formalmente por Ricardo García a Ricardo Morales (TI Telat), quien lo escaló a Efrén Torres (N2A).
-  - **Respuesta Oficial Recibida de N2A (Efrén Torres):**
-    * N2A confirma disponibilidad para apoyar con llamadas salientes considerando 3 troncales iniciales y DIDs contratados.
-    * El panel de operación y reportes para tráfico entrante está prácticamente listo para liberarse.
-    * N2A solicita compartir en detalle el alcance previsto de llamadas salientes para evaluar ajustes en telefonía y en el panel sin retrasar la liberación del tráfico entrante.
-  - **Acción Inmediata Requerida:** Responder a Ricardo Morales / Efrén Torres acotando el alcance: marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets por los agentes de piso (sin discador masivo sobre este flujo), de modo que no interfiera con la entrega del panel entrante.
+- [x] **Requerimiento 3: Habilitación y Reporte CDR de Marcación Saliente Manual a 10 Dígitos (Outbound):**
+  - **Ticket Oficial en Freshdesk:** **`#225590`** (`[TIP México] Registro y reporte CDR de llamadas salientes manuales (Outbound)`), creado el 22-Oct-2026, 4:46 p. m.
+  - **Estado:** En proceso en N2A.
+  - **Alcance formalizado:** Marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets y siniestros por los agentes de piso. Se exigió la entrega diaria del reporte con marcas de tiempo con segundos, duración de timbrado, duración de conversación y clasificación (`CONTESTADA`, `NO_CONTESTA`, `OCUPADO`, `FALLIDA`).
 - [ ] **Requerimiento 4: Transferencia Crítica de Llamadas a Cabina de Siniestros:**
   - **Solicitante Cliente:** Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, Analista de Experiencia del Cliente) con copia a Laura Mercado.
   - **Destino Crítico:** Cabina de Siniestros de TIP México: **`55 4195 6614`**.
@@ -97,6 +94,11 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Acción con N2A:** Solicitar soporte para configurar la regla de transferencia saliente a este número específico, evaluando la asignación de una marcación rápida o extensión virtual (ej. tecla rápida o marcación corta) para que el agente transfiera con 1 clic sin margen de error.
 - [x] **Directorio y Gobernanza de Canales Oficiales N2A, TI & TIP México:**
   - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
+  - **Tickets Oficiales en Freshdesk (Net2Alliance):**
+    * **`#225549`** (19-Oct, 4:42 P. M.): *Campaña de avisos automáticos salientes (Blaster con transferencia)* | Estatus: Esperando respuesta N2A.
+    * **`#225563`** (20-Oct, 6:41 P. M.): *Ajuste de parámetros en colas CommServer y reporte completo CDR* | Estatus: En proceso (canalizado a Desarrollo).
+    * **`#225578`** (21-Oct, 5:56 P. M.): *Mapeo de nombres y alias de colas (Skills) en Cloud CommServer* | Estatus: Esperando respuesta N2A.
+    * **`#225590`** (22-Oct, 4:46 P. M.): *Registro y reporte CDR de llamadas salientes manuales (Outbound)* | Estatus: En proceso.
   - **Ejecutivo de Cuenta N2A:** Efrén Torres (`efren.torres@net2alliance.com`).
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Contrapartes Operativas TIP México:** Laura Mercado (`laura.mercado@tipmexico.com`) y Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, T: 55 5093 7200 ext. 7649, C: 55 2764 6811).
@@ -112,6 +114,6 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 
 ## 🔗 6. Enlaces de Referencia Documental (RFQs Oficiales TIP)
 > *Nota: Enlaces guardados exclusivamente para consulta y referencia futura. El contexto operativo vigente se rige por los acuerdos de Fase 1 en la Sección 0.*
-- 📄 **RFQ Inicial (Sin IA — Atención Tradicional Humana):** [Google Drive — Archivo Original](https://drive.google.com/file/d/1cksp1mvkVlPeUK5Sw5rgm-FMFvlSx9ZJ/view?usp=drive_link)
-- 🤖 **RFQ Secundario (Con IA & Herramientas Operativas):** [Google Docs — Documento con IA y Ecosistema](https://docs.google.com/document/d/12GegljllArpjdFR3eRtZrH7RVJDmL1eFrONFKLCQHvY/edit?usp=drive_link)
+- 📄 **RFQ Inicial (Sin IA, Atención Tradicional Humana):** [Google Drive, Archivo Original](https://drive.google.com/file/d/1cksp1mvkVlPeUK5Sw5rgm-FMFvlSx9ZJ/view?usp=drive_link)
+- 🤖 **RFQ Secundario (Con IA & Herramientas Operativas):** [Google Docs, Documento con IA y Ecosistema](https://docs.google.com/document/d/12GegljllArpjdFR3eRtZrH7RVJDmL1eFrONFKLCQHvY/edit?usp=drive_link)
 
