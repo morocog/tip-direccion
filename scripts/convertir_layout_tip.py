@@ -20,17 +20,17 @@ import openpyxl
 # Umbral contractual de Nivel de Servicio (SLA) en segundos (ASA <= 20s)
 SLA_THRESHOLD_SECONDS = 20
 
-# Mapeo oficial de colas N2A -> Campaña / Skill TIP México
+# Mapeo oficial canonico de colas N2A -> Lineas / Cuentas de Flota TIP Mexico
 QUEUE_MAPPING = {
     "8001": "tip_general",
     "8002": "tip_bitcar",
-    "8003": "tip_arrendamiento",
-    "8004": "tip_siniestros",
-    "8005": "tip_mantenimiento",
-    "8006": "tip_documentacion",
-    "8007": "tip_facturacion",
-    "8008": "tip_telemetria",
-    "8009": "tip_atencion_clientes"
+    "8003": "tip_ofs",
+    "8004": "tip_carnot",
+    "8005": "tip_chirey",
+    "8006": "tip_jac",
+    "8007": "tip_mg",
+    "8008": "tip_kia",
+    "8009": "tip_gco"
 }
 
 def parse_call_record(row, schema_type):
@@ -379,13 +379,28 @@ def main():
         csv_files = args.inputs
     else:
         # Detectar automáticamente los archivos de corte en Descargas
-        default_files = [
-            os.path.join(downloads, "Llamdas 19-21 oct TIP.xlsx"),
+        f_19_21 = os.path.join(downloads, "Llamdas 19-21 oct TIP.xlsx")
+        recent_llamadas = [
+            os.path.join(downloads, "llamadas (5).csv"),
             os.path.join(downloads, "llamadas (3).csv"),
-            os.path.join(downloads, "llamadas_2026-10-19_a_2026-10-20.csv"),
             os.path.join(downloads, "llamadas.csv")
         ]
-        csv_files = [f for f in default_files if os.path.exists(f)]
+        f_rest = next((f for f in recent_llamadas if os.path.exists(f)), None)
+        
+        default_files = []
+        if os.path.exists(f_19_21):
+            default_files.append(f_19_21)
+        if f_rest:
+            default_files.append(f_rest)
+            
+        csv_files = default_files
+        if not csv_files:
+            # Fallback si no existen los oficiales
+            fallback_files = [
+                os.path.join(downloads, "llamadas_2026-10-19_a_2026-10-20.csv"),
+                os.path.join(downloads, "llamadas.csv")
+            ]
+            csv_files = [f for f in fallback_files if os.path.exists(f)]
         if not csv_files:
             print("[ERROR] No se encontraron archivos de llamadas predeterminados en Descargas.")
             sys.exit(1)
