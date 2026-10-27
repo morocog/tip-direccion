@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen Semanal de Operaciones · TIP México | Telat Group</title>
+  
+  <!-- Google Fonts: Inter & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            telat: {
+              celeste: '#3284C6',
+              naranja: '#EB5B27',
+              amarillo: '#FECA66',
+              oscuro: '#222221',
+              claro: '#FBFBFD',
+              slateBg: '#F8FAFC',
+              slateBorder: '#E2E8F0'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['DM Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @page {
+      size: 16in 9in;
+      margin: 0;
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide-container {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        max-width: 100% !important;
+        width: 100vw !important;
+        min-height: 100vh !important;
+        padding: 2.5rem 3.5rem !important;
+      }
+    }
+    .metric-font {
+      font-family: 'DM Sans', sans-serif;
+      font-feature-settings: "tnum" 1;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-telat-oscuro font-sans min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 antialiased">
+
+  <!-- BARRA FLOTANTE DE CONTROLES (NO IMPRIMIBLE) -->
+  <aside class="no-print w-full max-w-6xl mb-3 flex items-center justify-between text-xs px-2 text-gray-500">
+    <div class="flex items-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+      <span>Presentación ejecutiva calibrada en formato 16:9</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-300 hover:border-telat-celeste hover:text-telat-celeste rounded-lg font-semibold shadow-sm transition-all">
+        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+        Guardar PDF (Ctrl + P)
+      </button>
+      <button onclick="toggleFullScreen()" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-telat-celeste text-white rounded-lg font-semibold hover:bg-blue-600 shadow-sm transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+        Pantalla completa
+      </button>
+    </div>
+  </aside>
+
+  <!-- LÁMINA PRINCIPAL (16:9 RATIO EXECUTIVE CANVAS) -->
+  <div id="slideContent" class="slide-container bg-white w-full max-w-6xl aspect-[16/9] rounded-2xl border border-telat-slateBorder shadow-xl p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+    
+    <!-- LÍNEA SUPERIOR DE BRANDING TELAT -->
+    <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja"></div>
+
+    <!-- ENCABEZADO DE LA LÁMINA -->
+    <header class="flex justify-between items-start border-b border-gray-100 pb-5">
+      <div>
+        <div class="flex items-center gap-3 mb-1">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-telat-celeste bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+            Campaña TIP México
+          </span>
+          <span class="text-xs text-gray-400 font-medium">|</span>
+          <span class="text-xs text-gray-500 font-medium">Semana del 19 al 23 de octubre de 2026</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-telat-oscuro font-display tracking-tight">
+          Resumen semanal de operaciones y tráfico telefónico
+        </h1>
+        <p class="text-xs text-gray-500 mt-0.5">
+          Informe consolidado de volumen, velocidad de respuesta y cumplimiento de nivel de servicio
+        </p>
+      </div>
+      <div class="text-right flex flex-col items-end">
+        <img src="https://telat.mx/assets/img/logo.png" alt="Telat Group" class="h-8 w-auto mb-1" onerror="this.onerror=null; this.src='https://placehold.co/120x32/3284C6/FFFFFF?text=TELAT+GROUP';">
+        <span class="text-[10px] text-gray-400 font-mono">Dirección de Operaciones</span>
+      </div>
+    </header>
+
+    <!-- BLOQUE 1: TARJETAS DE INDICADORES PRINCIPALES (KPIS) -->
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-2">
+      
+      <!-- KPI 1: LLAMADAS RECIBIDAS -->
+      <article class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-gray-500">Llamadas recibidas</span>
+          <span class="w-2 h-2 rounded-full bg-telat-celeste"></span>
+        </div>
+        <div class="my-1">
+          <span class="text-3xl sm:text-4xl font-extrabold text-telat-oscuro metric-font">167</span>
+        </div>
+        <div class="text-[11px] text-gray-500 font-medium">
+          100% canal voz (inbound)
+        </div>
+      </article>
+
+      <!-- KPI 2: NIVEL DE SERVICIO (SLA) -->
+      <article class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-emerald-800">Nivel de servicio (SLA)</span>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Cumple meta</span>
+        </div>
+        <div class="my-1 flex items-baseline gap-2">
+          <span class="text-3xl sm:text-4xl font-extrabold text-emerald-700 metric-font">89.2%</span>
+          <span class="text-xs font-semibold text-emerald-600">+9.2 pp</span>
+        </div>
+        <div class="text-[11px] text-emerald-700 font-medium">
+          Meta contractual: ≥ 80.0%
+        </div>
+      </article>
+
+      <!-- KPI 3: TIEMPO DE ESPERA (ASA) -->
+      <article class="bg-blue-50/70 border border-blue-200 rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-blue-900">Velocidad respuesta (ASA)</span>
+          <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full">Rápida</span>
+        </div>
+        <div class="my-1 flex items-baseline gap-2">
+          <span class="text-3xl sm:text-4xl font-extrabold text-telat-celeste metric-font">13.7s</span>
+          <span class="text-xs font-semibold text-emerald-600">-6.3s</span>
+        </div>
+        <div class="text-[11px] text-blue-800 font-medium">
+          Meta contractual: ≤ 20.0s
+        </div>
+      </article>
+
+      <!-- KPI 4: CONVERSACIÓN PROMEDIO (AHT) -->
+      <article class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-4 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-gray-500">Conversación prom. (AHT)</span>
+          <span class="w-2 h-2 rounded-full bg-telat-naranja"></span>
+        </div>
+        <div class="my-1">
+          <span class="text-3xl sm:text-4xl font-extrabold text-telat-oscuro metric-font">6m 55s</span>
+        </div>
+        <div class="text-[11px] text-gray-500 font-medium">
+          415s de resolución en llamada
+        </div>
+      </article>
+
+    </section>
+
+    <!-- BLOQUE 2: TABLA DIARIA DE RENDIMIENTO -->
+    <section class="border border-telat-slateBorder rounded-xl overflow-hidden shadow-xs">
+      <table class="w-full text-left text-xs">
+        <thead class="bg-slate-50 text-gray-700 font-bold uppercase tracking-wider border-b border-gray-200">
+          <tr>
+            <th class="py-2.5 px-4">Día</th>
+            <th class="py-2.5 px-3 text-center">Fecha</th>
+            <th class="py-2.5 px-3 text-center">Recibidas</th>
+            <th class="py-2.5 px-3 text-center">Atendidas</th>
+            <th class="py-2.5 px-3 text-center">No atendidas</th>
+            <th class="py-2.5 px-3 text-center">Nivel de servicio</th>
+            <th class="py-2.5 px-3 text-right">Espera ASA (s)</th>
+            <th class="py-2.5 px-3 text-right">Conversación AHT</th>
+            <th class="py-2.5 px-4 text-center">Estatus</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white">
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-2.5 px-4 font-bold text-telat-oscuro">Lunes</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-500">19/10/2026</td>
+            <td class="py-2.5 px-3 text-center font-semibold">41</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-emerald-700">41</td>
+            <td class="py-2.5 px-3 text-center text-gray-400">0</td>
+            <td class="py-2.5 px-3 text-center font-bold text-emerald-600">100.0%</td>
+            <td class="py-2.5 px-3 text-right font-mono">15.0s</td>
+            <td class="py-2.5 px-3 text-right font-mono">4m 56s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Sobresaliente</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-2.5 px-4 font-bold text-telat-oscuro">Martes</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-500">20/10/2026</td>
+            <td class="py-2.5 px-3 text-center font-semibold">40</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-emerald-700">38</td>
+            <td class="py-2.5 px-3 text-center text-amber-600">2</td>
+            <td class="py-2.5 px-3 text-center font-bold text-emerald-600">95.0%</td>
+            <td class="py-2.5 px-3 text-right font-mono">20.5s</td>
+            <td class="py-2.5 px-3 text-right font-mono">7m 55s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Sobresaliente</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50/80 transition-colors bg-amber-50/30">
+            <td class="py-2.5 px-4 font-bold text-telat-oscuro flex items-center gap-1.5">
+              <span>Miércoles</span>
+              <span class="text-amber-600 text-xs font-bold" title="Ver nota explicativa al calce">*</span>
+            </td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-500">21/10/2026</td>
+            <td class="py-2.5 px-3 text-center font-semibold">44</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-telat-oscuro">30</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-red-600">14</td>
+            <td class="py-2.5 px-3 text-center font-bold text-amber-700">68.2%</td>
+            <td class="py-2.5 px-3 text-right font-mono text-emerald-600 font-bold">7.7s</td>
+            <td class="py-2.5 px-3 text-right font-mono">9m 26s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Focalizado *</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-2.5 px-4 font-bold text-telat-oscuro">Jueves</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-500">22/10/2026</td>
+            <td class="py-2.5 px-3 text-center font-semibold">19</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-emerald-700">18</td>
+            <td class="py-2.5 px-3 text-center text-amber-600">1</td>
+            <td class="py-2.5 px-3 text-center font-bold text-emerald-600">94.7%</td>
+            <td class="py-2.5 px-3 text-right font-mono">9.4s</td>
+            <td class="py-2.5 px-3 text-right font-mono">5m 22s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Sobresaliente</span>
+            </td>
+          </tr>
+          <tr class="hover:bg-slate-50/80 transition-colors">
+            <td class="py-2.5 px-4 font-bold text-telat-oscuro">Viernes</td>
+            <td class="py-2.5 px-3 text-center font-mono text-gray-500">23/10/2026</td>
+            <td class="py-2.5 px-3 text-center font-semibold">23</td>
+            <td class="py-2.5 px-3 text-center font-semibold text-emerald-700">22</td>
+            <td class="py-2.5 px-3 text-center text-amber-600">1</td>
+            <td class="py-2.5 px-3 text-center font-bold text-emerald-600">95.7%</td>
+            <td class="py-2.5 px-3 text-right font-mono">11.5s</td>
+            <td class="py-2.5 px-3 text-right font-mono">6m 42s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">Sobresaliente</span>
+            </td>
+          </tr>
+          <!-- FILA CONSOLIDADA TOTAL -->
+          <tr class="bg-slate-100/80 border-t-2 border-gray-300 font-bold">
+            <td class="py-2.5 px-4 text-telat-oscuro">Total semanal</td>
+            <td class="py-2.5 px-3 text-center text-gray-500 font-normal">5 jornadas</td>
+            <td class="py-2.5 px-3 text-center font-extrabold text-telat-oscuro">167</td>
+            <td class="py-2.5 px-3 text-center font-extrabold text-emerald-700">149</td>
+            <td class="py-2.5 px-3 text-center text-red-700">18</td>
+            <td class="py-2.5 px-3 text-center font-extrabold text-emerald-700 text-sm">89.2%</td>
+            <td class="py-2.5 px-3 text-right font-mono font-extrabold text-telat-celeste">13.7s</td>
+            <td class="py-2.5 px-3 text-right font-mono font-extrabold text-telat-oscuro">6m 55s</td>
+            <td class="py-2.5 px-4 text-center">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-600 text-white shadow-xs">Meta lograda</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- BLOQUE 3: NOTA CONTEXTUAL EJECUTIVA (DEFENSA TRANSPARENTE DEL MIÉRCOLES) -->
+    <footer class="mt-2 pt-3 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-[11px] text-gray-600 flex-1 flex items-start gap-2">
+        <svg class="w-4 h-4 text-telat-celeste shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <div>
+          <strong class="text-telat-oscuro font-bold">* Análisis de contactación (Miércoles 21):</strong> De los 14 registros no atendidos, 10 correspondieron a reintentos consecutivos de solo 2 usuarios al arranque del turno (08:32 a 08:56 a. m., con 4 y 3 marcaciones repetidas respectivamente). La contactación efectiva en usuarios únicos reales se mantuvo en <strong class="text-emerald-700 font-bold">88.0%</strong>.
+        </div>
+      </div>
+      <div class="text-[10px] text-gray-400 font-mono text-right shrink-0">
+        Fuente: Layout inConcert · Telat Group BPO
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+          alert(`Error al activar pantalla completa: ${err.message}`);
+        });
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
