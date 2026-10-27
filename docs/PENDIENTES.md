@@ -91,7 +91,11 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Solicitante Cliente:** Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, Analista de Experiencia del Cliente) con copia a Laura Mercado.
   - **Destino Crítico:** Cabina de Siniestros de TIP México: **`55 4195 6614`**.
   - **Objetivo:** Cuando un usuario llame por contingencia o siniestro vehicular a los números atendidos por Telat, el agente debe poder transferir la llamada de forma inmediata, limpia y rápida hacia la cabina externa (55 4195 6614) desde Bria o Cloud CommServer.
-  - **Acción con N2A:** Solicitar soporte para configurar la regla de transferencia saliente a este número específico, evaluando la asignación de una marcación rápida o extensión virtual (ej. tecla rápida o marcación corta) para que el agente transfiera con 1 clic sin margen de error.
+- [ ] **Requerimiento 5: Calibración de Hunting en Colas y Salvaguarda contra Bucles RONA (Auto-pausa):**
+  - **Fecha de reporte verbal:** 26-Oct-2026 (Ricardo García gestionó directamente por teléfono con soporte N2A).
+  - **Problema detectado en piso:** El balanceo de colas por menor carga (`fewestcalls`) cayó en un bucle ciego (*black hole*) enviando llamadas repetidamente a un mismo agente rezagado que no descolgaba (41 timbrados RONA a Jorge Michel Cano), reteniendo a clientes en espera más de 300 segundos y provocando abandonos.
+  - **Solución solicitada a N2A:** Mantener el principio de hunting para evitar trampas y evasión de llamadas en piso (*round-robin evasion*), pero implementar la salvaguarda de descarte inmediato ante el 1er RONA (activar parámetro de cola `autopause = yes` o salto forzado al siguiente asesor disponible) para que el conmutador no secuestre la llamada del cliente y ponga en auto-pausa al asesor omiso.
+  - **Estatus:** En revisión técnica por parte de N2A tras llamada telefónica.
 - [x] **Directorio y Gobernanza de Canales Oficiales N2A, TI & TIP México:**
   - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
   - **Tickets Oficiales en Freshdesk (Net2Alliance):**
