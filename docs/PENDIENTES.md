@@ -96,6 +96,9 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Problema detectado en piso:** El balanceo de colas por menor carga (`fewestcalls`) cayó en un bucle ciego (*black hole*) enviando llamadas repetidamente a un mismo agente rezagado que no descolgaba (41 timbrados RONA a Jorge Michel Cano), reteniendo a clientes en espera más de 300 segundos y provocando abandonos.
   - **Solución solicitada a N2A:** Mantener el principio de hunting para evitar trampas y evasión de llamadas en piso (*round-robin evasion*), pero implementar la salvaguarda de descarte inmediato ante el 1er RONA (activar parámetro de cola `autopause = yes` o salto forzado al siguiente asesor disponible) para que el conmutador no secuestre la llamada del cliente y ponga en auto-pausa al asesor omiso.
   - **Estatus:** En revisión técnica por parte de N2A tras llamada telefónica.
+- [ ] **Requerimiento 6: Campos adicionales en CDR para homologación inConcert (En Standby):**
+  - **Contexto:** Campos necesarios para alimentar automáticamente las 20 columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
+  - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a N2A hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
 - [x] **Directorio y Gobernanza de Canales Oficiales N2A, TI & TIP México:**
   - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
   - **Tickets Oficiales en Freshdesk (Net2Alliance):**
