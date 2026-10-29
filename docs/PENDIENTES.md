@@ -68,7 +68,7 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
 - [x] **Horario de Operación Oficial (Lunes a Viernes / Sábados Descartados):** Laura Mercado y la dirección de Operaciones confirmaron que el servicio opera exclusivamente de Lunes a Viernes en sus horarios establecidos. Los sábados quedan formalmente descartados (tráfico residual de ~10 llamadas y áreas resolutivas de TIP cerradas; carece de lógica operativa). WFM y todas las áreas internas de Telat ya fueron debidamente actualizadas.
 - [ ] **Selección de Audio y Música Institucional en Espera:** En espera de la definición final por parte de Laura Mercado para la música/audio de espera.
 - [ ] **Activación de Cuentas de Plataforma y Protocolo 2FA:** Envío de cuentas de agentes a Laura Mercado para plataformas TIP (Salesforce); acordar esquema de contraseñas y doble factor de autenticación que evite celulares personales en piso.
-- [ ] **Solicitud de Dispositivo Físico 2FA a Ricardo Morales (Fecha límite 26-Oct-2026):** Jatzyri Yepez (Gerente de Capacitación) notificó la necesidad de una tablet o smartphone corporativo para la autenticación 2FA de los agentes en TIP. Durante las semanas del 12 y 19 de octubre se operará en préstamo con la tablet asignada a Carvana. Se debe solicitar a Ricardo Morales (TI/Enlaces) un dispositivo dedicado disponible a partir del lunes 26 de octubre.
+- [x] **Solicitud de Dispositivo Físico 2FA a Ricardo Morales (Resuelto 28-Oct-2026):** Jatzyri Yepez (Gerente de Capacitación) notificó la necesidad de una tablet o smartphone corporativo para la autenticación 2FA de los agentes en TIP. Se entregó ya una tablet dedicada específicamente para la campaña de TIP México (liberando el equipo en préstamo de Carvana).
 - [ ] **Homologación de Marcación Interna (Serie 7100+):** Confirmar regla general de extensiones de cuatro dígitos que inicien con 7 propuesta por Telat.
 
 ---
@@ -87,10 +87,10 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Ticket Oficial en Freshdesk:** **`#225590`** (`[TIP México] Registro y reporte CDR de llamadas salientes manuales (Outbound)`), creado el 22-Oct-2026, 4:46 p. m.
   - **Estado:** En proceso en N2A.
   - **Alcance formalizado:** Marcación manual directa a 10 dígitos desde softphone/panel exclusiva para seguimiento de tickets y siniestros por los agentes de piso. Se exigió la entrega diaria del reporte con marcas de tiempo con segundos, duración de timbrado, duración de conversación y clasificación (`CONTESTADA`, `NO_CONTESTA`, `OCUPADO`, `FALLIDA`).
-- [ ] **Requerimiento 4: Transferencia Crítica de Llamadas a Cabina de Siniestros:**
+- [x] **Requerimiento 4: Transferencia Crítica de Llamadas a Cabina de Siniestros (Marcación Rápida `237` Validada):**
   - **Solicitante Cliente:** Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, Analista de Experiencia del Cliente) con copia a Laura Mercado.
   - **Destino Crítico:** Cabina de Siniestros de TIP México: **`55 4195 6614`**.
-  - **Objetivo:** Cuando un usuario llame por contingencia o siniestro vehicular a los números atendidos por Telat, el agente debe poder transferir la llamada de forma inmediata, limpia y rápida hacia la cabina externa (55 4195 6614) desde Bria o Cloud CommServer.
+  - **Resolución y Pruebas (28-Oct-2026):** En coordinación telefónica entre Net2Alliance y Ricardo Morales (TI Telat), se configuró y validó la marcación rápida con el código **`237`**, confirmando que las llamadas se enlazan correctamente hacia el número `55 4195 6614`.
 - [ ] **Requerimiento 5: Calibración de Hunting en Colas y Salvaguarda contra Bucles RONA (Auto-pausa):**
   - **Fecha de reporte verbal:** 26-Oct-2026 (Ricardo García gestionó directamente por teléfono con soporte N2A).
   - **Problema detectado en piso:** El balanceo de colas por menor carga (`fewestcalls`) cayó en un bucle ciego (*black hole*) enviando llamadas repetidamente a un mismo agente rezagado que no descolgaba (41 timbrados RONA a Jorge Michel Cano), reteniendo a clientes en espera más de 300 segundos y provocando abandonos.
@@ -100,7 +100,12 @@ Este documento mantiene el estado de verificación, roadmap y deuda técnica par
   - **Contexto:** Campos necesarios para alimentar automáticamente las 20 columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
   - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a N2A hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
 - [x] **Directorio y Gobernanza de Canales Oficiales N2A, TI & TIP México:**
-  - **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
+  - **Directorio y Equipo de Cuenta N2A (Gobernanza 28-Oct-2026):**
+    * **Dirección General:** Javier Jaime.
+    * **Technical Account Manager (Nuevos Requerimientos por Correo):** Rosario Sacramento.
+    * **Responsable de Soporte y Operación (Portal de Tickets Freshdesk):** Francisco Castillo.
+    * **Coordinación, Seguimiento y Escalamiento:** Efrén Torres (`efren.torres@net2alliance.com`).
+    * **Mesa de Ayuda & Tickets N2A:** `support@net2alliance.freshdesk.com` (asunto con prefijo `[TIP México]`).
   - **Tickets Oficiales en Freshdesk (Net2Alliance):**
     * **`#225549`** (19-Oct, 4:42 P. M.): *Campaña de avisos automáticos salientes (Blaster con transferencia)* | Estatus: Esperando respuesta N2A.
     * **`#225563`** (20-Oct, 6:41 P. M.): *Ajuste de parámetros en colas CommServer y reporte completo CDR* | Estatus: En proceso (canalizado a Desarrollo).
