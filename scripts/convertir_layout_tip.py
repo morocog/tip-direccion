@@ -1,37 +1,43 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script de Conversión y Compilación ETL para TIP México.
-Transforma los reportes de llamadas de Net2Alliance (N2A Cloud CommServer)
-al layout oficial de inConcert (layout_data_repli.xlsx) requerido por Laura Mercado (TIP México).
+Motor de Conversión y Compilación ETL para TIP México.
+Transforma los reportes de llamadas de conmutador cloud al layout oficial de operaciones
+(layout_data_repli.xlsx) requerido por Laura Mercado (TIP México).
 
 Uso:
-    python convertir_layout_tip.py [--inputs FILE1 FILE2 ...] [--template TEMPLATE.xlsx] [--output OUTPUT.xlsx]
+    python convertir_layout_tip.py [--inputs FILE1 FILE2 ...] [--template TEMPLATE.xlsx] [--output OUTPUT.xlsx] [--semana 1|2]
 """
 
 import os
 import sys
 import argparse
 import datetime
+from pathlib import Path
 from copy import copy
 import pandas as pd
 import openpyxl
 
+# Blindaje de codificación en consola Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 # Umbral contractual de Nivel de Servicio (SLA) en segundos (ASA <= 20s)
 SLA_THRESHOLD_SECONDS = 20
 
-# Mapeo oficial canonico de colas N2A -> Lineas / Cuentas de Flota TIP Mexico
-# Segun matriz homologada de desvios PBX, colas N2A y prefijos Bria/Portal:
-# 8001 / 9001 -> [TIP General]  (800 908 6700)
-# 8002 / 9002 -> [Bitcar]       (800 999 2136)
-# 8003 / 9003 -> [OFS]          (55 5093 7300)
-# 8004 / 9004 -> [JAC]          (800 649 0751)
-# 8005 / 9005 -> [KIA]          (800 999 1151)
-# 8006 / 9006 -> [MG]           (800 999 2057)
-# 8007 / 9007 -> [GCO]          (800 967 0527)
-# 8008 / 9008 -> [Chirey]       (800 649 0084)
-# 8009 / 9009 -> [Carnot]       (800 122 7668)
+# Mapeo oficial canónico homologado: Colas de conmutador y desvíos PBX a Cuentas de Flota TIP México
+# Catálogo oficial:
+# 8001 / 9001 -> tip_general ([TIP General] | 800 908 6700)
+# 8002 / 9002 -> tip_bitcar  ([Bitcar]      | 800 999 2136)
+# 8003 / 9003 -> tip_ofs     ([OFS]         | 55 5093 7300)
+# 8004 / 9004 -> tip_jac     ([JAC]         | 800 649 0751)
+# 8005 / 9005 -> tip_kia     ([KIA]         | 800 999 1151)
+# 8006 / 9006 -> tip_mg      ([MG]          | 800 999 2057)
+# 8007 / 9007 -> tip_gco     ([GCO]         | 800 967 0527)
+# 8008 / 9008 -> tip_chirey  ([Chirey]      | 800 649 0084)
+# 8009 / 9009 -> tip_carnot  ([Carnot]      | 800 122 7668)
 QUEUE_MAPPING = {
+    # Series 8000 (Colas de conmutador cloud)
     "8001": "tip_general",
     "8002": "tip_bitcar",
     "8003": "tip_ofs",
@@ -40,17 +46,59 @@ QUEUE_MAPPING = {
     "8006": "tip_mg",
     "8007": "tip_gco",
     "8008": "tip_chirey",
-    "8009": "tip_carnot"
+    "8009": "tip_carnot",
+    # Series 9000 (Desvíos PBX homologados)
+    "9001": "tip_general",
+    "9002": "tip_bitcar",
+    "9003": "tip_ofs",
+    "9004": "tip_jac",
+    "9005": "tip_kia",
+    "9006": "tip_mg",
+    "9007": "tip_gco",
+    "9008": "tip_chirey",
+    "9009": "tip_carnot",
+    # Mapeos directos por nombre o CallerID Prefix
+    "tip_general": "tip_general",
+    "tip_bitcar": "tip_bitcar",
+    "tip_ofs": "tip_ofs",
+    "tip_jac": "tip_jac",
+    "tip_kia": "tip_kia",
+    "tip_mg": "tip_mg",
+    "tip_gco": "tip_gco",
+    "tip_chirey": "tip_chirey",
+    "tip_carnot": "tip_carnot",
+    "[tip general]": "tip_general",
+    "[bitcar]": "tip_bitcar",
+    "[ofs]": "tip_ofs",
+    "[jac]": "tip_jac",
+    "[kia]": "tip_kia",
+    "[mg]": "tip_mg",
+    "[gco]": "tip_gco",
+    "[chirey]": "tip_chirey",
+    "[carnot]": "tip_carnot"
 }
 
+def normalize_queue_key(raw_val):
+    """Normaliza el identificador de cola eliminando espacios, decimales y pasando a minúsculas."""
+    if raw_val is None or pd.isna(raw_val):
+        return ""
+    s = str(raw_val).strip()
+    if s.endswith(".0"):
+        s = s[:-2]
+    return s.lower()
+
+def resolve_campaign(raw_queue):
+    """Resuelve el nombre canónico de la campaña con salvaguarda y aviso en log ante colas desconocidas."""
+    key = normalize_queue_key(raw_queue)
+    if key in QUEUE_MAPPING:
+        return QUEUE_MAPPING[key]
+    print(f"[ADVERTENCIA] Cola no catalogada detectada: '{raw_queue}'. Se asigna 'tip_cola_{key}'.")
+    return f"tip_cola_{key}"
+
 def parse_call_record(row, schema_type):
-    """
-    Normaliza un registro de llamada de N2A según el esquema del archivo CSV.
-    Retorna un diccionario estructurado o None si la fila es inválida.
-    """
+    """Normaliza un registro de llamada según el esquema del archivo."""
     try:
         if schema_type == 'schema_a':
-            # Archivo antiguo (ej. llamadas_2026-10-19_a_2026-10-20.csv)
             raw_fecha = row['entrada_cola']
             if isinstance(raw_fecha, (datetime.datetime, pd.Timestamp)):
                 dt = raw_fecha.to_pydatetime() if hasattr(raw_fecha, 'to_pydatetime') else raw_fecha
@@ -59,9 +107,12 @@ def parse_call_record(row, schema_type):
                 try:
                     dt = datetime.datetime.strptime(raw_str, '%d/%m/%Y %H:%M')
                 except ValueError:
-                    dt = datetime.datetime.strptime(raw_str, '%Y-%m-%d %H:%M:%S')
+                    try:
+                        dt = datetime.datetime.strptime(raw_str, '%Y-%m-%d %H:%M:%S')
+                    except ValueError:
+                        dt = pd.to_datetime(raw_str).to_pydatetime()
                     
-            cola = str(row['cola']).strip()
+            cola = normalize_queue_key(row['cola'])
             espera = float(row['espera_seg']) if pd.notnull(row['espera_seg']) else 0.0
             conversacion = float(row['conversacion_seg']) if pd.notnull(row['conversacion_seg']) else 0.0
             resultado = str(row['resultado']).strip().upper()
@@ -83,19 +134,20 @@ def parse_call_record(row, schema_type):
             }
             
         elif schema_type == 'schema_b':
-            # Archivo nuevo (ej. llamadas (3).csv o Llamdas 19-21 oct TIP.xlsx)
             raw_fin = row['Fin']
             if isinstance(raw_fin, (datetime.datetime, pd.Timestamp)):
                 dt_fin = raw_fin.to_pydatetime() if hasattr(raw_fin, 'to_pydatetime') else raw_fin
             else:
                 raw_str = str(raw_fin).strip()
-                dt_fin = datetime.datetime.strptime(raw_str, '%Y-%m-%d %H:%M:%S')
+                try:
+                    dt_fin = datetime.datetime.strptime(raw_str, '%Y-%m-%d %H:%M:%S')
+                except ValueError:
+                    dt_fin = pd.to_datetime(raw_str).to_pydatetime()
                 
-            cola = str(row['Cola']).strip()
+            cola = normalize_queue_key(row['Cola'])
             espera = float(row['Espera (s)']) if pd.notnull(row['Espera (s)']) else 0.0
             conversacion = float(row['Conversación (s)']) if pd.notnull(row['Conversación (s)']) else 0.0
             
-            # Hora de llegada a cola aproximada
             dt_start = dt_fin - datetime.timedelta(seconds=(espera + conversacion))
             
             cat = str(row.get('Categoría', '')).strip().upper()
@@ -120,12 +172,12 @@ def parse_call_record(row, schema_type):
         return None
 
 def detect_schema(file_path):
-    """Detecta si el archivo CSV o XLSX corresponde a Schema A o Schema B."""
+    """Detecta el esquema del archivo CSV o XLSX de forma tolerante a codificación y BOM."""
     if file_path.lower().endswith('.xlsx'):
         df_sample = pd.read_excel(file_path, nrows=3)
     else:
-        df_sample = pd.read_csv(file_path, nrows=3)
-    cols = [c.strip() for c in df_sample.columns]
+        df_sample = pd.read_csv(file_path, nrows=3, encoding='utf-8-sig')
+    cols = [str(c).strip() for c in df_sample.columns]
     if 'entrada_cola' in cols:
         return 'schema_a'
     elif 'Fin' in cols and 'Cola' in cols:
@@ -134,7 +186,7 @@ def detect_schema(file_path):
         raise ValueError(f"Esquema no reconocido para {file_path}. Columnas: {cols}")
 
 def load_all_calls(file_paths, start_date=None, end_date=None):
-    """Carga y consolida todas las llamadas de los archivos CSV/XLSX con deduplicación."""
+    """Carga y consolida llamadas con deduplicación por firma única y filtro de fechas opcional."""
     calls = []
     seen = set()
     for path in file_paths:
@@ -146,18 +198,16 @@ def load_all_calls(file_paths, start_date=None, end_date=None):
         if path.lower().endswith('.xlsx'):
             df = pd.read_excel(path)
         else:
-            df = pd.read_csv(path)
+            df = pd.read_csv(path, encoding='utf-8-sig')
             
         for _, row in df.iterrows():
             rec = parse_call_record(row, schema)
             if rec:
-                # Filtrado por rango de fecha si aplica
                 if start_date and rec['fecha'] < start_date:
                     continue
                 if end_date and rec['fecha'] > end_date:
                     continue
                     
-                # Deduplicación por firma única de llamada con timestamp exacto
                 sig = (rec['fecha'], rec['fin_ts'], rec['cola'], rec['espera'], rec['conversacion'], rec.get('numero', ''), rec['is_aten'])
                 if sig in seen:
                     continue
@@ -168,17 +218,13 @@ def load_all_calls(file_paths, start_date=None, end_date=None):
     return calls
 
 def aggregate_by_interval(calls):
-    """
-    Agrupa las llamadas por (fecha, franja, campaña).
-    Calcula todas las métricas de tráfico, SLA, duración y promedios.
-    """
+    """Agrupa llamadas por (fecha, franja horaria, campaña) y calcula métricas."""
     groups = {}
     for c in calls:
         fecha = c['fecha']
         hora = c['hora']
         franja = f"{hora:02d}:00 - {hora+1:02d}:00"
-        cola = c['cola']
-        campana = QUEUE_MAPPING.get(cola, f"tip_cola_{cola}")
+        campana = resolve_campaign(c['cola'])
         
         key = (fecha, franja, campana)
         if key not in groups:
@@ -186,7 +232,6 @@ def aggregate_by_interval(calls):
         groups[key].append(c)
         
     aggregated = []
-    # Ordenar por fecha, franja y campana
     for key in sorted(groups.keys()):
         fecha, franja, campana = key
         c_list = groups[key]
@@ -202,7 +247,6 @@ def aggregate_by_interval(calls):
         canc = 0
         canc_vm = 0
         
-        # Nivel de Servicio (SLA <= 20s)
         aten_sl_plus = len([c for c in aten_list if c['espera'] <= SLA_THRESHOLD_SECONDS])
         aten_sl_minus = aten - aten_sl_plus
         ab_sl_plus = len([c for c in ab_list if c['espera'] <= SLA_THRESHOLD_SECONDS])
@@ -213,7 +257,6 @@ def aggregate_by_interval(calls):
         pct_ab = (ab / total) if total > 0 else 0.0
         fuera_hora_pct = 0.0
         
-        # Tiempos en segundos
         dur_tot_s = sum(c['espera'] + c['conversacion'] for c in c_list)
         aten_tot_s = sum(c['conversacion'] for c in aten_list)
         esp_tot_s = sum(c['espera'] for c in c_list)
@@ -232,7 +275,6 @@ def aggregate_by_interval(calls):
         max_timb_s = max([c['espera'] for c in c_list], default=0.0)
         max_aten_s = max([c['conversacion'] for c in aten_list], default=0.0)
         
-        # Conversión a fracción de día para formato Excel h:mm:ss
         def to_excel_time(seconds):
             return seconds / 86400.0
             
@@ -328,15 +370,11 @@ def aggregate_by_interval(calls):
     return aggregated
 
 def generate_excel(aggregated_data, template_path, output_path):
-    """
-    Carga la plantilla Excel oficial preservando encabezados y estilos,
-    y escribe los datos agregados.
-    """
+    """Carga plantilla oficial y escribe los datos agregados conservando estilos."""
     print(f"[INFO] Cargando plantilla Excel: {template_path}")
     wb = openpyxl.load_workbook(template_path)
     ws = wb.active
     
-    # Extraer estilos del renglón muestra (fila 2)
     sample_styles = []
     for col_idx in range(1, 86):
         c = ws.cell(2, col_idx)
@@ -348,19 +386,16 @@ def generate_excel(aggregated_data, template_path, output_path):
             'alignment': copy(c.alignment)
         })
         
-    # Limpiar filas existentes a partir de la fila 2
     max_row = ws.max_row
     if max_row >= 2:
         ws.delete_rows(2, max_row - 1)
         
     print(f"[INFO] Escribiendo {len(aggregated_data)} registros agregados en el layout...")
-    
     for row_num, row_data in enumerate(aggregated_data, start=2):
         for col_idx in range(1, 86):
             val = row_data.get(col_idx, None)
             cell = ws.cell(row=row_num, column=col_idx, value=val)
             
-            # Aplicar estilo de plantilla
             st = sample_styles[col_idx - 1]
             if st['font']: cell.font = st['font']
             if st['border']: cell.border = st['border']
@@ -368,13 +403,17 @@ def generate_excel(aggregated_data, template_path, output_path):
             if st['number_format']: cell.number_format = st['number_format']
             if st['alignment']: cell.alignment = st['alignment']
             
-    # Guardar archivo compilado
+    os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     wb.save(output_path)
     print(f"[EXITO] Archivo generado correctamente en: {output_path}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Conversor ETL de llamadas N2A a Layout inConcert TIP México")
-    parser.add_argument('--inputs', nargs='*', help="Rutas a los archivos CSV/XLSX de llamadas de N2A")
+    repo_root = Path(__file__).resolve().parent.parent
+    default_template = repo_root / "reportes" / "plantilla" / "layout_data_repli.xlsx"
+
+    parser = argparse.ArgumentParser(description="Conversor ETL de llamadas a Layout Oficial de Operaciones TIP México")
+    parser.add_argument('--semana', choices=['1', '2'], help="Selección rápida de semana (1 o 2) usando archivos del repositorio")
+    parser.add_argument('--inputs', nargs='*', help="Rutas a los archivos CSV/XLSX de llamadas")
     parser.add_argument('--template', help="Ruta al archivo plantilla layout_data_repli.xlsx")
     parser.add_argument('--output', help="Ruta de destino para el archivo compilado")
     parser.add_argument('--start-date', help="Fecha de inicio (YYYY-MM-DD), ej. 2026-10-19")
@@ -382,62 +421,64 @@ def main():
     
     args = parser.parse_args()
     
-    # Rutas por omisión inteligentes en el entorno del usuario
-    downloads = os.path.expanduser(r"~\Downloads")
-    
-    if args.inputs:
-        csv_files = args.inputs
-    else:
-        # Detectar automáticamente los archivos de corte en Descargas
-        f_19_21 = os.path.join(downloads, "Llamdas 19-21 oct TIP.xlsx")
-        recent_llamadas = [
-            os.path.join(downloads, "llamadas (5).csv"),
-            os.path.join(downloads, "llamadas (3).csv"),
-            os.path.join(downloads, "llamadas.csv")
+    # 1. Resolución de archivos de entrada y fechas según parámetros
+    if args.semana == '1':
+        s1_dir = repo_root / "reportes" / "Semana-01_19-al-23-Oct-2026"
+        f_norm = s1_dir / "soporte_origen" / "llamadas_19_al_21_oct.xlsx"
+        f_orig = s1_dir / "soporte_origen" / "Llamdas 19-21 oct TIP.xlsx"
+        f_19_21 = str(f_norm if f_norm.exists() else f_orig)
+        csv_files = [
+            f_19_21,
+            str(s1_dir / "soporte_origen" / "llamadas_22_al_27_oct.csv")
         ]
-        f_rest = next((f for f in recent_llamadas if os.path.exists(f)), None)
+        start_d = datetime.date(2026, 10, 19)
+        end_d = datetime.date(2026, 10, 23)
+        default_out = s1_dir / "entregables" / "layout_data_repli_19_al_23_oct_2026.xlsx"
+    elif args.semana == '2':
+        s2_dir = repo_root / "reportes" / "Semana-02_26-al-30-Oct-2026"
+        csv_files = [
+            str(s2_dir / "soporte_origen" / "llamadas.csv")
+        ]
+        start_d = datetime.date(2026, 10, 26)
+        end_d = datetime.date(2026, 10, 30)
+        default_out = s2_dir / "entregables" / "layout_data_repli_26_al_30_oct_2026.xlsx"
+    elif args.inputs:
+        csv_files = args.inputs
+        start_d = datetime.date.fromisoformat(args.start_date) if args.start_date else None
+        end_d = datetime.date.fromisoformat(args.end_date) if args.end_date else None
+        default_out = Path(args.output) if args.output else repo_root / "reportes" / "layout_data_repli_compilado.xlsx"
+    else:
+        # Modo por omisión (Semana 2 más reciente en el repositorio)
+        print("[INFO] No se especificaron entradas ni semana. Usando Semana 2 del repositorio...")
+        s2_dir = repo_root / "reportes" / "Semana-02_26-al-30-Oct-2026"
+        csv_files = [str(s2_dir / "soporte_origen" / "llamadas.csv")]
+        start_d = datetime.date(2026, 10, 26)
+        end_d = datetime.date(2026, 10, 30)
+        default_out = s2_dir / "entregables" / "layout_data_repli_26_al_30_oct_2026.xlsx"
         
-        default_files = []
-        if os.path.exists(f_19_21):
-            default_files.append(f_19_21)
-        if f_rest:
-            default_files.append(f_rest)
-            
-        csv_files = default_files
-        if not csv_files:
-            # Fallback si no existen los oficiales
-            fallback_files = [
-                os.path.join(downloads, "llamadas_2026-10-19_a_2026-10-20.csv"),
-                os.path.join(downloads, "llamadas.csv")
-            ]
-            csv_files = [f for f in fallback_files if os.path.exists(f)]
-        if not csv_files:
-            print("[ERROR] No se encontraron archivos de llamadas predeterminados en Descargas.")
+    template_file = args.template or str(default_template)
+    if not os.path.exists(template_file):
+        fallback_tmpl = os.path.expanduser(r"~\Downloads\layout_data_repli.xlsx")
+        if os.path.exists(fallback_tmpl):
+            template_file = fallback_tmpl
+        else:
+            print(f"[ERROR] No se encontró la plantilla en: {template_file}")
             sys.exit(1)
             
-    template_file = args.template or os.path.join(downloads, "layout_data_repli.xlsx")
-    if not os.path.exists(template_file):
-        print(f"[ERROR] No se encontró la plantilla en: {template_file}")
-        sys.exit(1)
+    output_file = args.output or str(default_out)
+    
+    if start_d and end_d:
+        print(f"[INFO] Compilando rango semanal: {start_d} al {end_d}")
+    else:
+        print("[INFO] Compilando todos los registros presentes en las fuentes sin filtro de fechas.")
         
-    output_file = args.output or os.path.join(downloads, "layout_data_repli_19_al_23_oct_2026.xlsx")
-    
-    start_d = datetime.date.fromisoformat(args.start_date) if args.start_date else datetime.date(2026, 10, 19)
-    end_d = datetime.date.fromisoformat(args.end_date) if args.end_date else datetime.date(2026, 10, 23)
-    
-    print(f"[INFO] Compilando rango semanal: {start_d} al {end_d}")
-    
-    # 1. Cargar y normalizar llamadas con deduplicación y filtro de fecha
     calls = load_all_calls(csv_files, start_date=start_d, end_date=end_d)
     if not calls:
         print("[ERROR] No se recuperaron llamadas válidas para procesar.")
         sys.exit(1)
         
-    # 2. Agregar por franja horaria y campaña
     aggregated = aggregate_by_interval(calls)
     print(f"[OK] Se generaron {len(aggregated)} franjas horarias x campaña.")
-    
-    # 3. Escribir en Excel oficial
     generate_excel(aggregated, template_file, output_file)
 
 if __name__ == "__main__":
