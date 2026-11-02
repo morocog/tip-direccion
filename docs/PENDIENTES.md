@@ -49,7 +49,8 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [x] **Exclusión de WhatsApp Acordada con TIP:** TIP retiene el canal WhatsApp en su plataforma Zenvia; Telat no lo operará ni aprovisionará licencias.
 - [x] **Gestión de Correo Electrónico (Salesforce Service Cloud):**
   - La atención de `contactcenter@tipmexico.com` NO se gestiona en bandeja de correo tradicional, sino mediante tickets en **Salesforce Service Cloud** provisto por TIP con accesos y plantillas tras capacitación.
-- [ ] **Firma y Formalización de Contrato por TIP:** En espera de la formalización y firma del contrato por parte de la Dirección de TIP México ajustado a **6 FTEs**, bajo seguimiento directo de **Mauricio Cruz** (Director de Operaciones, en funciones de Dirección Comercial).
+  - **Estatus Operativo:** Laura Mercado y el equipo directivo de TIP México auditan y gestionan directamente los correos/casos dentro de Salesforce; Telat NO requiere generar ni entregar reportes de tickets por este canal.
+- [x] **Contratación y Formalización Operativa de Plantilla (Completado 20-Oct-2026):** La formalización y firma de contratos de los agentes en piso quedó completada desde el segundo día de operaciones (20 de octubre).
 - [x] **Dimensionamiento Económico Consolidado (6 FTEs):** Ajuste de estructura comercial a 6 posiciones humanas en vivo acordado con Dirección de Operaciones y Comercial.
 - [x] **Arranque Oficial de Capacitación Presencial (Lunes 5 de Octubre, 10:00 a.m.):**
   - **Instructora:** Laura Mercado (`laura.mercado@tipmexico.com`) de TIP México impartió el curso presencial en instalaciones de TELAT.
@@ -63,10 +64,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 ## 📞 3. Implementación PBX, Telecomunicaciones & Ventana de Corte (Octubre 2026)
 - [x] **Interconexión PBX y Troncal a Servidor Propio (14-Oct-2026):** Ricardo Morales confirmó la migración exitosa de la troncal SIP a servidor propio con IP definitiva (mismas credenciales). Cero pendientes de interconexión física/red.
 - [x] **Aprovisionamiento y Prueba de 9 Desvíos PBX de Cola (9001 a 9009):** Desvíos y transferencias de colas operativas y probadas en ambos sentidos: saliente Telat -> TIP y entrante TIP -> Telat recibida exitosamente en el desvío 9005 (KIA). Las extensiones físicas de softphone Bria asignadas a los asesores corresponden a la serie 2000 (Supervisor: 2001; Asesores: 2002 a 2007).
-- [x] **Calendario de Corte y Redirección de 8 IVR (Viernes 18:00 h):** Se acordó migrar las 8 líneas secundarias (Bitcar, OFS, CARNOT, CHIREY, JAC, MG, KIA, GCO) a la troncal Telat. El conmutador general de TIP México (800 908 6700) se migrará en fecha posterior definida por Laura Mercado. Regla de fuera de horario activa hasta el lunes por la mañana.
+- [x] **Migración Total de las 9 Líneas Telefónicas (Completado 30-Oct-2026, 18:40 h):** Las 8 líneas secundarias (Bitcar, OFS, CARNOT, CHIREY, JAC, MG, KIA, GCO) migraron inicialmente a la troncal Telat, y la migración definitiva del Conmutador General de TIP México (800 908 6700) se completó con éxito el viernes 30 de octubre a las 18:40 h aproximadamente. El 100% de las 9 líneas canónicas opera en producción bajo la troncal Telat.
 - [x] **Resolución y Captura de Caller ID / DNIS (Resuelto en Operación Semanas 1 y 2):** Se validó que el conmutador captura e inyecta en los registros CDR el número de origen del cliente (columna Número) y la cola de entrada específica (8002, 8003, etc.). Se mantiene monitoreo en softphones Bria para asegurar que el agente reconozca la marca y el speech adecuado.
 - [x] **Horario de Operación Oficial (Lunes a Viernes / Sábados Descartados):** Laura Mercado y la dirección de Operaciones confirmaron que el servicio opera exclusivamente de Lunes a Viernes en sus horarios establecidos. Los sábados quedan formalmente descartados (tráfico residual de ~10 llamadas y áreas resolutivas de TIP cerradas; carece de lógica operativa). WFM y todas las áreas internas de Telat ya fueron debidamente actualizadas.
-- [ ] **Selección de Audio y Música Institucional en Espera:** En espera de la definición final por parte de Laura Mercado para la música/audio de espera.
+- [x] **Música y Audio Institucional en Espera Operativo (Resuelto 16-Oct-2026):** El audio y música de espera quedó configurado y activo desde las pruebas iniciales del 16 de octubre y validado en el arranque de producción. Cero pendientes en este rubro.
 - [x] **Activación de Cuentas de Plataforma y Protocolo 2FA (Resuelto 28-Oct-2026):** Cuentas de agentes activas en Salesforce Service Cloud. El protocolo 2FA quedó formalmente resuelto mediante la entrega de una tablet física corporativa dedicada entregada por Ricardo Morales (TI), eliminando el uso de celulares personales en piso de operaciones.
 - [x] **Entrega de Dispositivo Físico 2FA por Ricardo Morales (Resuelto 28-Oct-2026):** Jatzyri Yepez (Gerente de Capacitación) notificó la necesidad de hardware para la autenticación 2FA de los agentes en TIP. Se entregó una tablet dedicada específicamente para la campaña de TIP México (liberando el equipo en préstamo de Carvana).
 - [ ] **Homologación de Marcación Interna (Serie 7100+):** Confirmar regla general de extensiones de cuatro dígitos que inicien con 7 propuesta por Telat.
@@ -76,10 +77,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 ## 🔵 4. Siguientes Pasos de Telecomunicaciones & Conmutador Cloud
 - [x] **Mapeo de 9 Líneas Integrado:** Cabeceras y DIDs listos para aprovisionamiento de troncal SIP con preservación de DNIS.
 - [ ] **Aprovisionamiento Final de Troncal y DIDs:** Ejecutar la configuración de softphones adicionales una vez formalizada la firma del contrato con TIP.
-- [ ] **Requerimiento 1: Blaster Interactivo de Llamadas Salientes (Voice Broadcasting con Transferencia):**
-  - **Origen:** Laura Mercado (TIP Corporativo) proporcionará la base de datos de clientes que ningún humano ha contactado.
-  - **Mecanismo:** El blaster ejecuta las llamadas automáticas con un mensaje informativo pregrabado (ej. inicio de temporada de trámites de tenencias).
-  - **Opciones de Menú (DTMF):** Configurar "Presione 1 para ser transferido con un asesor" (transfiere la llamada en caliente a la cola de agentes de Telat) o mensaje de cierre indicando números y correo oficial para seguimiento.
+- [ ] **Requerimiento 1: Blaster Interactivo de Llamadas Salientes (Ticket Abierto, En Espera de Base TIP):**
+  - **Estatus:** Ticket técnico abierto en soporte del conmutador cloud.
+  - **Bloqueante / Próximo Paso:** En espera de que Laura Mercado (TIP Corporativo) proporcione la base de datos de clientes e información de la campaña de trámites de tenencias.
+  - **Mecanismo:** El blaster ejecutará las llamadas automáticas con un mensaje informativo pregrabado y opción DTMF ("Presione 1") para transferir en caliente a la cola de agentes de Telat.
   - **Objetivo Operativo:** Filtrar la base para evitar que los agentes en piso desgasten su jornada en llamadas infructuosas (buzones, tonos ocupados o números no contestados).
 - [ ] **Requerimiento 2: Exploración de Monitoreo en Vivo de Llamadas:**
   - **Objetivo:** Consultar la factibilidad técnica y operativa para habilitar monitoreo en tiempo real sobre conmutador cloud (escucha silenciosa / *silent monitoring*, susurro / *whisper* para coaching en vivo, o intervención / *barge-in* para supervisores y calidad).
@@ -91,11 +92,14 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   - **Solicitante Cliente:** Alejandrina Sánchez (`alejandrina.sanchez@tipmexico.com`, Analista de Experiencia del Cliente) con copia a Laura Mercado.
   - **Destino Crítico:** Cabina de Siniestros de TIP México: **`55 4195 6614`**.
   - **Resolución y Pruebas (28-Oct-2026):** En coordinación entre telecomunicaciones y Ricardo Morales (TI Telat), se configuró y validó la marcación rápida con el código **`237`** en softphone Bria, confirmando que las llamadas se enlazan correctamente hacia el número `55 4195 6614`.
-- [ ] **Requerimiento 5: Calibración de Hunting en Colas y Salvaguarda contra Bucles RONA (Auto-pausa en proceso):**
-  - **Fecha de reporte verbal:** 26-Oct-2026 (Ricardo García gestionó directamente con soporte).
-  - **Evidencia en soporte:** En el reporte de la semana 2 (`no-contesto-agentes.csv`) se documentaron 41 timbrados RONA sobre la extensión 2004 (Jorge Michel Cano). Asimismo, se registró la prueba técnica con la extensión 3099 (tiempo en autopausa: 1m 39s).
-  - **Solución solicitada:** Mantener el principio de hunting para evitar trampas y evasión de llamadas en piso (*round-robin evasion*), pero implementar la salvaguarda de descarte inmediato ante el 1er RONA (activar parámetro de cola `autopause = yes` o salto forzado al siguiente asesor disponible) para que el conmutador no secuestre la llamada del cliente y ponga en auto-pausa al asesor omiso.
-  - **Estatus:** En ajuste técnico final para activar la regla de descarte inmediato ante el 1er RONA (`autopause = yes`) en todas las colas de producción.
+- [x] **Requerimiento 5: RONA y Auto-pausa por Llamada no Contestada (Liberado y Validado en Producción, 29-Oct-2026):**
+  - **Origen:** Gestión telefónica directa de Ricardo García con soporte del conmutador (Javier Jaime / Rosario Sacramento).
+  - **Entrega en Producción:** Javier Jaime confirmó liberación el jueves 29-Oct-2026 (1:41 a.m.).
+  - **Reglas Validadas en Operación:**
+    1. *Auto-pausa:* Si al agente le suena una llamada y no contesta, el conmutador lo pausa al momento en todas sus colas para que la llamada brinque de inmediato a otro agente y el cliente no quede atrapado. En pantalla visualiza «Auto-pausa · No contestó».
+    2. *Despausa:* El agente presiona «Estoy disponible» o el supervisor presiona «Liberar» en el tablero (con alerta en tiempo real).
+    3. *Módulo de Supervisión:* Pestaña «No contestó» en supervisión activa, generando los reportes `no-contesto-llamadas.csv` y `no-contesto-agentes.csv`.
+  - **Validación Operativa:** Rosario Sacramento y Ricardo García confirmaron la visibilidad completa del panel y su funcionamiento en producción.
 - [ ] **Requerimiento 6: Campos adicionales en CDR para homologación de layout (En Standby):**
   - **Contexto:** Campos necesarios para alimentar automáticamente las columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
   - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a soporte hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
