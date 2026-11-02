@@ -21,16 +21,26 @@ import openpyxl
 SLA_THRESHOLD_SECONDS = 20
 
 # Mapeo oficial canonico de colas N2A -> Lineas / Cuentas de Flota TIP Mexico
+# Segun matriz homologada de desvios PBX, colas N2A y prefijos Bria/Portal:
+# 8001 / 9001 -> [TIP General]  (800 908 6700)
+# 8002 / 9002 -> [Bitcar]       (800 999 2136)
+# 8003 / 9003 -> [OFS]          (55 5093 7300)
+# 8004 / 9004 -> [JAC]          (800 649 0751)
+# 8005 / 9005 -> [KIA]          (800 999 1151)
+# 8006 / 9006 -> [MG]           (800 999 2057)
+# 8007 / 9007 -> [GCO]          (800 967 0527)
+# 8008 / 9008 -> [Chirey]       (800 649 0084)
+# 8009 / 9009 -> [Carnot]       (800 122 7668)
 QUEUE_MAPPING = {
     "8001": "tip_general",
     "8002": "tip_bitcar",
     "8003": "tip_ofs",
-    "8004": "tip_carnot",
-    "8005": "tip_chirey",
-    "8006": "tip_jac",
-    "8007": "tip_mg",
-    "8008": "tip_kia",
-    "8009": "tip_gco"
+    "8004": "tip_jac",
+    "8005": "tip_kia",
+    "8006": "tip_mg",
+    "8007": "tip_gco",
+    "8008": "tip_chirey",
+    "8009": "tip_carnot"
 }
 
 def parse_call_record(row, schema_type):
