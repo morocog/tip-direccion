@@ -103,6 +103,19 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [ ] **Requerimiento 6: Campos adicionales en CDR para homologación de layout (En Standby):**
   - **Contexto:** Campos necesarios para alimentar automáticamente las columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
   - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a soporte hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
+- [ ] **Requerimiento 7: Corrección de inicio anticipado de break durante llamada activa (Pendiente envío de Ticket N2A):**
+  - **Plataforma afectada:** Consola web de agentes (`contact.n2a.mx/agente`).
+  - **Falla detectada (03-Nov-2026):** Al dar clic en Comida durante llamada en curso en Bria, el contador corre de inmediato en paralelo en vez de esperar el colgado (`CALL_END`).
+  - **Evidencia forense:** Casos documentados de Paola Morales (Ext. 2003, llamada 13m 40s a las 11:01 am, timer en 17:15) y Paula González (Ext. 2002, llamada 10m 58s a las 11:25 am, timer en 13:53).
+  - **Acción:** Plantilla redactada lista para radicar en Freshdesk (`support@net2alliance.freshdesk.com` / Francisco Castillo).
+- [ ] **Requerimiento 8: Integración de Webhooks en tiempo real de llamadas y agentes (Requerimiento de Arquitectura N2A):**
+  - **Objetivo:** Recibir pings HTTP automáticos de eventos de llamada (entradas, fin, abandonos, timeouts) y estados de agente en `tip-state-controller`.
+  - **Aplicación operativa:** Habilitar el semáforo de *Callback Tracker* (cero llamadas perdidas sin devolución) y automatizar reportes diarios/semanales sin descargas manuales de CSV.
+  - **Canal de gestión:** Solicitud formal de requerimiento ante Rosario Sacramento (TAM) y Efrén Torres (Ejecutivo de Cuenta).
+- [ ] **Requerimiento 9: Protocolo de los 3 Entregables Diarios Solicitados por TIP:**
+  1. *Capturas de Agentes Disponibles:* 08:30 am, 10:00 am y 11:00 am (vía WhatsApp).
+  2. *Capturas de Reporte de Tráfico:* 12:00 pm, 15:00 pm y 18:00 pm (vía WhatsApp).
+  3. *Verificación Matutina de 9 Líneas a 10 Dígitos:* Script `tip-direccion/scripts/Verificar-Lineas-TIP.bat` con protocolo `sip:` creado para Miriam en Bria (Ext. 2001, cuenta `b245@n2a.com.mx`), pendiente de validación en su máquina.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
