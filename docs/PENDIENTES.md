@@ -124,6 +124,13 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   1. *Capturas de Agentes Disponibles:* 08:30 am, 10:00 am y 11:00 am (vía WhatsApp).
   2. *Capturas de Reporte de Tráfico:* 12:00 pm, 15:00 pm y 18:00 pm (vía WhatsApp).
   3. *Verificación Matutina de 9 Líneas a 10 Dígitos:* Script `tip-direccion/scripts/Verificar-Lineas-TIP.bat` con protocolo `sip:` creado para Miriam en Bria (Ext. 2001, cuenta `b245@n2a.com.mx`), pendiente de validación en su máquina.
+- [ ] **Requerimiento 10 / Incidencia de Conectividad: Estabilización de audio entrecortado en campaña TIP (Ticket Oficial #225682 en Validación Operativa):**
+  - **Plataforma afectada:** Softphones Bria y extensiones SIP de la operación TIP México.
+  - **Detección y Reporte de TI (04-Nov-2026, 12:49 hrs):** Ricardo Morales (Gerente de TI Telat) reportó a N2A llamadas entrecortadas en la campaña TIP con capturas de Bria, certificando que el enlace local de Telat operaba limpio sin pérdida de paquetes ni latencia alta.
+  - **Diagnóstico Data Center N2A (04-Nov-2026, 16:01 hrs):** N2A confirmó tras pruebas cruzadas que la degradación se debía a problemas de comunicación entre carriers y proveedores de Internet generando latencias elevadas.
+  - **Estabilización Notificada (05-Nov-2026, 09:31 hrs):** N2A confirmó la estabilización de conectividad en las extensiones y solicitó retroalimentación de la operación.
+  - **Acción Pendiente Telat:** Validación en piso con Miriam y agentes TIP para verificar que el audio se mantenga nítido y sin cortes durante llamadas en vivo antes de autorizar el cierre formal del ticket.
+  - **Ticket Oficial en Soporte:** **`#225682`** (`https://net2alliance.freshdesk.com/helpdesk/tickets/225682`).
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
