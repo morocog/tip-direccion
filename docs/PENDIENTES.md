@@ -103,12 +103,19 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [ ] **Requerimiento 6: Campos adicionales en CDR para homologación de layout (En Standby):**
   - **Contexto:** Campos necesarios para alimentar automáticamente las columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
   - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a soporte hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
-- [ ] **Requerimiento 7: Corrección de inicio anticipado de break durante llamada activa (Ticket Oficial #225674 en Desarrollo N2A):**
-  - **Plataforma afectada:** Consola web de agentes (`contact.n2a.mx/agente`).
-  - **Falla detectada (03-Nov-2026):** Al dar clic en Comida durante llamada en curso en Bria, el contador corre de inmediato en paralelo en vez de esperar el colgado (`CALL_END`).
-  - **Evidencia forense:** Casos documentados de Paola Morales (Ext. 2003, llamada 13m 40s a las 11:01 am, timer en 17:15) y Paula González (Ext. 2002, llamada 10m 58s a las 11:25 am, timer en 13:53).
-  - **Ticket Oficial en Soporte:** **`#225674`** (`https://net2alliance.freshdesk.com/helpdesk/tickets/225674`).
-  - **Estatus (03-Nov-2026, 15:11 h):** Francisco Castillo (Soporte N2A) confirmó el diagnóstico técnico de Telat y escaló formalmente el requerimiento al área de Desarrollo de N2A para que el break comience a contabilizarse estrictamente al finalizar la llamada en curso. En espera de notificación de pase a producción y validación.
+- [x] **Requerimiento 7: Corrección de inicio anticipado de break durante timbrado/llamada (Ticket Oficial #225674 Resuelto y Cerrado, 04-Nov-2026):**
+  - **Plataforma afectada:** Consola web de agentes (`contact.n2a.mx/agente`) y módulo de supervisión (`contact.n2a.mx/supervisor`).
+  - **Falla detectada (03-Nov-2026):** Al dar clic en Comida/Break durante el ring o llamada activa, el contador arrancaba de inmediato desde el clic sin esperar al colgado (`CALL_END`).
+  - **Causa Raíz Diagnosticada por N2A:** Durante el ring, el sistema interpretaba que la llamada aún no iniciaba; por ello, el break arrancaba desde la solicitud aunque la agente contestara después.
+  - **Solución Implementada en Producción (04-Nov-2026, 01:31 hrs por Javier Jaime):**
+    1. *Break solicitado durante ring y llamada contestada:* El break queda en espera («Break pendiente: Comida») y comienza a correr en ceros al colgar.
+    2. *Break solicitado durante ring y llamada no contestada:* El break inicia en ese instante y la llamada salta al siguiente agente por RONA.
+  - **Ajuste Retroactivo en Base de Datos e Historial:**
+    - N2A auditó 204 breaks contra 366 llamadas (22-Oct al 03-Nov-2026), detectando solo los 2 casos reportados por Telat y corrigiendo los reportes oficiales:
+      * *Paola Morales (Ext. 2003):* Comida solicitada 11:01:47, contestó 11:01:57, colgó 11:15:29. Duración ajustada de 32:02 a 18:20 (inicio real 11:15:29, fin 11:33:49).
+      * *Paula González (Ext. 2002):* Comida solicitada 11:25:48, contestó 11:25:57, colgó 11:36:48. Duración ajustada de 20:15 a 09:15 (inicio real 11:36:48, fin 11:46:03).
+    - El tiempo en llamada ya no se computa como comida y los totales diarios de break del 03-Nov quedaron saneados en pantalla de agente y reportes de supervisión.
+  - **Ticket Oficial en Soporte:** **`#225674`** (`https://net2alliance.freshdesk.com/helpdesk/tickets/225674`) — **Cerrado formalmente el 04-Nov-2026 a la 01:56 hrs** con confirmación de Ricardo García y Javier Jaime.
 - [ ] **Requerimiento 8: Integración de Webhooks en tiempo real de llamadas y agentes (Requerimiento de Arquitectura N2A):**
   - **Objetivo:** Recibir pings HTTP automáticos de eventos de llamada (entradas, fin, abandonos, timeouts) y estados de agente en `tip-state-controller`.
   - **Aplicación operativa:** Habilitar el semáforo de *Callback Tracker* (cero llamadas perdidas sin devolución) y automatizar reportes diarios/semanales sin descargas manuales de CSV.
