@@ -24,17 +24,30 @@ tip-direccion/reportes/
 │       ├── agentes_corte_27_oct.csv                  <- Métricas de agentes
 │       └── breaks_corte_27_oct.csv                   <- Auxiliares de WFM
 │
-└── Semana-02_26-al-30-Oct-2026/
+├── Semana-02_26-al-30-Oct-2026/
+│   ├── entregables/
+│   │   └── layout_data_repli_26_al_30_oct_2026.xlsx  <- Reporte oficial compilado (139 llamadas únicas, 86 franjas)
+│   └── soporte_origen/
+│       ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad)
+│       ├── llamadas-salientes.csv                    <- 88 llamadas salientes de seguimiento (Salesforce / Siniestros)
+│       ├── trafico.csv                               <- Consolidado diario de tráfico y SLA del conmutador
+│       ├── no-contesto-llamadas.csv                  <- Detalle de eventos RONA en colas
+│       ├── no-contesto-agentes.csv                   <- Resumen de desatención / auto-pausa por asesor
+│       ├── agentes.csv                               <- Ocupación, productividad y AHT por asesor
+│       ├── breaks.csv                                <- 108 pausas auxiliares (Lunch, Break, Restroom)
+│       └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes
+│
+└── Semana-03_02-al-06-Nov-2026/
     ├── entregables/
-    │   └── layout_data_repli_26_al_30_oct_2026.xlsx  <- Reporte oficial compilado (139 llamadas únicas, 86 franjas)
+    │   └── layout_data_repli_02_al_06_nov_2026.xlsx  <- Reporte oficial compilado (568 llamadas únicas, 152 franjas, 82.0% atención)
     └── soporte_origen/
-        ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad)
-        ├── llamadas-salientes.csv                    <- 88 llamadas salientes de seguimiento (Salesforce / Siniestros)
+        ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad, 568 reg.)
+        ├── llamadas-salientes.csv                    <- 140 llamadas salientes de seguimiento (Salesforce / Siniestros / Callbacks)
         ├── trafico.csv                               <- Consolidado diario de tráfico y SLA del conmutador
         ├── no-contesto-llamadas.csv                  <- Detalle de eventos RONA en colas
         ├── no-contesto-agentes.csv                   <- Resumen de desatención / auto-pausa por asesor
         ├── agentes.csv                               <- Ocupación, productividad y AHT por asesor
-        ├── breaks.csv                                <- 108 pausas auxiliares (Lunch, Break, Restroom)
+        ├── breaks.csv                                <- Pausas auxiliares
         └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes
 ```
 
