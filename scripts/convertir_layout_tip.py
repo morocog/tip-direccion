@@ -118,7 +118,8 @@ def parse_call_record(row, schema_type):
             resultado = str(row['resultado']).strip().upper()
             
             is_aten = (resultado == 'CONTESTADA')
-            is_ab = not is_aten
+            is_ab = (resultado == 'ABANDONADA')
+            is_canc = (resultado == 'NO_CONTESTADA') or (not is_aten and not is_ab)
             numero = str(row.get('numero_origen', '')).strip()
             
             return {
@@ -130,6 +131,7 @@ def parse_call_record(row, schema_type):
                 'conversacion': conversacion,
                 'is_aten': is_aten,
                 'is_ab': is_ab,
+                'is_canc': is_canc,
                 'numero': numero
             }
             
@@ -151,11 +153,19 @@ def parse_call_record(row, schema_type):
             dt_start = dt_fin - datetime.timedelta(seconds=(espera + conversacion))
             
             cat = str(row.get('Categoría', '')).strip().upper()
+            if not cat:
+                for k in row.keys():
+                    if 'categor' in str(k).lower():
+                        cat = str(row[k]).strip().upper()
+                        break
             res = str(row.get('Resultado', '')).strip().upper()
             numero = str(row.get('Número', '')).strip()
             
             is_aten = (cat == 'CONTESTADA' or res == 'FINALIZADA')
-            is_ab = not is_aten
+            is_ab = (cat == 'ABANDONADA' or res == 'ABANDONADA')
+            is_canc = (cat == 'NO_CONTESTADA' or res == 'NO_CONTESTADA')
+            if not is_aten and not is_ab and not is_canc:
+                is_ab = True
             
             return {
                 'fecha': dt_start.date(),
@@ -166,6 +176,7 @@ def parse_call_record(row, schema_type):
                 'conversacion': conversacion,
                 'is_aten': is_aten,
                 'is_ab': is_ab,
+                'is_canc': is_canc,
                 'numero': numero
             }
     except Exception as e:
@@ -239,18 +250,21 @@ def aggregate_by_interval(calls):
         total = len(c_list)
         aten_list = [c for c in c_list if c['is_aten']]
         ab_list = [c for c in c_list if c['is_ab']]
+        canc_list = [c for c in c_list if c.get('is_canc', False)]
         
         aten = len(aten_list)
         ab = len(ab_list)
+        canc = len(canc_list)
         acd = total
         fuera_hora = 0
-        canc = 0
         canc_vm = 0
         
         aten_sl_plus = len([c for c in aten_list if c['espera'] <= SLA_THRESHOLD_SECONDS])
         aten_sl_minus = aten - aten_sl_plus
         ab_sl_plus = len([c for c in ab_list if c['espera'] <= SLA_THRESHOLD_SECONDS])
         ab_sl_minus = ab - ab_sl_plus
+        canc_sl_plus = len([c for c in canc_list if c['espera'] <= SLA_THRESHOLD_SECONDS])
+        canc_sl_minus = canc - canc_sl_plus
         
         sl_pct = (aten_sl_plus / total) if total > 0 else 1.0
         pct_aten = (aten / total) if total > 0 else 0.0
@@ -339,10 +353,10 @@ def aggregate_by_interval(calls):
             58: 0.0,                                     # Máx tiempo Ret.
             59: aten_sl_plus,                            # Aten. SL+
             60: ab_sl_plus,                              # Ab. SL+
-            61: 0,                                       # Canc. SL+
+            61: canc_sl_plus,                            # Canc. SL+
             62: aten_sl_minus,                           # Aten. SL-
             63: ab_sl_minus,                             # Ab. SL-
-            64: 0,                                       # Canc. SL-
+            64: canc_sl_minus,                           # Canc. SL-
             65: 0.0,                                     # % Busy Ag.
             66: 0.0,                                     # % Att. Ag.
             67: 0.0,                                     # Tiempo Log.
