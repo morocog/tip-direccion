@@ -124,13 +124,19 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   1. *Capturas de Agentes Disponibles:* 08:30 am, 10:00 am y 11:00 am (vía WhatsApp).
   2. *Capturas de Reporte de Tráfico:* 12:00 pm, 15:00 pm y 18:00 pm (vía WhatsApp).
   3. *Verificación Matutina de 9 Líneas a 10 Dígitos:* Script `tip-direccion/scripts/Verificar-Lineas-TIP.bat` con protocolo `sip:` creado para Miriam en Bria (Ext. 2001, cuenta `b245@n2a.com.mx`), pendiente de validación en su máquina.
-- [ ] **Requerimiento 10 / Incidencia de Conectividad: Estabilización de audio entrecortado en campaña TIP (Ticket Oficial #225682 en Validación Operativa):**
+- [x] **Requerimiento 10 / Incidencia de Conectividad: Estabilización de audio entrecortado en campaña TIP (Ticket Oficial #225682 Resuelto y Validado, 09-Nov-2026):**
   - **Plataforma afectada:** Softphones Bria y extensiones SIP de la operación TIP México.
   - **Detección y Reporte de TI (04-Nov-2026, 12:49 hrs):** Ricardo Morales (Gerente de TI Telat) reportó a N2A llamadas entrecortadas en la campaña TIP con capturas de Bria, certificando que el enlace local de Telat operaba limpio sin pérdida de paquetes ni latencia alta.
   - **Diagnóstico Data Center N2A (04-Nov-2026, 16:01 hrs):** N2A confirmó tras pruebas cruzadas que la degradación se debía a problemas de comunicación entre carriers y proveedores de Internet generando latencias elevadas.
   - **Estabilización Notificada (05-Nov-2026, 09:31 hrs):** N2A confirmó la estabilización de conectividad en las extensiones y solicitó retroalimentación de la operación.
-  - **Acción Pendiente Telat:** Validación en piso con Miriam y agentes TIP para verificar que el audio se mantenga nítido y sin cortes durante llamadas en vivo antes de autorizar el cierre formal del ticket.
+  - **Resolución y Cierre Validado en Piso (09-Nov-2026):** Ricardo García validó en piso que la calidad de voz opera nítida y estabilizada en llamadas activas sin cortes ni voz robotizada. Incidencia resuelta.
   - **Ticket Oficial en Soporte:** **`#225682`** (`https://net2alliance.freshdesk.com/helpdesk/tickets/225682`).
+- [ ] **Requerimiento 11: Descuento / Exclusión de segundos de locución/mensaje en tiempo de conversación (AHT no inflado):**
+  - **Contexto y Diagnóstico:** En las colas de entrada se reproduce una locución/anuncio (whisper de cola o aviso de grabación/bienvenida). Si el conmutador cloud contabiliza el tiempo de conversación (`conversacion_seg` / *Talk Time*) desde que arranca la locución, esos segundos (ej. 3 a 8 segundos por llamada) se suman al tiempo del asesor.
+  - **Impacto Operativo:** Al multiplicarse por cientos de llamadas, infla artificialmente el AHT (*Average Handle Time*) en los reportes compartidos con Laura Mercado (TIP México), castigando la métrica de productividad.
+  - **Solicitud Técnica para N2A:**
+    1. Calibrar el PBX para que el timer de conversación (`Conversación (s)`) comience estrictamente a partir de la conexión de voz bidireccional cliente-agente (post-locución).
+    2. O bien, exponer en el CDR la columna desagregada de tiempo de locución previa para descontarla de forma exacta en el ETL de reportería.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
