@@ -131,12 +131,18 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   - **Estabilización Notificada (05-Nov-2026, 09:31 hrs):** N2A confirmó la estabilización de conectividad en las extensiones y solicitó retroalimentación de la operación.
   - **Resolución y Cierre Validado en Piso (09-Nov-2026):** Ricardo García validó en piso que la calidad de voz opera nítida y estabilizada en llamadas activas sin cortes ni voz robotizada. Incidencia resuelta.
   - **Ticket Oficial en Soporte:** **`#225682`** (`https://net2alliance.freshdesk.com/helpdesk/tickets/225682`).
+- [x] **Blindaje de auto-pausa por pérdida de foco de pestaña (Ticket Oficial #225605 Resuelto en Operación):**
+  - **Plataforma afectada:** Consola web de agentes (`contact.n2a.mx/agente`) al interactuar con Salesforce Service Cloud.
+  - **Resolución:** Desactivado el flag que marcaba inactivo al asesor al cambiar de pestaña. Validado en producción con los agentes tipificando sin desatenciones erróneas.
 - [ ] **Requerimiento 11: Descuento / Exclusión de segundos de locución/mensaje en tiempo de conversación (AHT no inflado):**
   - **Contexto y Diagnóstico:** En las colas de entrada se reproduce una locución/anuncio (whisper de cola o aviso de grabación/bienvenida). Si el conmutador cloud contabiliza el tiempo de conversación (`conversacion_seg` / *Talk Time*) desde que arranca la locución, esos segundos (ej. 3 a 8 segundos por llamada) se suman al tiempo del asesor.
   - **Impacto Operativo:** Al multiplicarse por cientos de llamadas, infla artificialmente el AHT (*Average Handle Time*) en los reportes compartidos con Laura Mercado (TIP México), castigando la métrica de productividad.
   - **Solicitud Técnica para N2A:**
     1. Calibrar el PBX para que el timer de conversación (`Conversación (s)`) comience estrictamente a partir de la conexión de voz bidireccional cliente-agente (post-locución).
     2. O bien, exponer en el CDR la columna desagregada de tiempo de locución previa para descontarla de forma exacta en el ETL de reportería.
+- [ ] **Requerimiento 12: Trazabilidad de Hold y Transferencias en CDR (Ticket Oficial #225604 en Desarrollo N2A):**
+  - **Contexto:** Auditoría de calidad y WFM (Fabiola Álvarez) para registrar duración de retención (`Hold_seg`, `Hold_conteo`) y derivaciones hacia la marcación rápida `237` (Cabina de Siniestros `55 4195 6614`).
+  - **Estatus:** En espera de que N2A exponga estas columnas desagregadas en las descargas de llamadas.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
