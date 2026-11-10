@@ -37,3 +37,4 @@ Documento oficial de Workforce Management (WFM) vigente a partir del **09 de nov
 * **2002 (Paula):** L–J: 08:30–16:30 | V: 08:30–15:30
 * **2007 (Roxana):** L–J: 10:00–18:00 | V: 11:00–18:00
 * **2001 (Miriam):** L–V: 08:30–18:00
+
