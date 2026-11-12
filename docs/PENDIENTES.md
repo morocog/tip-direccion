@@ -143,6 +143,24 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [ ] **Requerimiento 12: Trazabilidad de Hold y Transferencias en CDR (Ticket Oficial #225604 en Desarrollo N2A):**
   - **Contexto:** Auditoría de calidad y WFM (Fabiola Álvarez) para registrar duración de retención (`Hold_seg`, `Hold_conteo`) y derivaciones hacia la marcación rápida `237` (Cabina de Siniestros `55 4195 6614`).
   - **Estatus:** En espera de que N2A exponga estas columnas desagregadas en las descargas de llamadas.
+- [x] **Requerimiento 13: Nombre de cola (marca) visible en portal de Contact Center y Softphone (Liberado por Javier Jaime, 09-Nov-2026):**
+  - **Origen:** Punto 2 del documento de desarrollo acordado el 27 de octubre con N2A.
+  - **Entrega en Producción:** Javier Jaime (Director General N2A) confirmó la instalación el fin de semana del 08-09 de Noviembre.
+  - **Funcionalidad para Agentes:** Al sonar la llamada, el portal muestra la marca (`Llamada entrante de BITCAR`). Al contestar aparece junto al número. En el softphone SIP aparece antes del número telefónico (`BITCAR:5512345678` o `TIP GRAL:`).
+  - **Funcionalidad para Supervisores:** El tablero en vivo visualiza la marca de cada llamada entrante y a qué agente le está timbrando.
+- [x] **Requerimiento 14: Corrección de inconsistencia en Auto-pausa y liberación por supervisor (Ticket Oficial #225696 Resuelto, 07-Nov-2026):**
+  - **Plataforma afectada:** Consola web de agentes y supervisor (`contact.n2a.mx`).
+  - **Incidencia (05-Nov-2026):** Agente atrapada en auto-pausa (Ext. 2007 Roxana Licona).
+  - **Solución N2A (07-Nov-2026, madrugada):**
+    1. Si un agente inicia un break estando en Auto-pausa, el break reemplaza a la Auto-pausa (con botón «Terminar break» y cómputo único).
+    2. El botón «Liberar» del supervisor remueve siempre la Auto-pausa respetando el break previo si existía.
+    3. La plataforma ya no auto-pausa al agente si la llamada sale de la cola en ese mismo segundo por abandono/timeout del cliente, eliminando falsos positivos de «No contestó».
+- [x] **Requerimiento 15: Gestión de horarios y auxiliares (Campaña TIP México Inbound, Ticket Oficial #225724 Cerrado, 10-Nov-2026):**
+  - **Alcance:** Calibración de horarios y gestión de auxiliares solicitada por Ricardo García.
+  - **Resolución:** Implementada en conmutador cloud y cerrada con confirmación de Ricardo García y N2A el 10-Nov-2026 (15:07 hrs).
+- [x] **Requerimiento 16: Programación de mensaje fuera de horario para día festivo (lunes 16 de noviembre 2026):**
+  - **Gestión:** Solicitado por Ricardo Morales (TI Telat) a soporte N2A.
+  - **Resolución (11-Nov-2026):** N2A confirmó la configuración de la locución especial fuera de horario para el lunes 16 de noviembre y el restablecimiento automático para el martes 17 de noviembre en horario habitual. Caso validado y cerrado por TI Telat.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
