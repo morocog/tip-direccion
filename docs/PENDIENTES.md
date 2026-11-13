@@ -58,6 +58,9 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   - **Gobernanza Operativa:** Alineación directa liderada por **Mauricio Cruz** (Operations Director) en coordinación con Ricardo García (Subdirector de Operaciones), Ricardo Morales (TI) y Lic. Julio Torres (Legal).
 - [x] **Estrategia y Contingencia de Talento: Arranque con 7 Candidatos TELAT:**
   - Capacitación arrancó con 7 candidatos nuevos contratados directamente por TELAT bajo acuerdo de Mauricio Cruz y Laura Mercado.
+- [x] **Acuerdo Ejecutivo de Reportes Semanales con Memo Llantada (Director General TIP México - 12-Nov-2026):**
+  - **Resultado de Sesión:** Presentación de comité ejecutivo con Memo Llantada, Laura Mercado y Alejandrina Sánchez completada con éxito total.
+  - **Nuevo Entregable Semanal Formalizado:** A partir del cierre de la **Semana 4 (09 al 13 de Noviembre)**, cada lunes (o martes tras día inhábil), junto con el reporte en Excel (`layout_data_repli_<semana>.xlsx`) enviado a Laura Mercado, se entregará a Memo Llantada la **actualización de la lámina ejecutiva única de datos acumulados (Slide 1: Macro-Historia)** incorporando la semana vencida completa.
 
 ---
 
@@ -70,7 +73,7 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [x] **Música y Audio Institucional en Espera Operativo (Resuelto 16-Oct-2026):** El audio y música de espera quedó configurado y activo desde las pruebas iniciales del 16 de octubre y validado en el arranque de producción. Cero pendientes en este rubro.
 - [x] **Activación de Cuentas de Plataforma y Protocolo 2FA (Resuelto 28-Oct-2026):** Cuentas de agentes activas en Salesforce Service Cloud. El protocolo 2FA quedó formalmente resuelto mediante la entrega de una tablet física corporativa dedicada entregada por Ricardo Morales (TI), eliminando el uso de celulares personales en piso de operaciones.
 - [x] **Entrega de Dispositivo Físico 2FA por Ricardo Morales (Resuelto 28-Oct-2026):** Jatzyri Yepez (Gerente de Capacitación) notificó la necesidad de hardware para la autenticación 2FA de los agentes en TIP. Se entregó una tablet dedicada específicamente para la campaña de TIP México (liberando el equipo en préstamo de Carvana).
-- [ ] **Homologación de Marcación Interna (Serie 7100+):** Confirmar regla general de extensiones de cuatro dígitos que inicien con 7 propuesta por Telat.
+- [x] **Homologación de Marcación Interna (Serie 7100+):** Confirmada y operando en producción. Regla de extensiones de cuatro dígitos que inician con 7 hacia la red interna de Telat y TIP habilitada y funcionando en transferencias de piso. Cero incidencias.
 
 ---
 
@@ -100,9 +103,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
     2. *Despausa:* El agente presiona «Estoy disponible» o el supervisor presiona «Liberar» en el tablero (con alerta en tiempo real).
     3. *Módulo de Supervisión:* Pestaña «No contestó» en supervisión activa, generando los reportes `no-contesto-llamadas.csv` y `no-contesto-agentes.csv`.
   - **Validación Operativa:** Rosario Sacramento y Ricardo García confirmaron la visibilidad completa del panel y su funcionamiento en producción.
-- [ ] **Requerimiento 6: Campos adicionales en CDR para homologación de layout (En Standby):**
-  - **Contexto:** Campos necesarios para alimentar automáticamente las columnas del layout de Laura Mercado (Timestamp de entrada real `Fecha_Inicio`, estatus `Fuera de Horario` en troncal, etiquetado de abandono corto `< 5s`, y volumen de entrada en menú IVR).
-  - **Directriz de Operaciones:** **En espera (Standby).** No se solicitará nada a soporte hasta que Laura Mercado valide formalmente el archivo consolidado del 19 al 23 de octubre (`layout_data_repli_19_al_23_oct_2026.xlsx`) y exprese si requiere columnas adicionales.
+- [x] **Requerimiento 6: Reporte con Layout oficial TIP México y separación de abandonos (Resuelto Internamente en Telat ETL / Compartido con N2A):**
+  - **Contexto Operativo:** El requerimiento central de Laura Mercado (TIP México) consistía en separar con total nitidez en el reporte consolidado por franjas horarias las llamadas atendidas (`Aten.`), las abandonadas por el cliente en cola (`Ab.`) y las llamadas no contestadas o canceladas por flujo/timeout (`Canc.`).
+  - **Resolución Interna Telat (100% Autónoma):** Resuelto de forma nativa mediante el motor ETL interno `tip-direccion/scripts/convertir_layout_tip.py`. Las entregas de las Semanas 1, 2 y 3 fueron recibidas y validadas por la clienta con 100% de satisfacción sin depender de desarrollos de N2A.
+  - **Alineación con N2A (Prioridad 6 del Pliego):** Se preparó y compartió a Net2Alliance el archivo modelo consolidado con datos reales (`layout_data_repli_ejemplo_referencia_tip.xlsx`) con las 85 columnas y la lógica de franjas horarias para que su equipo de desarrollo cuente con la referencia exacta cuando decidan implementar el botón de exportación directa en su portal, sin urgencia operativa para Telat.
 - [x] **Requerimiento 7: Corrección de inicio anticipado de break durante timbrado/llamada (Ticket Oficial #225674 Resuelto y Cerrado, 04-Nov-2026):**
   - **Plataforma afectada:** Consola web de agentes (`contact.n2a.mx/agente`) y módulo de supervisión (`contact.n2a.mx/supervisor`).
   - **Falla detectada (03-Nov-2026):** Al dar clic en Comida/Break durante el ring o llamada activa, el contador arrancaba de inmediato desde el clic sin esperar al colgado (`CALL_END`).
@@ -161,6 +165,12 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [x] **Requerimiento 16: Programación de mensaje fuera de horario para día festivo (lunes 16 de noviembre 2026):**
   - **Gestión:** Solicitado por Ricardo Morales (TI Telat) a soporte N2A.
   - **Resolución (11-Nov-2026):** N2A confirmó la configuración de la locución especial fuera de horario para el lunes 16 de noviembre y el restablecimiento automático para el martes 17 de noviembre en horario habitual. Caso validado y cerrado por TI Telat.
+- [x] **Requerimiento 17: Reporte de auxiliares fijos por tipo y detalle de pausas (Prioridad 3 N2A / Ticket #225604 - Liberado y Validado, 12-Nov-2026):**
+  - **Entrega N2A:** Javier Jaime notificó la liberación el 12 de noviembre a las 04:01 hrs (CDMX).
+  - **Verificación en Piso y Descargas:** Ricardo García auditó las dos nuevas descargas oficiales (`auxiliares-por-agente.csv` y `auxiliares-detalle.csv`):
+    1. Las 6 columnas fijas obligatorias (`Comida`, `Baño`, `Capacitación`, `Feedback / Coaching / Meeting`, `Falla técnica`, `Break`) vienen presentes en formato `HH:MM:SS` en todas las filas (incluso en `00:00:00` para agentes sin registro), asegurando la compatibilidad con las macros de Workforce.
+    2. El reporte `auxiliares-detalle.csv` registra hora de solicitud, inicio real, fin, duración en segundos y estado vivo (`En curso` / `Terminado`).
+  - **Estatus:** Validado, probado y cerrado formalmente con N2A.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
