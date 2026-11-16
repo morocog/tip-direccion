@@ -61,22 +61,28 @@
         width: 16in !important;
         height: 9in !important;
         max-height: 9in !important;
-        padding: 1.8rem 2.5rem !important;
+        padding: 2.2rem 3rem !important;
         box-shadow: none !important;
         border: none !important;
         border-radius: 0 !important;
         margin: 0 !important;
         overflow: hidden !important;
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
       }
     }
     @media screen {
       .slide-page {
         width: 100%;
-        max-width: 1300px;
-        min-height: auto;
+        max-width: 1320px;
+        min-height: 9in;
         margin-left: auto;
         margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
     }
     .metric-font {
@@ -90,97 +96,97 @@
   <!-- ========================================================================= -->
   <!-- SLIDE 1: MACRO-HISTORIA Y CURVA DE MADURACIÓN (SEMANAS 01 A 04) -->
   <!-- ========================================================================= -->
-  <article id="slide-1" class="slide-page bg-white rounded-2xl border border-telat-slateBorder shadow-xl p-6 sm:p-8 flex flex-col justify-start relative">
+  <article id="slide-1" class="slide-page bg-white rounded-2xl border border-telat-slateBorder shadow-xl p-8 lg:p-10 relative">
     
     <!-- LÍNEA SUPERIOR DE BRANDING TELAT -->
-    <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja rounded-t-2xl"></div>
+    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja rounded-t-2xl"></div>
 
     <!-- ENCABEZADO SLIDE -->
-    <header class="flex justify-between items-start border-b border-gray-100 pb-3 mb-3">
+    <header class="flex justify-between items-start border-b border-gray-100 pb-4 mb-2">
       <div>
-        <div class="flex items-center gap-2 mb-1 flex-wrap">
-          <span class="text-[11px] font-bold uppercase tracking-wider text-telat-celeste bg-blue-50 px-2.5 py-0.5 rounded border border-blue-200">
+        <div class="flex items-center gap-2.5 mb-1.5 flex-wrap">
+          <span class="text-xs font-bold uppercase tracking-wider text-telat-celeste bg-blue-50 px-3 py-1 rounded-md border border-blue-200">
             Campaña TIP México · Sesión de Dirección
           </span>
-          <span class="text-xs text-gray-400 font-medium">|</span>
-          <span class="text-xs text-gray-600 font-medium">Corte Semanas 01 a 04 (19-Oct a 13-Nov-2026)</span>
+          <span class="text-sm text-gray-300 font-medium">|</span>
+          <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Corte Semanas 01 a 04 (19-Oct a 13-Nov-2026)</span>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-extrabold text-telat-oscuro font-display tracking-tight">
+        <h1 class="text-2xl sm:text-3xl lg:text-[34px] leading-tight font-extrabold text-telat-oscuro font-display tracking-tight">
           Evolución del Servicio: Pico Histórico de Tráfico y Maduración Operativa
         </h1>
-        <p class="text-xs text-gray-500 mt-0.5">
+        <p class="text-xs sm:text-sm text-gray-500 mt-1 font-medium">
           Curva de maduración operativa semanal: absorción de volumen récord y repunte en tasa de atención
         </p>
       </div>
-      <div class="text-right flex flex-col items-end shrink-0 pl-4">
-        <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl shadow-xs">
-          <img src="assets/logo_telat.png" alt="Telat Group" class="h-6 w-auto object-contain" onerror="this.onerror=null; this.src='https://telat.mx/assets/img/logo.png';">
-          <span class="text-gray-400 font-light text-sm select-none">×</span>
-          <img src="assets/logo_tip.png" alt="TIP México" class="h-6 w-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
+      <div class="text-right flex flex-col items-end shrink-0 pl-6">
+        <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 px-4 py-2 rounded-xl shadow-xs">
+          <img src="assets/logo_telat.png" alt="Telat Group" class="h-7 w-auto object-contain" onerror="this.onerror=null; this.src='https://telat.mx/assets/img/logo.png';">
+          <span class="text-gray-400 font-light text-base select-none">×</span>
+          <img src="assets/logo_tip.png" alt="TIP México" class="h-7 w-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
         </div>
-        <span class="text-[10px] text-gray-400 font-medium mt-1">Operación Conjunta · Telat Group & TIP México</span>
+        <span class="text-[11px] text-gray-400 font-medium mt-1.5">Operación Conjunta · Telat Group & TIP México</span>
       </div>
     </header>
 
     <!-- BLOQUE 1: KPIS MAESTROS DE LA SEMANA 04 -->
-    <section class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-2" aria-label="Indicadores de la semana">
+    <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-2" aria-label="Indicadores de la semana">
       
       <!-- KPI 1: VOLUMEN SEMANA 04 -->
-      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-3.5 flex flex-col justify-between">
+      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-4 flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Volumen Semana 04</span>
-          <span class="w-2.5 h-2.5 rounded-full bg-telat-celeste"></span>
+          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Volumen Semana 04</span>
+          <span class="w-3 h-3 rounded-full bg-telat-celeste"></span>
         </div>
-        <div class="my-1 flex items-baseline justify-between">
-          <span class="text-3xl font-extrabold text-telat-oscuro metric-font">705</span>
-          <span class="text-[11px] font-bold text-telat-celeste bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">+62 salientes</span>
+        <div class="my-2 flex items-baseline justify-between">
+          <span class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-telat-oscuro metric-font">705</span>
+          <span class="text-xs font-bold text-telat-celeste bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">+62 salientes</span>
         </div>
-        <div class="text-[11px] text-gray-500 font-medium">
+        <div class="text-xs text-gray-500 font-medium">
           643 inbound · 62 outbound seguimiento
         </div>
       </div>
 
       <!-- KPI 2: TASA DE ATENCIÓN SEMANA 04 -->
-      <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 flex flex-col justify-between">
+      <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4 flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span class="text-[11px] font-semibold text-emerald-800 uppercase tracking-wide">Tasa de Atención S4</span>
-          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">+4.6% vs S3</span>
+          <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Tasa de Atención S4</span>
+          <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full">+4.6% vs S3</span>
         </div>
-        <div class="my-1 flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-emerald-700 metric-font">86.6%</span>
-          <span class="text-xs font-semibold text-emerald-600">557 atendidas</span>
+        <div class="my-2 flex items-baseline gap-2">
+          <span class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-emerald-700 metric-font">86.6%</span>
+          <span class="text-xs sm:text-sm font-semibold text-emerald-600">557 atendidas</span>
         </div>
-        <div class="text-[11px] text-emerald-700 font-medium">
+        <div class="text-xs text-emerald-700 font-medium">
           Célula dedicada de 6 FTEs en piso
         </div>
       </div>
 
       <!-- KPI 3: PICO HISTÓRICO ABSORBIDO -->
-      <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-3.5 flex flex-col justify-between">
+      <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-4 flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span class="text-[11px] font-semibold text-blue-900 uppercase tracking-wide">Pico Inbound Absorbido</span>
-          <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full">Máximo Histórico</span>
+          <span class="text-xs font-bold text-blue-900 uppercase tracking-wider">Pico Inbound Absorbido</span>
+          <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-0.5 rounded-full">Máximo Histórico</span>
         </div>
-        <div class="my-1 flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-telat-celeste metric-font">643</span>
-          <span class="text-xs font-semibold text-blue-700">+13.2% vs S3</span>
+        <div class="my-2 flex items-baseline gap-2">
+          <span class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-telat-celeste metric-font">643</span>
+          <span class="text-xs sm:text-sm font-semibold text-blue-700">+13.2% vs S3</span>
         </div>
-        <div class="text-[11px] text-blue-800 font-medium">
+        <div class="text-xs text-blue-800 font-medium">
           De 568 (S3) a 643 llamadas entrantes
         </div>
       </div>
 
       <!-- KPI 4: VELOCIDAD MEDIA DE RESPUESTA -->
-      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-3.5 flex flex-col justify-between">
+      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-4 flex flex-col justify-between">
         <div class="flex items-center justify-between">
-          <span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Tiempo de Espera (ASA)</span>
-          <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full">Semana 04</span>
+          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Tiempo de Espera (ASA)</span>
+          <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-0.5 rounded-full">Semana 04</span>
         </div>
-        <div class="my-1 flex items-baseline gap-2">
-          <span class="text-3xl font-extrabold text-telat-oscuro metric-font">32.7s</span>
-          <span class="text-xs font-semibold text-gray-500">promedio</span>
+        <div class="my-2 flex items-baseline gap-2">
+          <span class="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-telat-oscuro metric-font">32.7s</span>
+          <span class="text-xs sm:text-sm font-semibold text-gray-500">promedio</span>
         </div>
-        <div class="text-[11px] text-gray-500 font-medium">
+        <div class="text-xs text-gray-500 font-medium">
           Respuesta ágil ante concentración de tráfico
         </div>
       </div>
@@ -189,94 +195,94 @@
 
     <!-- BLOQUE 2: TABLA EVOLUTIVA SEMANA A SEMANA (SIN FILA DE CONSOLIDADO) -->
     <section class="border border-telat-slateBorder rounded-xl overflow-hidden shadow-xs my-3 bg-white">
-      <table class="w-full text-left text-xs sm:text-[13px] border-collapse">
-        <thead class="bg-slate-50 text-gray-700 font-bold uppercase tracking-wider text-[11px] border-b border-gray-200">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-slate-50 text-gray-700 font-bold uppercase tracking-wider text-xs border-b border-gray-200">
           <tr>
-            <th class="py-3 px-3.5 w-[24%]">Periodo & Fase</th>
-            <th class="py-3 px-2 text-center w-[12%]">Inbound Recibidas</th>
-            <th class="py-3 px-2 text-center w-[14%]">Inbound Atendidas</th>
-            <th class="py-3 px-2 text-center w-[12%]">Outbound Salientes</th>
-            <th class="py-3 px-2 text-center w-[12%]">Tasa de Atención</th>
-            <th class="py-3 px-2 text-center w-[10%]">Espera ASA</th>
-            <th class="py-3 px-3.5 text-right w-[20%]">Hito Operativo</th>
+            <th class="py-3.5 px-4 w-[24%]">Periodo & Fase</th>
+            <th class="py-3.5 px-3 text-center w-[12%]">Inbound Recibidas</th>
+            <th class="py-3.5 px-3 text-center w-[14%]">Inbound Atendidas</th>
+            <th class="py-3.5 px-3 text-center w-[12%]">Outbound Salientes</th>
+            <th class="py-3.5 px-3 text-center w-[12%]">Tasa de Atención</th>
+            <th class="py-3.5 px-3 text-center w-[10%]">Espera ASA</th>
+            <th class="py-3.5 px-4 text-right w-[20%]">Hito Operativo Clave</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100 bg-white">
+        <tbody class="divide-y divide-gray-100 bg-white text-sm sm:text-[15px]">
           <!-- SEMANA 1 -->
           <tr class="hover:bg-slate-50/80 transition-colors">
-            <td class="py-3 px-3.5">
-              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 01 <span class="font-normal text-gray-400 text-xs">(19 a 23-Oct)</span></div>
-              <span class="inline-block bg-blue-50 text-telat-celeste font-semibold px-2 py-0.5 rounded text-[10px] border border-blue-200 mt-0.5">Arranque Controlado</span>
+            <td class="py-4 px-4">
+              <div class="font-bold text-telat-oscuro text-sm sm:text-base">Semana 01 <span class="font-normal text-gray-400 text-xs sm:text-sm">(19 a 23-Oct)</span></div>
+              <span class="inline-block bg-blue-50 text-telat-celeste font-semibold px-2.5 py-0.5 rounded text-xs border border-blue-200 mt-1">Arranque Controlado</span>
             </td>
-            <td class="py-3 px-2 text-center font-semibold text-telat-oscuro">167</td>
-            <td class="py-3 px-2 text-center font-semibold text-emerald-700">149 <span class="text-[11px] font-normal text-emerald-600">(89.2%)</span></td>
-            <td class="py-3 px-2 text-center font-mono text-gray-700">16</td>
-            <td class="py-3 px-2 text-center font-bold text-emerald-600">89.2%</td>
-            <td class="py-3 px-2 text-center font-mono text-xs text-gray-600">13.7s</td>
-            <td class="py-3 px-3.5 text-right text-xs text-gray-600 font-medium">Operación inicial con 8 líneas secundarias</td>
+            <td class="py-4 px-3 text-center font-bold text-telat-oscuro text-base">167</td>
+            <td class="py-4 px-3 text-center font-bold text-emerald-700 text-base">149 <span class="text-xs font-semibold text-emerald-600 block sm:inline">(89.2%)</span></td>
+            <td class="py-4 px-3 text-center font-mono font-semibold text-gray-700 text-base">16</td>
+            <td class="py-4 px-3 text-center font-extrabold text-emerald-600 text-base">89.2%</td>
+            <td class="py-4 px-3 text-center font-mono text-sm text-gray-600">13.7s</td>
+            <td class="py-4 px-4 text-right text-xs sm:text-sm text-gray-600 font-medium">Operación inicial con 8 líneas secundarias</td>
           </tr>
           <!-- SEMANA 2 -->
           <tr class="hover:bg-slate-50/80 transition-colors">
-            <td class="py-3 px-3.5">
-              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 02 <span class="font-normal text-gray-400 text-xs">(26 a 30-Oct)</span></div>
-              <span class="inline-block bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded text-[10px] border border-indigo-200 mt-0.5">Afinación & Proactividad</span>
+            <td class="py-4 px-4">
+              <div class="font-bold text-telat-oscuro text-sm sm:text-base">Semana 02 <span class="font-normal text-gray-400 text-xs sm:text-sm">(26 a 30-Oct)</span></div>
+              <span class="inline-block bg-indigo-50 text-indigo-700 font-semibold px-2.5 py-0.5 rounded text-xs border border-indigo-200 mt-1">Afinación & Proactividad</span>
             </td>
-            <td class="py-3 px-2 text-center font-semibold text-telat-oscuro">139</td>
-            <td class="py-3 px-2 text-center font-semibold text-emerald-700">132 <span class="text-[11px] font-normal text-emerald-600">(95.0%)</span></td>
-            <td class="py-3 px-2 text-center font-mono font-bold text-telat-celeste">88</td>
-            <td class="py-3 px-2 text-center font-bold text-emerald-600">95.0%</td>
-            <td class="py-3 px-2 text-center font-mono text-xs text-gray-600">14.6s</td>
-            <td class="py-3 px-3.5 text-right text-xs text-gray-600 font-medium">Marcación 237 a Siniestros + RONA y pausas</td>
+            <td class="py-4 px-3 text-center font-bold text-telat-oscuro text-base">139</td>
+            <td class="py-4 px-3 text-center font-bold text-emerald-700 text-base">132 <span class="text-xs font-semibold text-emerald-600 block sm:inline">(95.0%)</span></td>
+            <td class="py-4 px-3 text-center font-mono font-bold text-telat-celeste text-base">88</td>
+            <td class="py-4 px-3 text-center font-extrabold text-emerald-600 text-base">95.0%</td>
+            <td class="py-4 px-3 text-center font-mono text-sm text-gray-600">14.6s</td>
+            <td class="py-4 px-4 text-right text-xs sm:text-sm text-gray-600 font-medium">Marcación 237 a Siniestros + RONA y pausas</td>
           </tr>
           <!-- SEMANA 3 -->
           <tr class="hover:bg-slate-50/80 transition-colors">
-            <td class="py-3 px-3.5">
-              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 03 <span class="font-normal text-gray-400 text-xs">(02 a 06-Nov)</span></div>
-              <span class="inline-block bg-amber-50 text-amber-800 font-bold px-2 py-0.5 rounded text-[10px] border border-amber-300 mt-0.5">Conmutador General</span>
+            <td class="py-4 px-4">
+              <div class="font-bold text-telat-oscuro text-sm sm:text-base">Semana 03 <span class="font-normal text-gray-400 text-xs sm:text-sm">(02 a 06-Nov)</span></div>
+              <span class="inline-block bg-amber-50 text-amber-800 font-bold px-2.5 py-0.5 rounded text-xs border border-amber-300 mt-1">Conmutador General</span>
             </td>
-            <td class="py-3 px-2 text-center font-semibold text-telat-oscuro">568</td>
-            <td class="py-3 px-2 text-center font-semibold text-emerald-700">466 <span class="text-[11px] font-normal text-emerald-600">(82.0%)</span></td>
-            <td class="py-3 px-2 text-center font-mono font-bold text-telat-celeste">140</td>
-            <td class="py-3 px-2 text-center font-bold text-emerald-700">82.0%</td>
-            <td class="py-3 px-2 text-center font-mono text-xs text-gray-600">19.8s</td>
-            <td class="py-3 px-3.5 text-right text-xs text-gray-600 font-medium">Absorción total de conmutador 800 908 6700</td>
+            <td class="py-4 px-3 text-center font-bold text-telat-oscuro text-base">568</td>
+            <td class="py-4 px-3 text-center font-bold text-emerald-700 text-base">466 <span class="text-xs font-semibold text-emerald-600 block sm:inline">(82.0%)</span></td>
+            <td class="py-4 px-3 text-center font-mono font-bold text-telat-celeste text-base">140</td>
+            <td class="py-4 px-3 text-center font-extrabold text-emerald-700 text-base">82.0%</td>
+            <td class="py-4 px-3 text-center font-mono text-sm text-gray-600">19.8s</td>
+            <td class="py-4 px-4 text-right text-xs sm:text-sm text-gray-600 font-medium">Absorción total de conmutador 800 908 6700</td>
           </tr>
           <!-- SEMANA 4 -->
-          <tr class="hover:bg-slate-50/80 transition-colors bg-blue-50/30 font-semibold border-l-4 border-telat-celeste">
-            <td class="py-3 px-3.5">
-              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 04 <span class="font-normal text-gray-500 text-xs">(09 a 13-Nov)</span></div>
-              <span class="inline-block bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[10px] border border-emerald-300 mt-0.5">Pico Histórico & Maduración</span>
+          <tr class="hover:bg-slate-50/80 transition-colors bg-blue-50/30 border-l-4 border-telat-celeste">
+            <td class="py-4 px-4">
+              <div class="font-bold text-telat-oscuro text-sm sm:text-base">Semana 04 <span class="font-normal text-gray-500 text-xs sm:text-sm">(09 a 13-Nov)</span></div>
+              <span class="inline-block bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded text-xs border border-emerald-300 mt-1">Pico Histórico & Maduración</span>
             </td>
-            <td class="py-3 px-2 text-center font-extrabold text-telat-oscuro text-sm">643</td>
-            <td class="py-3 px-2 text-center font-extrabold text-emerald-700 text-sm">557 <span class="text-[11px] font-bold text-emerald-600">(86.6%)</span></td>
-            <td class="py-3 px-2 text-center font-mono font-bold text-telat-celeste">62</td>
-            <td class="py-3 px-2 text-center font-extrabold text-emerald-700 text-sm">86.6%</td>
-            <td class="py-3 px-2 text-center font-mono text-xs text-gray-700">32.7s</td>
-            <td class="py-3 px-3.5 text-right text-xs text-emerald-700 font-bold">Máximo volumen atendido con repunte de atención (+4.6%)</td>
+            <td class="py-4 px-3 text-center font-extrabold text-telat-oscuro text-lg">643</td>
+            <td class="py-4 px-3 text-center font-extrabold text-emerald-700 text-lg">557 <span class="text-xs font-bold text-emerald-600 block sm:inline">(86.6%)</span></td>
+            <td class="py-4 px-3 text-center font-mono font-bold text-telat-celeste text-lg">62</td>
+            <td class="py-4 px-3 text-center font-extrabold text-emerald-700 text-lg">86.6%</td>
+            <td class="py-4 px-3 text-center font-mono text-base font-semibold text-gray-700">32.7s</td>
+            <td class="py-4 px-4 text-right text-xs sm:text-sm text-emerald-700 font-bold">Máximo volumen atendido con repunte de atención (+4.6%)</td>
           </tr>
         </tbody>
       </table>
     </section>
 
     <!-- BLOQUE 3: NOTA ESTRATÉGICA DE DIRECCIÓN -->
-    <footer class="mt-2 pt-2.5 border-t border-gray-100 flex flex-col gap-2">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs leading-relaxed">
-        <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-gray-600 flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-telat-celeste shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+    <footer class="mt-2 pt-3 border-t border-gray-100 flex flex-col gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm leading-relaxed">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-gray-600 flex items-start gap-3">
+          <svg class="w-5 h-5 text-telat-celeste shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
           <div>
-            <strong class="text-telat-oscuro font-bold">Mayor Carga con Mayor Eficiencia:</strong> La Semana 4 registró el mayor tráfico en la historia de la campaña (<strong class="text-telat-oscuro font-bold">643 llamadas entrantes</strong>). A pesar de la mayor demanda, el equipo logró incrementar la tasa de atención a <strong class="text-emerald-700 font-bold">86.6%</strong> (+4.6 puntos sobre Semana 3), confirmando la sólida asimilación técnica del conmutador por los 6 FTEs.
+            <strong class="text-telat-oscuro font-bold block mb-0.5">Mayor Carga con Mayor Eficiencia:</strong> La Semana 4 registró el mayor tráfico en la historia de la campaña (<strong class="text-telat-oscuro font-bold">643 llamadas entrantes</strong>). A pesar de la mayor demanda, el equipo elevó la tasa de atención a <strong class="text-emerald-700 font-bold">86.6%</strong> (+4.6 puntos sobre Semana 3), confirmando la sólida maduración técnica de los 6 FTEs en piso.
           </div>
         </div>
 
-        <div class="bg-blue-50/50 border border-blue-200 rounded-lg p-3 text-gray-600 flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <div class="bg-blue-50/50 border border-blue-200 rounded-xl p-4 text-gray-600 flex items-start gap-3">
+          <svg class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
           <div>
-            <strong class="text-telat-oscuro font-bold">Proactividad y Resolución (Outbound):</strong> Los asesores mantuvieron <strong class="text-telat-celeste font-bold">62 llamadas salientes</strong> de seguimiento para despresurizar el canal de entrada, canalizar siniestros a la marcación rápida 237 y gestionar oportunamente los requerimientos de clientes en Salesforce Service Cloud.
+            <strong class="text-telat-oscuro font-bold block mb-0.5">Proactividad y Resolución (Outbound):</strong> Los asesores mantuvieron <strong class="text-telat-celeste font-bold">62 llamadas salientes</strong> de seguimiento directo para despresurizar el canal de entrada, canalizar siniestros a Cabina (código 237) y resolver oportunamente solicitudes en Salesforce Service Cloud.
           </div>
         </div>
       </div>
 
-      <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono pt-1">
+      <div class="flex justify-between items-center text-[11px] sm:text-xs text-gray-400 font-mono pt-1">
         <span>Corte: Semanas 01 a 04 (19 de octubre al 13 de noviembre de 2026) · Plantilla: 6 FTEs dedicados</span>
         <span>Fuente: CDR de Telefonía Cloud & Plataforma de Contact Center N2A</span>
       </div>
