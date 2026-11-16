@@ -7,8 +7,8 @@ conmutador cloud y generar el archivo Excel con el formato homologado de Laura M
 #>
 
 param(
-    [ValidateSet("1", "2")]
-    [string]$Semana = "2",
+    [ValidateSet("1", "2", "3", "4")]
+    [string]$Semana = "4",
     [string[]]$Inputs,
     [string]$Template,
     [string]$Output,

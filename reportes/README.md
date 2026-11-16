@@ -37,18 +37,34 @@ tip-direccion/reportes/
 │       ├── breaks.csv                                <- 108 pausas auxiliares (Lunch, Break, Restroom)
 │       └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes
 │
-└── Semana-03_02-al-06-Nov-2026/
+├── Semana-03_02-al-06-Nov-2026/
+│   ├── entregables/
+│   │   └── layout_data_repli_02_al_06_nov_2026.xlsx  <- Reporte oficial compilado (568 llamadas únicas, 152 franjas, 82.0% atención)
+│   └── soporte_origen/
+│       ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad, 568 reg.)
+│       ├── llamadas-salientes.csv                    <- 140 llamadas salientes de seguimiento (Salesforce / Siniestros / Callbacks)
+│       ├── trafico.csv                               <- Consolidado diario de tráfico y SLA del conmutador
+│       ├── no-contesto-llamadas.csv                  <- Detalle de eventos RONA en colas
+│       ├── no-contesto-agentes.csv                   <- Resumen de desatención / auto-pausa por asesor
+│       ├── agentes.csv                               <- Ocupación, productividad y AHT por asesor
+│       ├── breaks.csv                                <- Pausas auxiliares
+│       └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes
+│
+└── Semana-04_09-al-13-Nov-2026/
     ├── entregables/
-    │   └── layout_data_repli_02_al_06_nov_2026.xlsx  <- Reporte oficial compilado (568 llamadas únicas, 152 franjas, 82.0% atención)
+    │   ├── layout_data_repli_09_al_13_nov_2026.xlsx  <- Reporte oficial compilado (643 llamadas únicas, 163 franjas horarias)
+    │   ├── slide_semanal_tip_09_al_13_nov_2026.pdf   <- Lámina ejecutiva semanal para Memo Llantada (PDF 16:9)
+    │   └── slide_semanal_tip_09_al_13_nov_2026.html  <- Código fuente HTML de la lámina ejecutiva
     └── soporte_origen/
-        ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad, 568 reg.)
-        ├── llamadas-salientes.csv                    <- 140 llamadas salientes de seguimiento (Salesforce / Siniestros / Callbacks)
-        ├── trafico.csv                               <- Consolidado diario de tráfico y SLA del conmutador
-        ├── no-contesto-llamadas.csv                  <- Detalle de eventos RONA en colas
-        ├── no-contesto-agentes.csv                   <- Resumen de desatención / auto-pausa por asesor
-        ├── agentes.csv                               <- Ocupación, productividad y AHT por asesor
-        ├── breaks.csv                                <- Pausas auxiliares
-        └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes
+        ├── llamadas.csv                              <- CDR consolidado de llamadas entrantes (Fuente de verdad, 643 reg.)
+        ├── llamadas-salientes.csv                    <- 62 llamadas salientes de seguimiento (Salesforce / Siniestros / Callbacks)
+        ├── trafico.csv                               <- Consolidado diario de tráfico y SLA del conmutador (45 reg.)
+        ├── no-contesto-llamadas.csv                  <- Detalle de eventos RONA en colas (3 reg.)
+        ├── no-contesto-agentes.csv                   <- Resumen de desatención / auto-pausa por asesor (2 reg.)
+        ├── agentes.csv                               <- Ocupación, productividad y AHT por asesor (6 reg.)
+        ├── auxiliares-por-agente.csv                 <- 6 columnas fijas de pausas WFM (Estreno release N2A 12-Nov)
+        ├── auxiliares-detalle.csv                    <- Detalle cronológico de 98 pausas auxiliares
+        └── sesiones.csv                              <- Inicios, cierres de sesión e IPs de agentes (29 reg.)
 ```
 
 ---

@@ -61,6 +61,7 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [x] **Acuerdo Ejecutivo de Reportes Semanales con Memo Llantada (Director General TIP México - 12-Nov-2026):**
   - **Resultado de Sesión:** Presentación de comité ejecutivo con Memo Llantada, Laura Mercado y Alejandrina Sánchez completada con éxito total.
   - **Nuevo Entregable Semanal Formalizado:** A partir del cierre de la **Semana 4 (09 al 13 de Noviembre)**, cada lunes (o martes tras día inhábil), junto con el reporte en Excel (`layout_data_repli_<semana>.xlsx`) enviado a Laura Mercado, se entregará a Memo Llantada la **actualización de la lámina ejecutiva única de datos acumulados (Slide 1: Macro-Historia)** incorporando la semana vencida completa.
+  - **Entrega Semana 4 Compilada (15-Nov-2026):** Generado `layout_data_repli_09_al_13_nov_2026.xlsx` y la lámina ejecutiva `slide_semanal_tip_09_al_13_nov_2026.pdf` (HTML y PDF) con la evolución de 4 semanas limpia y sin fila de consolidado, listo para entrega el martes 17 tras el puente festivo.
 
 ---
 

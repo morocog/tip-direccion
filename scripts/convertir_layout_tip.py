@@ -426,7 +426,7 @@ def main():
     default_template = repo_root / "reportes" / "plantilla" / "layout_data_repli.xlsx"
 
     parser = argparse.ArgumentParser(description="Conversor ETL de llamadas a Layout Oficial de Operaciones TIP México")
-    parser.add_argument('--semana', choices=['1', '2'], help="Selección rápida de semana (1 o 2) usando archivos del repositorio")
+    parser.add_argument('--semana', choices=['1', '2', '3', '4'], help="Selección rápida de semana (1, 2, 3 o 4) usando archivos del repositorio")
     parser.add_argument('--inputs', nargs='*', help="Rutas a los archivos CSV/XLSX de llamadas")
     parser.add_argument('--template', help="Ruta al archivo plantilla layout_data_repli.xlsx")
     parser.add_argument('--output', help="Ruta de destino para el archivo compilado")
@@ -456,19 +456,35 @@ def main():
         start_d = datetime.date(2026, 10, 26)
         end_d = datetime.date(2026, 10, 30)
         default_out = s2_dir / "entregables" / "layout_data_repli_26_al_30_oct_2026.xlsx"
+    elif args.semana == '3':
+        s3_dir = repo_root / "reportes" / "Semana-03_02-al-06-Nov-2026"
+        csv_files = [
+            str(s3_dir / "soporte_origen" / "llamadas.csv")
+        ]
+        start_d = datetime.date(2026, 11, 2)
+        end_d = datetime.date(2026, 11, 6)
+        default_out = s3_dir / "entregables" / "layout_data_repli_02_al_06_nov_2026.xlsx"
+    elif args.semana == '4':
+        s4_dir = repo_root / "reportes" / "Semana-04_09-al-13-Nov-2026"
+        csv_files = [
+            str(s4_dir / "soporte_origen" / "llamadas.csv")
+        ]
+        start_d = datetime.date(2026, 11, 9)
+        end_d = datetime.date(2026, 11, 13)
+        default_out = s4_dir / "entregables" / "layout_data_repli_09_al_13_nov_2026.xlsx"
     elif args.inputs:
         csv_files = args.inputs
         start_d = datetime.date.fromisoformat(args.start_date) if args.start_date else None
         end_d = datetime.date.fromisoformat(args.end_date) if args.end_date else None
         default_out = Path(args.output) if args.output else repo_root / "reportes" / "layout_data_repli_compilado.xlsx"
     else:
-        # Modo por omisión (Semana 2 más reciente en el repositorio)
-        print("[INFO] No se especificaron entradas ni semana. Usando Semana 2 del repositorio...")
-        s2_dir = repo_root / "reportes" / "Semana-02_26-al-30-Oct-2026"
-        csv_files = [str(s2_dir / "soporte_origen" / "llamadas.csv")]
-        start_d = datetime.date(2026, 10, 26)
-        end_d = datetime.date(2026, 10, 30)
-        default_out = s2_dir / "entregables" / "layout_data_repli_26_al_30_oct_2026.xlsx"
+        # Modo por omisión (Semana 4 más reciente en el repositorio)
+        print("[INFO] No se especificaron entradas ni semana. Usando Semana 4 del repositorio...")
+        s4_dir = repo_root / "reportes" / "Semana-04_09-al-13-Nov-2026"
+        csv_files = [str(s4_dir / "soporte_origen" / "llamadas.csv")]
+        start_d = datetime.date(2026, 11, 9)
+        end_d = datetime.date(2026, 11, 13)
+        default_out = s4_dir / "entregables" / "layout_data_repli_09_al_13_nov_2026.xlsx"
         
     template_file = args.template or str(default_template)
     if not os.path.exists(template_file):
