@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revisión Operativa Semanal · Semana 05 | TIP México & Telat Group</title>
+  
+  <!-- Fuentes estándar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            telat: {
+              celeste: '#3284C6',
+              naranja: '#EB5B27',
+              amarillo: '#FECA66',
+              oscuro: '#1E293B',
+              claro: '#F8FAFC',
+              slateBg: '#F8FAFC',
+              slateBorder: '#E2E8F0'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['DM Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+    @page {
+      size: 16in 9in;
+      margin: 0;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0F172A;
+      font-family: 'Inter', sans-serif;
+      color: #1E293B;
+    }
+    .slide-page {
+      width: 16in;
+      height: 9in;
+      padding: 2.2rem 3rem 1.8rem 3rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: #FFFFFF;
+      page-break-after: always;
+      overflow: hidden;
+    }
+    @media screen {
+      body {
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      .slide-page {
+        width: 100%;
+        max-width: 1400px;
+        height: auto;
+        min-height: 788px;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+    .metric-font {
+      font-family: 'DM Sans', sans-serif;
+      font-feature-settings: "tnum" 1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 1: RESULTADOS DE LA SEMANA 05 (WTD) Y COMPARATIVO -->
+  <!-- ========================================================================= -->
+  <article id="slide-1" class="slide-page">
+    
+    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja"></div>
+
+    <!-- ENCABEZADO -->
+    <header class="flex justify-between items-start border-b border-gray-100 pb-3">
+      <div>
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <span class="text-[11px] font-bold text-telat-celeste bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Operación TIP México · Sesión Semanal
+          </span>
+          <span class="text-xs text-gray-300">|</span>
+          <span class="text-xs font-semibold text-gray-500">Corte: 14 al 20 de noviembre de 2026 (N2A Contact Center)</span>
+        </div>
+        <h1 class="text-2xl sm:text-[28px] leading-tight font-extrabold text-telat-oscuro font-display tracking-tight">
+          Resultados de Telefonía: Semana 05
+        </h1>
+        <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5 font-medium">
+          Comportamiento del tráfico, nivel de atención y control de abandono en conmutador
+        </p>
+      </div>
+      <div class="text-right flex flex-col items-end shrink-0 pl-6">
+        <div class="flex items-center gap-2.5 bg-slate-50 border border-slate-200 px-3.5 py-1.5 rounded-xl shadow-xs">
+          <img src="assets/logo_telat.png" alt="Telat Group" class="h-6 w-auto object-contain" onerror="this.onerror=null; this.src='https://telat.mx/assets/img/logo.png';">
+          <span class="text-gray-400 font-light text-sm select-none">×</span>
+          <img src="assets/logo_tip.png" alt="TIP México" class="h-6 w-auto object-contain" onerror="this.onerror=null; this.style.display='none';">
+        </div>
+        <span class="text-[10px] text-gray-400 font-medium mt-1">Equipo en piso: 6 agentes dedicados</span>
+      </div>
+    </header>
+
+    <!-- 4 INDICADORES PRINCIPALES -->
+    <section class="grid grid-cols-4 gap-3.5 my-2">
+      
+      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Llamadas Recibidas</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-telat-celeste"></span>
+        </div>
+        <div class="my-1.5 flex items-baseline justify-between">
+          <span class="text-3xl font-extrabold text-telat-oscuro metric-font">529</span>
+          <span class="text-[11px] font-bold text-telat-celeste bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full">14-20 Nov</span>
+        </div>
+        <div class="text-[11px] text-gray-500">
+          <strong class="text-telat-oscuro font-bold">488 atendidas</strong> en 9 colas
+        </div>
+      </div>
+
+      <div class="bg-emerald-50/80 border border-emerald-300 rounded-xl p-3.5 flex flex-col justify-between shadow-xs">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">Porcentaje de Atención</span>
+          <span class="text-[10px] bg-emerald-200 text-emerald-900 font-bold px-2 py-0.5 rounded-full uppercase">Mejor semana</span>
+        </div>
+        <div class="my-1.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-emerald-700 metric-font">92.2%</span>
+          <span class="text-xs font-bold text-emerald-600">+5.6% vs S04</span>
+        </div>
+        <div class="text-[11px] text-emerald-800">
+          488 llamadas contestadas en piso
+        </div>
+      </div>
+
+      <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-blue-900 uppercase tracking-wider">Abandono en Cola</span>
+          <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded-full">En rango</span>
+        </div>
+        <div class="my-1.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-telat-celeste metric-font">3.6%</span>
+          <span class="text-xs font-semibold text-blue-700">19 llamadas</span>
+        </div>
+        <div class="text-[11px] text-blue-800">
+          Bajo control en horas de mayor carga
+        </div>
+      </div>
+
+      <div class="bg-telat-slateBg border border-telat-slateBorder rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">Nivel de Servicio y Espera</span>
+          <span class="text-[10px] bg-slate-200 text-gray-700 font-bold px-2 py-0.5 rounded-full">ASA 30s</span>
+        </div>
+        <div class="my-1.5 flex items-baseline gap-2">
+          <span class="text-3xl font-extrabold text-telat-oscuro metric-font">77.9%</span>
+          <span class="text-xs font-semibold text-gray-500">en tiempo</span>
+        </div>
+        <div class="text-[11px] text-gray-500">
+          Duración promedio de llamada: <strong class="text-telat-oscuro font-bold">8:24 min</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TABLA SEMANA A SEMANA -->
+    <section class="border border-telat-slateBorder rounded-xl overflow-hidden shadow-xs my-1 bg-white">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-slate-50 text-gray-700 font-bold uppercase tracking-wider text-[11px] border-b border-gray-200">
+          <tr>
+            <th class="py-2 px-3.5 w-[22%]">Semana</th>
+            <th class="py-2 px-3 text-center w-[12%]">Recibidas</th>
+            <th class="py-2 px-3 text-center w-[15%]">Atendidas</th>
+            <th class="py-2 px-3 text-center w-[12%]">Atención (%)</th>
+            <th class="py-2 px-3 text-center w-[11%]">Abandono (%)</th>
+            <th class="py-2 px-3 text-center w-[11%]">Espera Prom.</th>
+            <th class="py-2 px-3.5 text-right w-[17%]">Comentario Operativo</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 bg-white text-xs sm:text-[13px]">
+          <tr class="hover:bg-slate-50">
+            <td class="py-2 px-3.5">
+              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 01 <span class="font-normal text-gray-400 text-xs">(19 a 23-Oct)</span></div>
+            </td>
+            <td class="py-2 px-3 text-center font-bold text-telat-oscuro">167</td>
+            <td class="py-2 px-3 text-center font-semibold text-emerald-700">149 <span class="text-[11px] text-emerald-600">(89.2%)</span></td>
+            <td class="py-2 px-3 text-center font-bold text-emerald-600">89.2%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">10.8%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">14s</td>
+            <td class="py-2 px-3.5 text-right text-xs text-gray-600">8 líneas secundarias</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="py-2 px-3.5">
+              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 02 <span class="font-normal text-gray-400 text-xs">(26 a 30-Oct)</span></div>
+            </td>
+            <td class="py-2 px-3 text-center font-bold text-telat-oscuro">139</td>
+            <td class="py-2 px-3 text-center font-semibold text-emerald-700">132 <span class="text-[11px] text-emerald-600">(95.0%)</span></td>
+            <td class="py-2 px-3 text-center font-bold text-emerald-600">95.0%</td>
+            <td class="py-2 px-3 text-center font-mono text-emerald-600">5.0%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">15s</td>
+            <td class="py-2 px-3.5 text-right text-xs text-gray-600">Ajuste de pausas y marcación directa</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="py-2 px-3.5">
+              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 03 <span class="font-normal text-gray-400 text-xs">(02 a 06-Nov)</span></div>
+            </td>
+            <td class="py-2 px-3 text-center font-bold text-telat-oscuro">568</td>
+            <td class="py-2 px-3 text-center font-semibold text-emerald-700">466 <span class="text-[11px] text-emerald-600">(82.0%)</span></td>
+            <td class="py-2 px-3 text-center font-bold text-emerald-700">82.0%</td>
+            <td class="py-2 px-3 text-center font-mono text-amber-700">18.0%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">20s</td>
+            <td class="py-2 px-3.5 text-right text-xs text-gray-600">Entrada del conmutador 800</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="py-2 px-3.5">
+              <div class="font-bold text-telat-oscuro text-xs sm:text-sm">Semana 04 <span class="font-normal text-gray-400 text-xs">(09 a 13-Nov)</span></div>
+            </td>
+            <td class="py-2 px-3 text-center font-bold text-telat-oscuro">643</td>
+            <td class="py-2 px-3 text-center font-semibold text-emerald-700">557 <span class="text-[11px] text-emerald-600">(86.6%)</span></td>
+            <td class="py-2 px-3 text-center font-bold text-emerald-700">86.6%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">13.4%</td>
+            <td class="py-2 px-3 text-center font-mono text-gray-600">33s</td>
+            <td class="py-2 px-3.5 text-right text-xs text-gray-600">Pico de volumen en la campaña</td>
+          </tr>
+          <tr class="hover:bg-slate-50 bg-emerald-50/50 border-l-4 border-emerald-500">
+            <td class="py-2 px-3.5">
+              <div class="font-bold text-emerald-900 text-xs sm:text-sm flex items-center gap-1.5">
+                Semana 05 <span class="font-normal text-gray-500 text-xs">(14 a 20-Nov · WTD)</span>
+                <span class="bg-emerald-600 text-white text-[9px] font-bold px-1.5 py-0.2 rounded uppercase">Actual</span>
+              </div>
+            </td>
+            <td class="py-2 px-3 text-center font-extrabold text-telat-oscuro text-base">529</td>
+            <td class="py-2 px-3 text-center font-extrabold text-emerald-700 text-base">488 <span class="text-xs font-bold text-emerald-600 block sm:inline">(92.2%)</span></td>
+            <td class="py-2 px-3 text-center font-black text-emerald-700 text-base">92.2%</td>
+            <td class="py-2 px-3 text-center font-mono font-bold text-emerald-700 text-sm">3.6%</td>
+            <td class="py-2 px-3 text-center font-mono text-sm font-semibold text-gray-700">30s</td>
+            <td class="py-2 px-3.5 text-right text-xs text-emerald-800 font-bold">Mayor efectividad en llamadas contestadas</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- DETALLE POR COLAS -->
+    <section class="grid grid-cols-3 gap-3 my-1">
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs">
+        <div class="flex justify-between items-center mb-1">
+          <span class="font-bold text-telat-oscuro">8001 · TIP GENERAL</span>
+          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.2 rounded">SLA 77.2%</span>
+        </div>
+        <div class="flex justify-between text-[11px] text-gray-600">
+          <span>Recibidas: <strong>394</strong></span>
+          <span>Atendidas: <strong>360 (91.4%)</strong></span>
+          <span>Abandono: <strong>4.1%</strong></span>
+        </div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs">
+        <div class="flex justify-between items-center mb-1">
+          <span class="font-bold text-telat-oscuro">8003 · OFS</span>
+          <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.2 rounded">SLA 67.6%</span>
+        </div>
+        <div class="flex justify-between text-[11px] text-gray-600">
+          <span>Recibidas: <strong>74</strong></span>
+          <span>Atendidas: <strong>67 (90.5%)</strong></span>
+          <span>Abandono: <strong>4.1%</strong></span>
+        </div>
+      </div>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-xs">
+        <div class="flex justify-between items-center mb-1">
+          <span class="font-bold text-telat-oscuro">7 Líneas Dedicadas (BITCAR, Carnot, etc.)</span>
+          <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.2 rounded">SLA 95.1%</span>
+        </div>
+        <div class="flex justify-between text-[11px] text-gray-600">
+          <span>Recibidas: <strong>61</strong></span>
+          <span>Atendidas: <strong>61 (100.0%)</strong></span>
+          <span>Abandono: <strong>0.0%</strong></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTAS AL PIE -->
+    <footer class="pt-1.5 border-t border-gray-100 flex flex-col gap-1.5">
+      <div class="grid grid-cols-2 gap-3.5 text-xs">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-gray-600 flex items-start gap-2.5">
+          <div class="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></div>
+          <div>
+            <strong class="text-telat-oscuro font-bold block mb-0.5">Operación telefónica en orden:</strong> Se mantiene un 92.2% de llamadas atendidas y el abandono bajó a 3.6% en la semana. En las líneas de marcas dedicadas se atendió el 100% de las llamadas entrantes.
+          </div>
+        </div>
+
+        <div class="bg-blue-50/50 border border-blue-200 rounded-xl p-2.5 text-gray-600 flex items-start gap-2.5">
+          <div class="w-2 h-2 rounded-full bg-telat-celeste mt-1.5 shrink-0"></div>
+          <div>
+            <strong class="text-telat-oscuro font-bold block mb-0.5">Alcance de canales:</strong> Contact Center opera las llamadas del conmutador y la atención de casos/correos en Salesforce. La línea de WhatsApp se mantiene como atención interna directa del equipo de TIP México.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-[10px] text-gray-400 font-mono pt-0.5">
+        <span>Fuente: N2A Contact Center (contact.n2a.mx) · Periodo: 14/11/2026 al 20/11/2026</span>
+        <span>Lámina 1 de 3</span>
+      </div>
+    </footer>
+
+  </article>
+
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 2: PLAN DE ACCIÓN 1 - LLAMADAS NO CONTESTADAS (AJUSTE MIRIAM) -->
+  <!-- ========================================================================= -->
+  <article id="slide-2" class="slide-page">
+    
+    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja"></div>
+
+    <header class="flex justify-between items-start border-b border-gray-100 pb-3">
+      <div>
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <span class="text-[11px] font-bold text-amber-800 bg-amber-50 border border-amber-300 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Plan de Acción · Canal Telefónico
+          </span>
+          <span class="text-xs text-gray-300">|</span>
+          <span class="text-xs font-semibold text-gray-500">Módulo de Retorno de Llamadas en El Panóptico</span>
+        </div>
+        <h1 class="text-2xl sm:text-[28px] leading-tight font-extrabold text-telat-oscuro font-display tracking-tight">
+          Gestión Obligatoria de Llamadas No Contestadas
+        </h1>
+        <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5 font-medium">
+          Si el cliente no contesta la llamada de regreso, el sistema genera la plantilla para enviar el correo desde Salesforce con copia obligatoria
+        </p>
+      </div>
+      <div class="text-right flex flex-col items-end shrink-0 pl-6">
+        <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-xl">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="text-xs font-bold text-emerald-800 uppercase">Activo en Piso</span>
+        </div>
+        <span class="text-[10px] text-gray-400 font-medium mt-1">Copia obligatoria: supervisor.cc@tipmexico.com</span>
+      </div>
+    </header>
+
+    <!-- CUERPO: DEMO INTERACTIVO REFINADO -->
+    <section class="grid grid-cols-12 gap-5 my-auto">
+      
+      <!-- LADO IZQUIERDO: ASIGNACIÓN DE SUPERVISIÓN -->
+      <div class="col-span-4 flex flex-col justify-between bg-slate-50 border border-slate-200 rounded-2xl p-4 shadow-xs">
+        <div>
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-wider text-telat-oscuro">
+              1. Asignación de Miriam
+            </span>
+            <span class="text-[10px] bg-blue-100 text-telat-celeste font-bold px-2 py-0.5 rounded">Supervisión</span>
+          </div>
+
+          <p class="text-xs text-gray-600 mb-3">
+            Cuando una llamada entra a cola y el cliente cuelga antes de ser atendido, Miriam la asigna directamente al agente en turno:
+          </p>
+
+          <div class="bg-white border border-gray-200 rounded-xl p-3 shadow-xs space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-mono font-bold text-telat-oscuro text-sm">📞 55 4140 7945</span>
+              <span class="bg-red-50 text-red-700 font-bold px-2 py-0.5 rounded text-[10px]">No atendida en cola</span>
+            </div>
+
+            <div class="pt-1">
+              <span class="text-[11px] text-gray-500 block mb-1">Agente asignado:</span>
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-2 text-xs">
+                <span class="font-bold text-telat-oscuro block">Paula González Silva</span>
+                <span class="text-[10px] text-gray-500">Extensión 2002 · Notificación por correo enviada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-gray-200 text-[11px] text-gray-500 space-y-1">
+          <div>• Registro automático en la base de datos de control.</div>
+          <div>• Se da seguimiento hasta que quede evidencia del contacto en Salesforce.</div>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO: PANTALLA DEL AGENTE (CORREO EN SALESFORCE) -->
+      <div class="col-span-8 flex flex-col justify-between bg-slate-900 text-white rounded-2xl p-4 shadow-lg border border-slate-700">
+        <div>
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-700">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-amber-400"></span> 2. Pantalla del Agente (Simulador Interactivo)
+            </span>
+            <div class="flex items-center gap-2">
+              <button id="btn-demo-reset" onclick="resetDemoAgente()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 px-2 py-0.5 rounded border border-slate-600 transition-colors">
+                ↺ Reiniciar Demo
+              </button>
+              <span id="badge-estado-agente" class="text-[10px] bg-red-900/80 text-red-200 font-mono font-bold px-2 py-0.5 rounded border border-red-700">
+                PANTALLA BLOQUEADA
+              </span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-300 mb-2">
+            El agente marca al cliente. Si entra a buzón, la pantalla <strong>no se libera</strong> hasta registrar el caso y correo enviado en Salesforce:
+          </p>
+
+          <!-- SIMULACIÓN DE LA PANTALLA -->
+          <div class="bg-slate-950 border border-slate-700 rounded-xl p-3 space-y-2.5">
+            
+            <!-- SELECTOR DE CONTACTO VS BUZON -->
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Teléfono para llamada de regreso:</span>
+                <span class="font-mono text-xl font-bold text-cyan-400">55 4140 7945</span>
+              </div>
+              <div class="flex gap-2">
+                <!-- BOTÓN CONTACTO EFECTIVO -->
+                <button id="btn-toggle-contacto" onclick="seleccionarResultadoLlamada('contacto')" class="text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-slate-800 text-slate-400 border-slate-700 hover:text-white">
+                  <span>📞 Hablé con el cliente</span>
+                </button>
+                
+                <!-- BOTÓN SE FUE A BUZÓN -->
+                <button id="btn-toggle-buzon" onclick="seleccionarResultadoLlamada('buzon')" class="text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-amber-500/20 text-amber-300 border-amber-500/50 font-bold shadow-xs">
+                  <span>📵 Se fue a buzón</span>
+                  <span id="tag-buzon-activo" class="text-[9px] bg-amber-500 text-slate-950 px-1 rounded font-black">ACTIVO</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- VISTA A: GUÍA Y PLANTILLA PARA ENVIAR CORREO DESDE SALESFORCE -->
+            <div id="panel-vista-buzon" class="bg-slate-900/90 border border-amber-500/30 rounded-lg p-2.5 space-y-2 text-xs">
+              <div class="flex justify-between items-center text-[11px]">
+                <span class="font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  ✉️ Plantilla para Enviar desde Salesforce
+                </span>
+                <span class="text-[10px] text-slate-400">El correo se envía desde Salesforce</span>
+              </div>
+
+              <!-- FILA DE 3 CAMPOS: PARA, CC OBLIGATORIO Y NÚMERO DE CASO -->
+              <div class="grid grid-cols-3 gap-2 text-[11px]">
+                <div>
+                  <span class="text-slate-400 block text-[10px]">Para (Cliente):</span>
+                  <input type="text" value="contacto.cliente@empresa.com" readonly class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-0.5 text-slate-200 font-mono text-[11px]">
+                </div>
+                <div>
+                  <span class="text-amber-300 font-bold block text-[10px]">Copia obligatoria (CC):</span>
+                  <input type="text" value="supervisor.cc@tipmexico.com" readonly class="w-full bg-slate-800 border border-amber-500/50 rounded px-2 py-0.5 text-amber-300 font-mono text-[11px]">
+                </div>
+                <div>
+                  <span class="text-cyan-400 font-bold block text-[10px]">Número de Caso Salesforce (*):</span>
+                  <input id="input-buzon-caso" type="text" value="00066256" class="w-full bg-slate-800 border border-cyan-500/60 rounded px-2 py-0.5 text-white font-mono text-[11px]">
+                </div>
+              </div>
+
+              <!-- ASUNTO -->
+              <div>
+                <span class="text-slate-400 block text-[10px]">Asunto para Salesforce:</span>
+                <input type="text" value="Seguimiento a su llamada · TIP México Contact Center (Caso 00066256)" readonly class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-0.5 text-slate-200 text-[11px]">
+              </div>
+
+              <!-- CUERPO DEL CORREO CON BOTÓN DE COPIAR -->
+              <div>
+                <div class="flex justify-between items-center mb-0.5">
+                  <span class="text-slate-400 text-[10px]">Texto del mensaje (Copiar y pegar en Salesforce):</span>
+                  <button onclick="copiarPlantillaTexto()" class="text-[10px] bg-slate-800 hover:bg-slate-700 text-cyan-300 px-2 py-0.2 rounded border border-slate-600 transition-colors">
+                    <span id="txt-copiar-btn">Copiar Plantilla 📋</span>
+                  </button>
+                </div>
+                <div id="cuerpo-plantilla-texto" class="bg-slate-800 border border-slate-700 rounded p-2 text-[11px] text-slate-300 leading-relaxed font-sans">
+                  "Estimado cliente, intentamos comunicarnos con usted vía telefónica respecto a su solicitud. Nos ponemos a sus órdenes para devolverle la llamada en el horario que nos indique, o si lo prefiere, podemos atenderle directamente por este medio..."
+                </div>
+              </div>
+
+              <!-- ZONA DE VALIDACIÓN Y LIBERACIÓN -->
+              <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                <button onclick="simularAdjuntoLlamada()" class="text-[10px] text-slate-400 hover:text-slate-300 bg-slate-800 px-2 py-1 rounded border border-slate-700">
+                  <span id="txt-adjunto-llamada">📎 Captura de Salesforce (opcional)</span>
+                </button>
+                <button onclick="completarAccionAgente('correo')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg shadow-sm cursor-pointer transition-colors">
+                  Registrar Envío en Salesforce y Liberar Pantalla ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- VISTA B: CONTACTO EFECTIVO -->
+            <div id="panel-vista-contacto" class="hidden bg-slate-900/90 border border-emerald-500/40 rounded-lg p-2.5 space-y-2 text-xs">
+              <div class="flex justify-between items-center text-[11px]">
+                <span class="font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                  📞 Contacto Efectivo con el Cliente
+                </span>
+                <span class="text-[10px] text-emerald-400 bg-emerald-950 px-1.5 py-0.5 rounded border border-emerald-800">Llamada contestada</span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div>
+                  <label class="text-slate-300 font-bold block text-[10px] mb-0.5">Número de Caso / Ticket Salesforce (*):</label>
+                  <input id="input-ticket-sf" type="text" value="00066256" class="w-full bg-slate-800 border border-emerald-500/60 rounded px-2 py-1 text-white font-mono text-xs">
+                </div>
+                <div>
+                  <label class="text-slate-300 font-bold block text-[10px] mb-0.5">Motivo de Resolución:</label>
+                  <select class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs">
+                    <option>Atención de Trámite / Tenencia</option>
+                    <option>Siniestro / Canalización</option>
+                    <option>Mantenimiento y Citas</option>
+                    <option>Información General</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-slate-400 block text-[10px] mb-0.5">Notas del Acuerdo con el Cliente:</label>
+                <input type="text" value="Se atendió solicitud del cliente y se acordó envío de documentación." class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs">
+              </div>
+
+              <div class="flex justify-between items-center pt-1">
+                <span class="text-[10px] text-slate-400">Se asocia el folio en Salesforce y se auditan los minutos de llamada.</span>
+                <button onclick="completarAccionAgente('contacto')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg shadow-sm cursor-pointer transition-colors">
+                  Registrar Contacto y Liberar Pantalla ✓
+                </button>
+              </div>
+            </div>
+
+            <!-- VISTA C: MENSAJE DE ÉXITO Y PANTALLA LIBERADA -->
+            <div id="panel-vista-exito" class="hidden bg-emerald-950/60 border border-emerald-500/60 rounded-lg p-4 text-center space-y-2 text-xs">
+              <div class="w-8 h-8 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center mx-auto text-sm">
+                ✓
+              </div>
+              <div id="txt-exito-detalle" class="font-bold text-emerald-300 text-sm">
+                ¡Llamada registrada y documentada con éxito!
+              </div>
+              <p class="text-[11px] text-slate-300 max-w-md mx-auto">
+                Se guardó la evidencia en el sistema central y la pantalla del agente queda liberada para recibir la siguiente llamada.
+              </p>
+              <div class="pt-2">
+                <button onclick="resetDemoAgente()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3 py-1 rounded border border-slate-600 cursor-pointer">
+                  ↺ Probar de nuevo (Reiniciar Simulación)
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PIE LIMPIO (SIN LA FRASE DE EVIDENCIA POR ESCRITO) -->
+        <div class="mt-2 text-[10px] text-slate-400 flex justify-between items-center pt-1.5 border-t border-slate-800">
+          <span>El agente no puede cerrar el intento diciendo únicamente que no le contestaron.</span>
+          <span class="text-slate-400">Requiere número de caso y correo enviado desde Salesforce.</span>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="pt-2 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 font-mono">
+      <span>El Panóptico TIP · Módulo de Devolución de Llamadas · Telat Group</span>
+      <span>Lámina 2 de 3</span>
+    </footer>
+
+  </article>
+
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE 3: PLAN DE ACCIÓN 2 - CASOS Y CORREOS EN SALESFORCE (INTERACTIVO) -->
+  <!-- ========================================================================= -->
+  <article id="slide-3" class="slide-page">
+    
+    <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-telat-celeste via-telat-amarillo to-telat-naranja"></div>
+
+    <header class="flex justify-between items-start border-b border-gray-100 pb-3">
+      <div>
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <span class="text-[11px] font-bold text-telat-naranja bg-orange-50 border border-orange-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+            Plan de Acción · Casos y Correos
+          </span>
+          <span class="text-xs text-gray-300">|</span>
+          <span class="text-xs font-semibold text-gray-500">Atención de Tickets Salesforce & Seguimiento por Correo</span>
+        </div>
+        <h1 class="text-2xl sm:text-[28px] leading-tight font-extrabold text-telat-oscuro font-display tracking-tight">
+          Gestión de Casos de Salesforce y Regla de Seguimiento
+        </h1>
+        <p class="text-xs sm:text-[13px] text-gray-500 mt-0.5 font-medium">
+          Cada agente atiende los casos donde es propietario, dejando evidencia del contacto y correo de respaldo obligatorio
+        </p>
+      </div>
+      <div class="text-right flex flex-col items-end shrink-0 pl-6">
+        <div class="flex items-center gap-2 bg-blue-50 border border-blue-200 px-3 py-1 rounded-xl">
+          <span class="text-xs font-bold text-telat-celeste uppercase">Consola de Casos</span>
+        </div>
+        <span class="text-[10px] text-gray-400 font-medium mt-1">Copia obligatoria: supervisor.cc@tipmexico.com</span>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-12 gap-5 my-auto">
+      
+      <!-- COLUMNA 1: DIAGNÓSTICO Y LA REGLA OPERATIVA -->
+      <div class="col-span-5 flex flex-col justify-between bg-slate-50 border border-slate-200 rounded-2xl p-4 shadow-xs">
+        <div>
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-wider text-telat-oscuro">
+              1. Corrección del Procedimiento
+            </span>
+            <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Regla de Operación</span>
+          </div>
+
+          <div class="space-y-3 text-xs text-gray-600">
+            <!-- CASO ANTERIOR -->
+            <div class="bg-white p-3 rounded-xl border border-gray-200">
+              <div class="font-bold text-telat-oscuro mb-1 flex items-center gap-1.5">
+                <span class="text-red-500 font-bold">✕</span> Lo que ocurrió en el caso de Sergio Remus:
+              </div>
+              <p class="text-[11px] text-gray-500 leading-relaxed">
+                El agente marcó al cliente, entró a buzón y dejó la nota interna en Salesforce, pero <strong class="text-red-600">no envió correo</strong>. Para el cliente y para Ventas, el caso se percibió como desatendido.
+              </p>
+            </div>
+
+            <!-- NUEVO PROCEDIMIENTO -->
+            <div class="bg-emerald-50/80 p-3 rounded-xl border border-emerald-300">
+              <div class="font-bold text-emerald-900 mb-1 flex items-center gap-1.5">
+                <span class="text-emerald-600 font-bold">✓</span> Procedimiento corregido a partir de hoy:
+              </div>
+              <p class="text-[11px] text-emerald-800 leading-relaxed">
+                Si no hay contacto telefónico, es <strong class="font-bold">obligatorio enviar correo de seguimiento de inmediato</strong> con copia a <strong class="underline">supervisor.cc@tipmexico.com</strong>. No se permite dar por cerrado un intento sin este correo.
+              </p>
+            </div>
+
+            <!-- DETALLE DE LA BASE -->
+            <div class="bg-blue-50/80 p-3 rounded-xl border border-blue-200 text-[11px] text-blue-900">
+              <span class="font-bold block mb-1">Manejo de asignaciones:</span>
+              <p class="text-[10px] text-blue-800 leading-relaxed">
+                Salesforce ya asigna cada caso a un agente a través del campo <strong>"Propietario del caso"</strong>. Miriam no tiene que repartirlos a mano: cada asesor atiende su propia cola de trabajo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-2 border-t border-gray-200 text-[10px] text-gray-400">
+          Objetivo: Que todo cliente con llamada a buzón reciba confirmación por escrito el mismo día.
+        </div>
+      </div>
+
+      <!-- COLUMNA 2: BANDEJA DE TRABAJO DEL AGENTE -->
+      <div class="col-span-7 flex flex-col justify-between bg-white border border-slate-200 rounded-2xl p-4 shadow-xs">
+        <div>
+          <div class="flex items-center justify-between pb-2 mb-3 border-b border-gray-200">
+            <span class="text-xs font-bold uppercase tracking-wider text-telat-oscuro">
+              2. Bandeja de Casos del Agente (El Panóptico)
+            </span>
+            <span class="text-[10px] bg-slate-100 text-gray-700 font-bold px-2 py-0.5 rounded">Vista del Asesor</span>
+          </div>
+
+          <p class="text-xs text-gray-600 mb-2.5">
+            El agente entra a su sesión en El Panóptico y consulta los casos que tiene asignados en Salesforce para darles salida:
+          </p>
+
+          <!-- LISTA DE CASOS -->
+          <div class="border border-gray-200 rounded-xl overflow-hidden shadow-xs mb-3 text-xs">
+            <div class="bg-slate-100 px-3 py-1.5 font-bold text-gray-700 flex justify-between text-[11px]">
+              <span>Caso y Asunto</span>
+              <span>Origen</span>
+              <span>Acción</span>
+            </div>
+            <div class="divide-y divide-gray-100 bg-white">
+              <div id="row-caso-1" class="px-3 py-2 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                <div>
+                  <div class="font-bold text-telat-oscuro font-mono">#00066256 · Tenencia Refrendo 2027</div>
+                  <div class="text-[10px] text-gray-400">Cliente: Ricardo Armando Torres · Tel: 614-303-2176</div>
+                </div>
+                <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Email</span>
+                <button onclick="seleccionarCasoDemo('00066256')" class="bg-telat-celeste hover:bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded cursor-pointer transition-colors">
+                  Atender ➔
+                </button>
+              </div>
+              <div id="row-caso-2" class="px-3 py-2 flex items-center justify-between hover:bg-slate-50 transition-colors">
+                <div>
+                  <div class="font-bold text-telat-oscuro font-mono">#00066254 · Tenencia Menarini México</div>
+                  <div class="text-[10px] text-gray-400">Cliente: A. Menarini México S.A. de C.V.</div>
+                </div>
+                <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Email</span>
+                <button onclick="seleccionarCasoDemo('00066254')" class="bg-telat-celeste hover:bg-blue-600 text-white text-[10px] font-bold px-2.5 py-1 rounded cursor-pointer transition-colors">
+                  Atender ➔
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- REGISTRO DEL RESULTADO -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-[11px] font-bold text-telat-oscuro uppercase tracking-wider block">
+                Registro de Atención y Evidencia:
+              </span>
+              <span id="label-caso-activo" class="text-[10px] font-mono text-telat-celeste font-bold bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                Caso #00066256
+              </span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2 text-[11px]">
+              <label onclick="cambiarTipoAtencionCaso('llamada')" class="flex items-center gap-1.5 bg-white p-2 rounded border border-gray-200 cursor-pointer">
+                <input type="radio" id="radio-llamada" name="res_op" checked class="text-telat-celeste">
+                <span>📞 Hablé con el cliente</span>
+              </label>
+              <label onclick="cambiarTipoAtencionCaso('correo')" class="flex items-center gap-1.5 bg-white p-2 rounded border border-gray-200 cursor-pointer">
+                <input type="radio" id="radio-correo" name="res_op" class="text-telat-celeste">
+                <span>✉️ Envié correo desde Salesforce</span>
+              </label>
+            </div>
+            
+            <div class="flex items-center gap-2 pt-1">
+              <input id="input-caso-folio" type="text" value="00066256" placeholder="Folio de Salesforce" class="w-full bg-white border border-gray-300 rounded px-2.5 py-1 text-xs font-mono">
+              <button onclick="simularAdjunto()" class="bg-slate-200 hover:bg-slate-300 text-gray-700 text-xs font-medium px-2.5 py-1 rounded border border-gray-300 shrink-0 cursor-pointer">
+                <span id="txt-adjunto">📎 Captura (opcional)</span>
+              </button>
+              <button onclick="guardarCasoDemo()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3.5 py-1 rounded shrink-0 cursor-pointer transition-colors">
+                Guardar ✓
+              </button>
+            </div>
+
+            <div id="msg-caso-guardado" class="hidden text-[11px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-200 p-1.5 rounded text-center">
+              ✓ Caso actualizado y liberado en la cola del agente.
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 text-[10px] text-gray-500 flex justify-between items-center pt-2 border-t border-gray-200">
+          <span>El agente desahoga sus casos pendientes de forma ordenada.</span>
+          <span class="text-telat-celeste font-bold">Seguimiento visible para Miriam y Memo</span>
+        </div>
+      </div>
+
+    </section>
+
+    <footer class="pt-2 border-t border-gray-100 flex justify-between items-center text-[10px] text-gray-400 font-mono">
+      <span>Atención de Casos Salesforce · El Panóptico TIP · Telat Group</span>
+      <span>Lámina 3 de 3</span>
+    </footer>
+
+  </article>
+
+  <!-- ========================================================================= -->
+  <!-- SCRIPT INTERACTIVO LIMPIO PARA DEMO CON MEMO -->
+  <!-- ========================================================================= -->
+  <script>
+    // ESTADO DEL SIMULADOR SLIDE 2
+    function seleccionarResultadoLlamada(tipo) {
+      const btnContacto = document.getElementById('btn-toggle-contacto');
+      const btnBuzon = document.getElementById('btn-toggle-buzon');
+      const tagBuzon = document.getElementById('tag-buzon-activo');
+      
+      const panelBuzon = document.getElementById('panel-vista-buzon');
+      const panelContacto = document.getElementById('panel-vista-contacto');
+      const panelExito = document.getElementById('panel-vista-exito');
+
+      panelExito.classList.add('hidden');
+
+      if (tipo === 'contacto') {
+        // Activar botón contacto
+        btnContacto.className = 'text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-emerald-600/30 text-emerald-300 border-emerald-500 font-bold shadow-xs';
+        // Desactivar botón buzón
+        btnBuzon.className = 'text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-slate-800 text-slate-400 border-slate-700 hover:text-white';
+        if (tagBuzon) tagBuzon.classList.add('hidden');
+
+        panelBuzon.classList.add('hidden');
+        panelContacto.classList.remove('hidden');
+      } else {
+        // Activar botón buzón
+        btnBuzon.className = 'text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-amber-500/20 text-amber-300 border-amber-500/50 font-bold shadow-xs';
+        if (tagBuzon) tagBuzon.classList.remove('hidden');
+        // Desactivar botón contacto
+        btnContacto.className = 'text-xs px-2.5 py-1 rounded border transition-all flex items-center gap-1.5 cursor-pointer bg-slate-800 text-slate-400 border-slate-700 hover:text-white';
+
+        panelContacto.classList.add('hidden');
+        panelBuzon.classList.remove('hidden');
+      }
+    }
+
+    function copiarPlantillaTexto() {
+      const btn = document.getElementById('txt-copiar-btn');
+      btn.innerText = '¡Copiado! ✓';
+      setTimeout(() => {
+        btn.innerText = 'Copiar Plantilla 📋';
+      }, 2000);
+    }
+
+    function simularAdjuntoLlamada() {
+      const btn = document.getElementById('txt-adjunto-llamada');
+      btn.innerText = '📎 Evidencia_Salesforce.png (180 KB) ✓';
+    }
+
+    function completarAccionAgente(accion) {
+      const panelBuzon = document.getElementById('panel-vista-buzon');
+      const panelContacto = document.getElementById('panel-vista-contacto');
+      const panelExito = document.getElementById('panel-vista-exito');
+      const txtDetalle = document.getElementById('txt-exito-detalle');
+      const badgeEstado = document.getElementById('badge-estado-agente');
+
+      const folioCaso = document.getElementById('input-buzon-caso').value || '00066256';
+
+      panelBuzon.classList.add('hidden');
+      panelContacto.classList.add('hidden');
+      panelExito.classList.remove('hidden');
+
+      if (accion === 'correo') {
+        txtDetalle.innerHTML = '✉️ Correo enviado desde Salesforce (Caso #' + folioCaso + ') con copia a supervisor.cc@tipmexico.com';
+      } else {
+        txtDetalle.innerHTML = '📞 Contacto registrado y asociado al caso #' + folioCaso + ' en Salesforce';
+      }
+
+      badgeEstado.className = 'text-[10px] bg-emerald-900/80 text-emerald-200 font-mono font-bold px-2 py-0.5 rounded border border-emerald-700';
+      badgeEstado.innerText = 'PANTALLA LIBERADA ✓';
+    }
+
+    function resetDemoAgente() {
+      const badgeEstado = document.getElementById('badge-estado-agente');
+      badgeEstado.className = 'text-[10px] bg-red-900/80 text-red-200 font-mono font-bold px-2 py-0.5 rounded border border-red-700';
+      badgeEstado.innerText = 'PANTALLA BLOQUEADA';
+
+      const btnAdj = document.getElementById('txt-adjunto-llamada');
+      if (btnAdj) btnAdj.innerText = '📎 Captura de Salesforce (opcional)';
+
+      seleccionarResultadoLlamada('buzon');
+    }
+
+    // SIMULADOR SLIDE 3
+    function seleccionarCasoDemo(folio) {
+      document.getElementById('label-caso-activo').innerText = 'Caso #' + folio;
+      document.getElementById('input-caso-folio').value = folio;
+      document.getElementById('msg-caso-guardado').classList.add('hidden');
+    }
+
+    function cambiarTipoAtencionCaso(tipo) {
+      const input = document.getElementById('input-caso-folio');
+      if (tipo === 'correo') {
+        input.placeholder = 'Folio SF + Correo enviado a supervisor.cc@tipmexico.com';
+      } else {
+        input.placeholder = 'Folio de Salesforce';
+      }
+    }
+
+    function simularAdjunto() {
+      const txt = document.getElementById('txt-adjunto');
+      txt.innerText = '📎 Evidencia.png (142 KB) ✓';
+    }
+
+    function guardarCasoDemo() {
+      const msg = document.getElementById('msg-caso-guardado');
+      msg.classList.remove('hidden');
+      setTimeout(() => {
+        msg.classList.add('hidden');
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
