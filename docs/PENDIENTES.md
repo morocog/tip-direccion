@@ -145,10 +145,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   - **Solicitud Técnica para N2A:**
     1. Calibrar el PBX para que el timer de conversación (`Conversación (s)`) comience estrictamente a partir de la conexión de voz bidireccional cliente-agente (post-locución).
     2. O bien, exponer en el CDR la columna desagregada de tiempo de locución previa para descontarla de forma exacta en el ETL de reportería.
-  - **Prioridad (2026-11-20):** Baja. Se enviará en correo separado, después del frente de visibilidad de llamadas fuera de horario.
-- [ ] **Requerimiento 12: Trazabilidad de Hold y Transferencias en CDR (Ticket Oficial #225604 en Desarrollo N2A):**
+  - **Estatus (2026-11-23):** Solicitado en conferencia y correo formal a N2A (Javier Jaime / Efrén Torres); N2A validará en qué punto del flujo cae la locución y si cuenta dentro de `Conversación (s)`.
+- [x] **Requerimiento 12: Trazabilidad de Hold y Transferencias en CDR (Ticket Oficial #225604 — Solventado por N2A):**
   - **Contexto:** Auditoría de calidad y WFM (Fabiola Álvarez) para registrar duración de retención (`Hold_seg`, `Hold_conteo`) y derivaciones hacia la marcación rápida `237` (Cabina de Siniestros `55 4195 6614`).
-  - **Estatus:** En espera de que N2A exponga estas columnas desagregadas en las descargas de llamadas.
+  - **Resolución (2026-11-23):** Verificado en las descargas recientes (`hold-transferencias-llamadas.csv`, `hold-transferencias-detalle.csv`, `hold-transferencias-agentes.csv`): N2A ya entrega conteo y segundos en hold, transferencias y destino `237` (`Número corto`) ligados 1:1 por `Id de llamada` (`Linkedid`). No requiere duplicarse en `llamadas.csv`.
 - [x] **Requerimiento 13: Nombre de cola (marca) visible en portal de Contact Center y Softphone (Liberado por Javier Jaime, 09-Nov-2026):**
   - **Origen:** Punto 2 del documento de desarrollo acordado el 27 de octubre con N2A.
   - **Entrega en Producción:** Javier Jaime (Director General N2A) confirmó la instalación el fin de semana del 08-09 de Noviembre.
@@ -177,7 +177,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
   - **Origen:** Respuesta pendiente a Javier Jaime (N2A) por las 23 llamadas que entraron a cola el lunes 16 de noviembre, día festivo, y que ya fueron ocultadas de reportes y pantallas sin borrar los registros.
   - **Frente que abre:** Confirmar que el portal y el CDR conserven y expongan el registro de toda la actividad fuera de la ventana de servicio (fines de semana y días festivos), para tener visibilidad completa de lo que entra en esos rangos.
   - **Restricción:** Esa actividad no debe computar en métricas de abandono, nivel de servicio ni AHT de la operación nominal.
-  - **Estatus (2026-11-20):** Correo por redactar y enviar por Ricardo García. Prioridad alta.
+  - **Estatus (2026-11-23):** Conferencia realizada con Javier Jaime y Efrén Torres + correo formal enviado. N2A confirmó factibilidad en una vista/versión separada para seguimiento interno sin afectar métricas nominales.
+- [ ] **Requerimiento 19: Tipificaciones (Dispositions) en portal de agentes y `llamadas.csv`:**
+  - **Origen:** Junta operativa de Miriam con Memo Llantada; solicitado formalmente a N2A el 2026-11-23 tras conferencia con Javier Jaime y Efrén Torres.
+  - **Alcance:** Habilitar en `contact.n2a.mx/agente` (sección de tiempo/estado/auxiliares) las 4 opciones de Laura (*Seguimiento, Solicitud, Quejas, Información*) y exponerlas en `llamadas.csv`. Por definir si aplica solo en llamada activa o también edición posterior por supervisión.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
