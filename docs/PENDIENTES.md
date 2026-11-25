@@ -191,6 +191,8 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 ---
 
 ## 🔴 5. Deuda Técnica & Backlog
+- [ ] **Acceso a Módulo de Sanciones en Intranet para Supervisión TIP (Revisión 2026-11-25):** Correo enviado el 24-Nov-2026 a **Natacha Alvarez** (`programacion@telat-group.com`) solicitando habilitar `Recursos Humanos > Sanciones` (`telat.mx/intranet/rrhh/sanciones/add`) para **Miriam Alejandra Totomoch Torres** (`mtotomocht@telat-group.com`) con el fin de registrar amonestación verbal en campaña TIP (desconexión / dejar ir llamadas al final de turno). Pendiente validar respuesta y acceso el 25-Nov-2026.
+- [ ] **Diseño Formal de Campaña TIP México (Estructura Básica / Procesos):** Trabajar con **Alejandro Valente** (Admin de Procesos y Calidad) el documento de diseño formal de campaña de TIP México *(pendiente estructural de procesos, fuera del alcance del Objetivo 1 Q4 2026)*.
 - [ ] **Simulador de Tráfico en Tiempo Real:** Interconectar el dashboard ejecutivo (`index.html`) con APIs de conmutador una vez formalizado el contrato.
 - [ ] **Sincronización con Repositorio de Presentaciones:** Homologar documentación en repositorios centralizados de presentaciones si Dirección General requiere acceso.
 
