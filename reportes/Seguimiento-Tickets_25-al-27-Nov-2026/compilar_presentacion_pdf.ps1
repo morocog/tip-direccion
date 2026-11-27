@@ -1,4 +1,4 @@
-﻿$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $htmlFile = Join-Path $scriptDir "presentacion_tip_27nov2026.html"
 $outputPdf = Join-Path $scriptDir "presentacion_tip_27nov2026.pdf"
 

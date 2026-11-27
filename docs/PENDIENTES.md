@@ -181,6 +181,10 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 - [ ] **Requerimiento 19: Tipificaciones (Dispositions) en portal de agentes y `llamadas.csv`:**
   - **Origen:** Junta operativa de Miriam con Memo Llantada; solicitado formalmente a N2A el 2026-11-23 tras conferencia con Javier Jaime y Efrén Torres.
   - **Alcance:** Habilitar en `contact.n2a.mx/agente` (sección de tiempo/estado/auxiliares) las 4 opciones de Laura (*Seguimiento, Solicitud, Quejas, Información*) y exponerlas en `llamadas.csv`. Por definir si aplica solo en llamada activa o también edición posterior por supervisión.
+- [ ] **Requerimiento 20: Visualización en vivo de llamadas en hold y contador en tablero de supervisión:**
+  - **Origen:** Mencionado por Javier Jaime (N2A) en correo del 13-Nov-2026 (*«ver en el tablero cuándo una llamada está en espera y cuánto tiempo lleva»*) al habilitar el registro de *holds* en base de datos; retomado el 26-Nov-2026 por consulta operativa de supervisión (André Arenas).
+  - **Alcance:** Mostrar en tiempo real en el tablero de supervisión (`contact.n2a.mx/supervisor`) cuando una llamada/agente se encuentra en *hold* y el contador en segundos de duración transcurrida (complementando el reporte histórico ya liberado en «Hold y transferencias»).
+  - **Estatus (2026-11-26):** Correo de seguimiento enviado a Javier Jaime y Rosario Sacramento (N2A) para confirmar fecha estimada de liberación o formalización en roadmap.
 - [x] **Directorio y Gobernanza de Canales Oficiales, TI & TIP México:**
   - **Gerente de TI, Enlace y Comunicaciones Telat:** Ricardo Morales (`rmorales@telat-group.com`).
   - **Subdirector de Operaciones Telat:** Ricardo García (`rgarcia@telat-group.com`).
@@ -191,6 +195,7 @@ Este documento mantiene el estado de verificación, roadmap, acuerdos y deuda t�
 ---
 
 ## 🔴 5. Deuda Técnica & Backlog
+- [ ] **Dinámica Digital de Reforzamiento de Capacitación (Propuesta Memo Llantada — Facturable a TIP, Decisión Lunes 30-Nov-2026):** Definir opción digital (Módulo nativo «Reto Operativo» en `tip-base-conocimiento` vs «Reto Diario Relámpago» vs piloto exprés Quizizz/Forms) para evaluar procesos, casuística y matriz de escalamientos a libro abierto contra reloj sin afectar SLA (6 asesores escalonados) y generar evidencia auditable de premios económicos facturables bajo concepto *reforzamiento de capacitación*. Detalle completo en `tip-base-conocimiento/docs/propuesta_dinamica_reforzamiento_tip.md`.
 - [ ] **Acceso a Módulo de Sanciones en Intranet para Supervisión TIP (Revisión 2026-11-25):** Correo enviado el 24-Nov-2026 a **Natacha Alvarez** (`programacion@telat-group.com`) solicitando habilitar `Recursos Humanos > Sanciones` (`telat.mx/intranet/rrhh/sanciones/add`) para **Miriam Alejandra Totomoch Torres** (`mtotomocht@telat-group.com`) con el fin de registrar amonestación verbal en campaña TIP (agente: **Luis Gerardo**, por desconexión / dejar ir llamadas al final de turno). Pendiente validar respuesta y acceso el 25-Nov-2026.
 - [ ] **Diseño Formal de Campaña TIP México (Estructura Básica / Procesos):** Trabajar con **Alejandro Valente** (Admin de Procesos y Calidad) el documento de diseño formal de campaña de TIP México *(pendiente estructural de procesos, fuera del alcance del Objetivo 1 Q4 2026)*.
 - [ ] **Simulador de Tráfico en Tiempo Real:** Interconectar el dashboard ejecutivo (`index.html`) con APIs de conmutador una vez formalizado el contrato.
