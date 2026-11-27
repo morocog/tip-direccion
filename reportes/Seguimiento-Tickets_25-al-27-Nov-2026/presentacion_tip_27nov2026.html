@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seguimiento operativo TIP México · 27 Nov 2026 | Telat Group</title>
+
+  <!-- Tipografías oficiales Telat: Bricolage Grotesque + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            telatCeleste: '#3284C6',
+            telatNaranja: '#EB5B27',
+            telatAmarillo: '#FECA66',
+            telatOscuro: '#222221',
+            telatClaro: '#FBFBFD',
+            ivoryBg: '#F6F4F0',
+            tipRojo: '#E30613',
+          },
+          fontFamily: {
+            sans: ['"DM Sans"', 'sans-serif'],
+            display: ['"Bricolage Grotesque"', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: #161615;
+      color: #222221;
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Lienzo canónico 1920x1080 (16:9 Full HD) */
+    .viewport-scaler {
+      width: 1920px;
+      height: 1080px;
+      position: relative;
+      flex-shrink: 0;
+      transform-origin: center center;
+    }
+
+    .slide {
+      width: 1920px;
+      height: 1080px;
+      position: absolute;
+      inset: 0;
+      padding: 64px 96px 48px 96px;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #F6F4F0;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* Neutralización de engrosamiento sintético */
+    h1.font-display, h2.font-display, h3.font-display, .font-display {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navegación flotante discreta */
+    #nav-controls {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 2.25rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(251, 251, 253, 0.96);
+      border: 1px solid rgba(34, 34, 33, 0.12);
+      padding: 0.45rem 0.75rem;
+      border-radius: 9999px;
+      box-shadow: 0 12px 28px -6px rgba(34, 34, 33, 0.22);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F1EFEA;
+      color: #222221;
+      border: none;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: #EB5B27;
+      color: #FFFFFF;
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    #slide-indicator {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #222221;
+      padding: 0 0.5rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    @media print {
+      html, body {
+        width: 1920px;
+        height: auto;
+        background: none;
+        display: block;
+        overflow: visible;
+      }
+      .viewport-scaler {
+        width: 1920px;
+        height: auto;
+        transform: none !important;
+      }
+      .slide {
+        position: relative !important;
+        display: flex !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .slide:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      #nav-controls {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-scaler" id="scaler">
+
+    <!-- ==============================================================
+         LÁMINA 1: RITMO DE ABATIMIENTO (CORTE SALESFORCE 25 NOV)
+         ============================================================== -->
+    <section class="slide active" data-slide="1">
+      <svg class="absolute top-0 right-0 w-[1920px] h-[1080px] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
+        <circle cx="1835" cy="95" r="290" stroke="#EB5B27" stroke-width="44" opacity="0.10" />
+        <circle cx="1835" cy="95" r="175" fill="#3284C6" opacity="0.08" />
+      </svg>
+
+      <!-- Barra superior de co-branding Telat × TIP México -->
+      <div class="relative z-10 flex items-center justify-between">
+        <div class="flex items-center gap-5 bg-white px-6 py-3 rounded-2xl border border-slate-200/90 shadow-sm">
+          <img src="logo_telat.png" alt="Telat Group" class="h-9 w-auto object-contain" />
+          <span class="text-slate-300 text-2xl font-light">|</span>
+          <span class="text-[15px] font-semibold tracking-wide text-slate-400 uppercase">En alianza con</span>
+          <img src="logo_tip.png" alt="TIP México" class="h-9 w-auto object-contain" />
+        </div>
+
+        <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/90 shadow-sm text-[18px] text-slate-600 font-medium">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#3284C6]"></span>
+          <span>Fuente: Salesforce TIP · Corte base miércoles 25 nov 2026, 3:26 PM</span>
+        </div>
+      </div>
+
+      <!-- Encabezado y KPI héroe -->
+      <div class="relative z-10 flex items-end justify-between gap-10 mt-6">
+        <div class="max-w-[1180px]">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-3 h-3 rounded-full bg-[#EB5B27]"></span>
+            <span class="font-sans font-bold text-[19px] tracking-wider text-[#EB5B27] uppercase">Seguimiento operativo · 20 al 25 de noviembre</span>
+          </div>
+          <h1 class="font-display text-[#222221] text-[56px] leading-[1.06]">
+            Avance de atención de casos desde el viernes 20
+          </h1>
+          <p class="font-sans text-slate-600 text-[23px] mt-2">
+            Comparativo de ingresos y cierres registrados en Salesforce por el equipo de 6 asesores.
+          </p>
+        </div>
+
+        <div class="bg-[#222221] text-white rounded-3xl px-8 py-5 flex items-center gap-6 shadow-lg border-l-[6px] border-[#EB5B27] shrink-0">
+          <div class="font-display text-[68px] leading-none text-[#FECA66]">0</div>
+          <div>
+            <div class="font-display text-[24px] leading-tight text-white">Casos asignados &gt; 48 h</div>
+            <div class="font-sans text-[17px] text-slate-300 mt-1">Los 51 casos en bandeja ingresaron entre el 23 y el 25 nov</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Tarjetas KPI -->
+      <div class="relative z-10 grid grid-cols-4 gap-6 mt-6">
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div class="text-[15px] font-bold uppercase tracking-wider text-slate-500">Casos cerrados (20–25 nov)</div>
+          <div class="flex items-baseline gap-3 my-1">
+            <span class="font-display text-[52px] text-[#222221] leading-none">636</span>
+            <span class="px-3 py-1 rounded-full bg-[#3284C6]/12 text-[#3284C6] font-bold text-[16px]">+121 netos</span>
+          </div>
+          <div class="text-[17px] text-slate-600">Frente a <strong>515 casos recibidos</strong> en el mismo periodo.</div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div class="text-[15px] font-bold uppercase tracking-wider text-slate-500">Correos cerrados (20–25 nov)</div>
+          <div class="flex items-baseline gap-3 my-1">
+            <span class="font-display text-[52px] text-[#EB5B27] leading-none">398</span>
+            <span class="px-3 py-1 rounded-full bg-[#EB5B27]/12 text-[#EB5B27] font-bold text-[16px]">+96 netos</span>
+          </div>
+          <div class="text-[17px] text-slate-600">Contra <strong>302 correos recibidos</strong> en el mismo periodo.</div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div class="text-[15px] font-bold uppercase tracking-wider text-slate-500">Cierres de semanas previas</div>
+          <div class="flex items-baseline gap-3 my-1">
+            <span class="font-display text-[52px] text-[#3284C6] leading-none">347</span>
+            <span class="px-3 py-1 rounded-full bg-slate-100 text-[#222221] font-bold text-[16px]">54.6%</span>
+          </div>
+          <div class="text-[17px] text-slate-600"><strong>242</strong> casos del 13–19 nov y <strong>105</strong> del 1–12 nov cerrados.</div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div class="text-[15px] font-bold uppercase tracking-wider text-slate-500">Abiertos con movimiento</div>
+          <div class="flex items-baseline gap-3 my-1">
+            <span class="font-display text-[52px] text-[#222221] leading-none">292</span>
+            <span class="px-3 py-1 rounded-full bg-[#FECA66]/35 text-[#222221] font-bold text-[16px]">62%</span>
+          </div>
+          <div class="text-[17px] text-slate-600">De 471 casos activos, 292 registraron actualización del 20 al 25 nov.</div>
+        </div>
+      </div>
+
+      <!-- Dos paneles inferiores -->
+      <div class="relative z-10 grid grid-cols-12 gap-7 mt-6 flex-1 min-h-0">
+        <!-- Gráfica diaria -->
+        <div class="col-span-7 bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm flex flex-col">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="font-display text-[25px] text-[#222221]">Ingresos vs. cierres diarios (20–25 nov)</h3>
+            <div class="flex items-center gap-5 text-[16px] font-semibold text-slate-600">
+              <span class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded bg-slate-300 inline-block"></span>Ingresos</span>
+              <span class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded bg-[#3284C6] inline-block"></span>Cierres</span>
+              <span class="flex items-center gap-2"><span class="w-3.5 h-3.5 rounded bg-[#EB5B27] inline-block"></span>Lunes y martes</span>
+            </div>
+          </div>
+          <p class="text-[17px] text-slate-500 mb-3">
+            Entre lunes 23 y martes 24 se cerraron <strong class="text-[#222221]">481 casos</strong> contra 300 recibidos (<strong class="text-[#EB5B27]">reducción neta de 181 casos</strong>).
+          </p>
+
+          <div class="flex-1 flex items-center justify-center">
+            <svg viewBox="0 0 880 285" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+              <line x1="56" y1="32" x2="856" y2="32" stroke="#E2E8F0" stroke-dasharray="5 5"/>
+              <line x1="56" y1="92" x2="856" y2="92" stroke="#E2E8F0" stroke-dasharray="5 5"/>
+              <line x1="56" y1="152" x2="856" y2="152" stroke="#E2E8F0" stroke-dasharray="5 5"/>
+              <line x1="56" y1="222" x2="856" y2="222" stroke="#94A3B8" stroke-width="1.5"/>
+
+              <text x="44" y="37" fill="#64748B" font-size="15" font-weight="600" text-anchor="end">260</text>
+              <text x="44" y="97" fill="#64748B" font-size="15" font-weight="600" text-anchor="end">175</text>
+              <text x="44" y="157" fill="#64748B" font-size="15" font-weight="600" text-anchor="end">90</text>
+              <text x="44" y="227" fill="#64748B" font-size="15" font-weight="600" text-anchor="end">0</text>
+
+              <!-- Vie 20 -->
+              <g transform="translate(100,0)">
+                <rect x="0" y="87" width="46" height="135" rx="8" fill="#CBD5E1"/>
+                <text x="23" y="77" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">185</text>
+                <rect x="54" y="131" width="46" height="91" rx="8" fill="#3284C6"/>
+                <text x="77" y="121" fill="#3284C6" font-size="17" font-weight="800" text-anchor="middle">125</text>
+                <text x="50" y="250" fill="#222221" font-size="17" font-weight="700" text-anchor="middle">Vie 20</text>
+                <text x="50" y="272" fill="#64748B" font-size="15" font-weight="600" text-anchor="middle">-60</text>
+              </g>
+
+              <!-- Sáb-Dom -->
+              <g transform="translate(255,0)">
+                <rect x="0" y="207" width="46" height="15" rx="5" fill="#CBD5E1"/>
+                <text x="23" y="197" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">20</text>
+                <rect x="54" y="205" width="46" height="17" rx="5" fill="#3284C6"/>
+                <text x="77" y="195" fill="#3284C6" font-size="17" font-weight="800" text-anchor="middle">23</text>
+                <text x="50" y="250" fill="#222221" font-size="17" font-weight="700" text-anchor="middle">Sáb–Dom</text>
+                <text x="50" y="272" fill="#3284C6" font-size="15" font-weight="700" text-anchor="middle">+3 neto</text>
+              </g>
+
+              <!-- Lun 23 -->
+              <g transform="translate(410,0)">
+                <rect x="0" y="102" width="46" height="120" rx="8" fill="#CBD5E1"/>
+                <text x="23" y="92" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">165</text>
+                <rect x="54" y="34" width="46" height="188" rx="8" fill="#EB5B27"/>
+                <text x="77" y="24" fill="#EB5B27" font-size="19" font-weight="800" text-anchor="middle">257</text>
+                <text x="50" y="250" fill="#222221" font-size="17" font-weight="700" text-anchor="middle">Lun 23</text>
+                <text x="50" y="272" fill="#EB5B27" font-size="15" font-weight="800" text-anchor="middle">+92 neto</text>
+              </g>
+
+              <!-- Mar 24 -->
+              <g transform="translate(565,0)">
+                <rect x="0" y="124" width="46" height="98" rx="8" fill="#CBD5E1"/>
+                <text x="23" y="114" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">135</text>
+                <rect x="54" y="58" width="46" height="164" rx="8" fill="#EB5B27"/>
+                <text x="77" y="48" fill="#EB5B27" font-size="19" font-weight="800" text-anchor="middle">224</text>
+                <text x="50" y="250" fill="#222221" font-size="17" font-weight="700" text-anchor="middle">Mar 24</text>
+                <text x="50" y="272" fill="#EB5B27" font-size="15" font-weight="800" text-anchor="middle">+89 neto</text>
+              </g>
+
+              <!-- Mié 25 parcial -->
+              <g transform="translate(720,0)">
+                <rect x="0" y="213" width="46" height="9" rx="4" fill="#CBD5E1"/>
+                <text x="23" y="203" fill="#475569" font-size="17" font-weight="700" text-anchor="middle">10</text>
+                <rect x="54" y="215" width="46" height="7" rx="3.5" fill="#3284C6"/>
+                <text x="77" y="205" fill="#3284C6" font-size="17" font-weight="800" text-anchor="middle">7</text>
+                <text x="50" y="250" fill="#222221" font-size="17" font-weight="700" text-anchor="middle">Mié 25*</text>
+                <text x="50" y="272" fill="#64748B" font-size="14" font-weight="500" text-anchor="middle">corte 3:26 PM</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Antigüedad de los cierres -->
+        <div class="col-span-5 bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-display text-[25px] text-[#222221]">Antigüedad de casos cerrados</h3>
+              <span class="px-3.5 py-1 rounded-full bg-[#222221] text-white font-bold text-[16px]">Total: 636</span>
+            </div>
+            <p class="text-[17px] text-slate-500 mb-6">Fecha de apertura de los 636 casos cerrados entre el 20 y el 25 de noviembre.</p>
+
+            <div class="space-y-6">
+              <div>
+                <div class="flex items-baseline justify-between mb-2">
+                  <div>
+                    <span class="text-[19px] font-bold text-[#222221]">20 al 25 de noviembre</span>
+                    <span class="text-[15px] text-slate-500 ml-2">Ingresos del periodo</span>
+                  </div>
+                  <div class="font-display text-[24px] text-[#3284C6]">289 <span class="font-sans text-[15px] font-semibold text-slate-400">(45.4%)</span></div>
+                </div>
+                <div class="w-full h-5 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-[#3284C6] rounded-full" style="width:45.4%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between mb-2">
+                  <div>
+                    <span class="text-[19px] font-bold text-[#222221]">13 al 19 de noviembre</span>
+                    <span class="text-[15px] text-slate-500 ml-2">Semana previa</span>
+                  </div>
+                  <div class="font-display text-[24px] text-[#EB5B27]">242 <span class="font-sans text-[15px] font-semibold text-slate-400">(38.1%)</span></div>
+                </div>
+                <div class="w-full h-5 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-[#EB5B27] rounded-full" style="width:38.1%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-baseline justify-between mb-2">
+                  <div>
+                    <span class="text-[19px] font-bold text-[#222221]">1 al 12 de noviembre</span>
+                    <span class="text-[15px] text-slate-500 ml-2">Semanas anteriores</span>
+                  </div>
+                  <div class="font-display text-[24px] text-[#222221]">105 <span class="font-sans text-[15px] font-semibold text-slate-400">(16.5%)</span></div>
+                </div>
+                <div class="w-full h-5 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-[#FECA66] rounded-full" style="width:16.5%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-[16px] text-slate-600">
+            <span>Acumulado del mes (1–25 nov): <strong class="text-[#222221]">1,960 cerrados</strong> (1,288 de correo)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie corporativo -->
+      <div class="relative z-10 pt-4 mt-4 border-t border-slate-300/70 flex items-center justify-between text-[17px] text-slate-500">
+        <div><strong class="text-[#222221]">Telat Group</strong> · Seguimiento operativo de atención a clientes TIP México</div>
+        <div class="font-bold text-[#222221]">01 / 04</div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         LÁMINA 2: RADIOGRAFÍA DEL BACKLOG ABIERTO (471 CASOS ACTIVOS)
+         ============================================================== -->
+    <section class="slide" data-slide="2">
+      <svg class="absolute top-0 right-0 w-[1920px] h-[1080px] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
+        <circle cx="1835" cy="95" r="290" stroke="#3284C6" stroke-width="44" opacity="0.09" />
+        <circle cx="1835" cy="95" r="175" fill="#FECA66" opacity="0.14" />
+      </svg>
+
+      <!-- Barra superior de co-branding -->
+      <div class="relative z-10 flex items-center justify-between">
+        <div class="flex items-center gap-5 bg-white px-6 py-3 rounded-2xl border border-slate-200/90 shadow-sm">
+          <img src="logo_telat.png" alt="Telat Group" class="h-9 w-auto object-contain" />
+          <span class="text-slate-300 text-2xl font-light">|</span>
+          <span class="text-[15px] font-semibold tracking-wide text-slate-400 uppercase">En alianza con</span>
+          <img src="logo_tip.png" alt="TIP México" class="h-9 w-auto object-contain" />
+        </div>
+
+        <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/90 shadow-sm text-[18px] text-slate-600 font-medium">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#EB5B27]"></span>
+          <span>471 casos activos de la célula · Corte base 25 nov</span>
+        </div>
+      </div>
+
+      <!-- Encabezado -->
+      <div class="relative z-10 flex items-end justify-between gap-10 mt-6">
+        <div class="max-w-[1200px]">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-3 h-3 rounded-full bg-[#3284C6]"></span>
+            <span class="font-sans font-bold text-[19px] tracking-wider text-[#3284C6] uppercase">Estatus actual · 471 casos abiertos</span>
+          </div>
+          <h1 class="font-display text-[#222221] text-[56px] leading-[1.06]">
+            Composición del backlog abierto por estatus
+          </h1>
+          <p class="font-sans text-slate-600 text-[23px] mt-2">
+            Distribución de los 471 casos asignados al equipo de 6 asesores en Salesforce.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl px-8 py-5 flex items-center gap-5 shadow-sm border-2 border-[#3284C6] shrink-0">
+          <div class="font-display text-[62px] leading-none text-[#3284C6]">51</div>
+          <div>
+            <div class="font-display text-[22px] leading-tight text-[#222221]">Casos en estatus Asignado</div>
+            <div class="font-sans text-[17px] text-slate-500 mt-1">Lun 23: 15 · Mar 24: 28 · Mié 25: 8</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido 2 columnas -->
+      <div class="relative z-10 grid grid-cols-12 gap-8 mt-7 flex-1 min-h-0">
+        <!-- Dona izquierda -->
+        <div class="col-span-5 bg-white rounded-3xl p-8 border border-slate-200/90 shadow-sm flex flex-col items-center justify-between">
+          <div class="w-full">
+            <h3 class="font-display text-[26px] text-[#222221]">Distribución por estatus</h3>
+            <p class="text-[17px] text-slate-500 mt-1">471 casos abiertos de la célula en Salesforce.</p>
+          </div>
+
+          <svg viewBox="0 0 280 280" width="290" height="290" aria-label="Distribución de casos abiertos">
+            <circle cx="140" cy="140" r="98" fill="none" stroke="#F1F5F9" stroke-width="34"/>
+            <circle cx="140" cy="140" r="98" fill="none" stroke="#3284C6" stroke-width="34"
+              stroke-dasharray="432 616" stroke-dashoffset="0" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="98" fill="none" stroke="#FECA66" stroke-width="34"
+              stroke-dasharray="118 616" stroke-dashoffset="-432" transform="rotate(-90 140 140)"/>
+            <circle cx="140" cy="140" r="98" fill="none" stroke="#EB5B27" stroke-width="34"
+              stroke-dasharray="66 616" stroke-dashoffset="-550" transform="rotate(-90 140 140)"/>
+            <text x="140" y="136" fill="#222221" font-family="Bricolage Grotesque" font-size="48" font-weight="800" text-anchor="middle">471</text>
+            <text x="140" y="164" fill="#64748B" font-size="15" font-weight="700" letter-spacing="1" text-anchor="middle">CASOS ACTIVOS</text>
+          </svg>
+
+          <div class="grid grid-cols-3 gap-3 w-full">
+            <div class="rounded-2xl bg-[#F6F4F0] p-3.5 text-center border border-slate-200/70 border-t-4 border-t-[#3284C6]">
+              <div class="font-display text-[28px] text-[#222221] leading-none">70.1%</div>
+              <div class="flex items-center justify-center gap-1.5 text-[14px] font-semibold text-slate-700 mt-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#3284C6] shrink-0"></span>
+                <span>Escalado (330)</span>
+              </div>
+            </div>
+            <div class="rounded-2xl bg-[#F6F4F0] p-3.5 text-center border border-slate-200/70 border-t-4 border-t-[#FECA66]">
+              <div class="font-display text-[28px] text-[#222221] leading-none">19.1%</div>
+              <div class="flex items-center justify-center gap-1.5 text-[14px] font-semibold text-slate-700 mt-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#FECA66] shrink-0"></span>
+                <span>Pend. cliente (90)</span>
+              </div>
+            </div>
+            <div class="rounded-2xl bg-[#F6F4F0] p-3.5 text-center border border-slate-200/70 border-t-4 border-t-[#EB5B27]">
+              <div class="font-display text-[28px] text-[#222221] leading-none">10.8%</div>
+              <div class="flex items-center justify-center gap-1.5 text-[14px] font-semibold text-slate-700 mt-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#EB5B27] shrink-0"></span>
+                <span>Asignado (51)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desglose derecha -->
+        <div class="col-span-7 flex flex-col justify-between gap-5">
+          <div class="bg-white rounded-3xl p-6 border-2 border-[#EB5B27]/50 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#EB5B27]"></span>
+                <h3 class="font-display text-[25px] text-[#222221]">Asignado (bandeja operativa Telat)</h3>
+              </div>
+              <div class="font-display text-[30px] text-[#EB5B27]">51 <span class="font-sans text-[17px] font-semibold text-slate-400">(10.8%)</span></div>
+            </div>
+            <p class="text-[19px] text-slate-600 leading-snug">
+              Los 51 casos ingresaron en los últimos dos días hábiles. No hay casos en este estatus correspondientes a la semana pasada.
+            </p>
+            <div class="flex items-center gap-3 mt-3">
+              <span class="px-4 py-1.5 rounded-full bg-[#EB5B27] text-white font-bold text-[15px]">0 casos &gt; 48 horas</span>
+              <span class="px-4 py-1.5 rounded-full bg-[#F6F4F0] text-[#222221] font-semibold text-[15px] border border-slate-200">Lunes 23: 15</span>
+              <span class="px-4 py-1.5 rounded-full bg-[#F6F4F0] text-[#222221] font-semibold text-[15px] border border-slate-200">Martes 24: 28</span>
+              <span class="px-4 py-1.5 rounded-full bg-[#F6F4F0] text-[#222221] font-semibold text-[15px] border border-slate-200">Miércoles 25: 8</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#FECA66]"></span>
+                <h3 class="font-display text-[25px] text-[#222221]">Pendiente de respuesta del cliente</h3>
+              </div>
+              <div class="font-display text-[30px] text-[#222221]">90 <span class="font-sans text-[17px] font-semibold text-slate-400">(19.1%)</span></div>
+            </div>
+            <p class="text-[19px] text-slate-600 leading-snug">
+              Casos con respuesta registrada en Salesforce en espera de datos o confirmación del cliente (incluye solicitudes recientes de <strong class="text-[#222221]">Tenencia y Refrendo 2027</strong>).
+            </p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-3">
+                <span class="w-4 h-4 rounded-full bg-[#3284C6]"></span>
+                <h3 class="font-display text-[25px] text-[#222221]">Escalado (canalizado a áreas resolutoras)</h3>
+              </div>
+              <div class="font-display text-[30px] text-[#3284C6]">330 <span class="font-sans text-[17px] font-semibold text-slate-400">(70.1%)</span></div>
+            </div>
+            <p class="text-[19px] text-slate-600 leading-snug">
+              Casos turnados a áreas internas (Cobranza, Mantenimiento, Siniestros, Tenencias).
+            </p>
+            <div class="mt-3 px-5 py-3 rounded-2xl bg-[#3284C6]/8 border-l-4 border-[#3284C6] text-[17px] text-[#222221] leading-snug">
+              <strong class="text-[#3284C6]">Consulta operativa:</strong> definir vía para que las áreas resolutoras actualicen estatus y poder informar avances al cliente mientras el trámite sigue abierto.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie corporativo -->
+      <div class="relative z-10 pt-4 mt-4 border-t border-slate-300/70 flex items-center justify-between text-[17px] text-slate-500">
+        <div><strong class="text-[#222221]">Telat Group</strong> · Seguimiento operativo de atención a clientes TIP México</div>
+        <div class="font-bold text-[#222221]">02 / 04</div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         LÁMINA 3: DESCONEXIÓN SALESFORCE / OUTLOOK (CASOS #00065863 Y #00066897)
+         ============================================================== -->
+    <section class="slide" data-slide="3">
+      <svg class="absolute top-0 right-0 w-[1920px] h-[1080px] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
+        <circle cx="1835" cy="95" r="290" stroke="#E30613" stroke-width="44" opacity="0.07" />
+        <circle cx="1835" cy="95" r="175" fill="#3284C6" opacity="0.08" />
+      </svg>
+
+      <!-- Barra superior de co-branding -->
+      <div class="relative z-10 flex items-center justify-between">
+        <div class="flex items-center gap-5 bg-white px-6 py-3 rounded-2xl border border-slate-200/90 shadow-sm">
+          <img src="logo_telat.png" alt="Telat Group" class="h-9 w-auto object-contain" />
+          <span class="text-slate-300 text-2xl font-light">|</span>
+          <span class="text-[15px] font-semibold tracking-wide text-slate-400 uppercase">En alianza con</span>
+          <img src="logo_tip.png" alt="TIP México" class="h-9 w-auto object-contain" />
+        </div>
+
+        <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/90 shadow-sm text-[18px] text-slate-600 font-medium">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#E30613]"></span>
+          <span>Evidencia técnica · Correo enviado 26 nov 2026</span>
+        </div>
+      </div>
+
+      <!-- Encabezado -->
+      <div class="relative z-10 flex items-end justify-between gap-10 mt-5">
+        <div class="max-w-[1250px]">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-3 h-3 rounded-full bg-[#EB5B27]"></span>
+            <span class="font-sans font-bold text-[19px] tracking-wider text-[#EB5B27] uppercase">Integración Email-to-Case · Salesforce vs. Outlook</span>
+          </div>
+          <h1 class="font-display text-[#222221] text-[52px] leading-[1.06]">
+            Desconexión Salesforce / Outlook: #00065863 y #00066897
+          </h1>
+          <p class="font-sans text-slate-600 text-[22px] mt-2">
+            Cruce contra <strong>contactcenter@tipmexico.com</strong>: correos y PDFs en Outlook no ingresan a Salesforce, y respuestas salen sin reflejo o parten hilos.
+          </p>
+        </div>
+
+        <div class="bg-[#E30613] text-white rounded-3xl px-7 py-4 flex items-center gap-4 shadow-md shrink-0">
+          <div class="font-display text-[54px] leading-none">2</div>
+          <div>
+            <div class="font-display text-[20px] leading-tight">Casos con falla</div>
+            <div class="font-sans text-[16px] text-white/90 mt-0.5">Documentados con capturas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dos casos documentados lado a lado -->
+      <div class="relative z-10 grid grid-cols-12 gap-7 mt-5 flex-1 min-h-0">
+        <!-- Caso 1: CARSA #00065863 -->
+        <div class="col-span-7 bg-white rounded-3xl p-7 border-2 border-[#EB5B27]/50 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <span class="px-3.5 py-1 rounded-full bg-[#EB5B27] text-white font-bold text-[15px]">Caso #00065863</span>
+                <h3 class="font-display text-[24px] text-[#222221]">Confirmación pagos CARSA</h3>
+              </div>
+              <span class="text-[15px] font-semibold text-slate-500">18–25 nov</span>
+            </div>
+
+            <div class="space-y-3 text-[17px] text-slate-700 leading-snug">
+              <div class="p-3.5 rounded-2xl bg-[#F6F4F0] border border-slate-200/80">
+                <strong class="text-[#222221]">18 nov · 10:18 AM y 3:29 PM:</strong> Ingresa correo de Miroslava Parra y se crea el caso. <strong>Luis García</strong> responde desde Salesforce; el token <code class="text-[14px] bg-white px-1.5 py-0.5 rounded border">thread::kLTIp...::</code> en el asunto <strong>parte la conversación en 2 hilos</strong> en Outlook.
+              </div>
+              <div class="p-3.5 rounded-2xl bg-[#3284C6]/8 border border-[#3284C6]/25">
+                <strong class="text-[#3284C6]">20 nov · 10:09 AM (Falla de entrada):</strong> El cliente (<em>sergio.serrano@execon.mx</em>) responde conservando el token intacto; llega a Outlook, pero <strong>nunca ingresa ni actualiza el caso en Salesforce</strong>.
+              </div>
+              <div class="p-3.5 rounded-2xl bg-[#E30613]/8 border border-[#E30613]/25">
+                <strong class="text-[#E30613]">25 nov (Falla de salida):</strong> Luis registra nueva respuesta desde Salesforce solicitando teléfono personal; <strong>no aparece en ninguno de los 2 hilos ni en Outlook</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-3 border-t border-slate-200 text-[15px] text-slate-500">
+            * Los asesores operan exclusivamente en Salesforce y no tienen visibilidad directa del buzón Outlook.
+          </div>
+        </div>
+
+        <!-- Caso 2: Diversified Global Logistics #00066897 -->
+        <div class="col-span-5 bg-white rounded-3xl p-7 border-2 border-[#3284C6]/50 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <span class="px-3.5 py-1 rounded-full bg-[#3284C6] text-white font-bold text-[15px]">Caso #00066897</span>
+                <h3 class="font-display text-[24px] text-[#222221]">Diversified Global Logistics</h3>
+              </div>
+              <span class="text-[15px] font-semibold text-[#3284C6]">Hoy · 26 nov</span>
+            </div>
+
+            <div class="space-y-3 text-[17px] text-slate-700 leading-snug">
+              <div class="p-3.5 rounded-2xl bg-[#F6F4F0] border border-slate-200/80">
+                <strong class="text-[#222221]">26 nov · 9:57 y 10:01 AM:</strong> Legal (Linda Gómez y Jared Sandoval) responde en el hilo copiando a <strong>contactcenter@tipmexico.com</strong> y adjunta <strong>2 archivos PDF</strong> con identificaciones oficiales.
+              </div>
+              <div class="p-3.5 rounded-2xl bg-[#E30613]/8 border border-[#E30613]/25">
+                <strong class="text-[#E30613]">26 nov · 11:08 AM:</strong> Más de una hora después, el caso en Salesforce solo muestra el correo previo (8:33 AM) y 1 adjunto; <strong>las respuestas de Legal y los 2 PDFs no ingresaron</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-3 border-t border-slate-200 text-[15px] text-slate-600">
+            Confirma que la falla ocurre tanto con <strong>respuestas de clientes</strong> como con <strong>copias internas y adjuntos</strong>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Acciones solicitadas a TI / Salesforce -->
+      <div class="relative z-10 grid grid-cols-2 gap-7 mt-5">
+        <div class="bg-[#222221] text-white rounded-3xl p-6 flex flex-col justify-center gap-2 shadow-md border-t-[6px] border-[#EB5B27]">
+          <div class="text-[14px] font-bold uppercase tracking-wider text-[#FECA66]">Solicitud a TI / Salesforce · Email-to-Case</div>
+          <h3 class="font-display text-[25px] leading-tight text-white">1) Auditar ingesta y salida · 2) Sacar token del asunto</h3>
+          <p class="text-[17px] text-slate-300 leading-snug">
+            Revisar por qué correos en Outlook con token válido o en copia no se inyectan a Salesforce, verificar logs de salida del 25 nov, y evaluar mover <code class="text-[#FECA66]">thread::...::</code> a encabezados o cuerpo.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-center gap-2 border-t-[6px] border-t-[#3284C6]">
+          <div class="text-[14px] font-bold uppercase tracking-wider text-[#3284C6]">Visibilidad en tiempo real · OAuth 2.0</div>
+          <h3 class="font-display text-[25px] leading-tight text-[#222221]">Seguimiento a conexión de solo lectura</h3>
+          <p class="text-[17px] text-slate-600 leading-snug">
+            Dar seguimiento a la solicitud de acceso <strong class="text-[#222221]">OAuth 2.0 (solo lectura)</strong> turnada a <strong class="text-[#222221]">Hugo López y Yanely Ramírez</strong> para monitorear estatus, SLA y antigüedad sin depender de exportaciones manuales.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pie corporativo -->
+      <div class="relative z-10 pt-4 mt-4 border-t border-slate-300/70 flex items-center justify-between text-[17px] text-slate-500">
+        <div><strong class="text-[#222221]">Telat Group</strong> · Seguimiento operativo de atención a clientes TIP México</div>
+        <div class="font-bold text-[#222221]">03 / 04</div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         LÁMINA 4: TRAZABILIDAD ACLARADA Y FRENTES EN SEGUIMIENTO
+         ============================================================== -->
+    <section class="slide" data-slide="4">
+      <svg class="absolute top-0 right-0 w-[1920px] h-[1080px] pointer-events-none" viewBox="0 0 1920 1080" fill="none">
+        <circle cx="1835" cy="95" r="290" stroke="#3284C6" stroke-width="44" opacity="0.09" />
+        <circle cx="1835" cy="95" r="175" fill="#EB5B27" opacity="0.08" />
+      </svg>
+
+      <!-- Barra superior de co-branding -->
+      <div class="relative z-10 flex items-center justify-between">
+        <div class="flex items-center gap-5 bg-white px-6 py-3 rounded-2xl border border-slate-200/90 shadow-sm">
+          <img src="logo_telat.png" alt="Telat Group" class="h-9 w-auto object-contain" />
+          <span class="text-slate-300 text-2xl font-light">|</span>
+          <span class="text-[15px] font-semibold tracking-wide text-slate-400 uppercase">En alianza con</span>
+          <img src="logo_tip.png" alt="TIP México" class="h-9 w-auto object-contain" />
+        </div>
+
+        <div class="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/90 shadow-sm text-[18px] text-slate-600 font-medium">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#3284C6]"></span>
+          <span>Reunión de seguimiento · Viernes 27 nov 2026</span>
+        </div>
+      </div>
+
+      <!-- Encabezado -->
+      <div class="relative z-10 flex items-end justify-between gap-10 mt-6">
+        <div class="max-w-[1250px]">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-3 h-3 rounded-full bg-[#3284C6]"></span>
+            <span class="font-sans font-bold text-[19px] tracking-wider text-[#3284C6] uppercase">Cierre de aclaraciones y próximos pasos</span>
+          </div>
+          <h1 class="font-display text-[#222221] text-[54px] leading-[1.06]">
+            Trazabilidad comprobada y frentes activos
+          </h1>
+          <p class="font-sans text-slate-600 text-[22px] mt-2">
+            Evidencia del caso <strong>#00066143 (DCI AGAM)</strong> y acuerdos operativos para cierre oportuno de tickets.
+          </p>
+        </div>
+
+        <div class="bg-[#222221] text-white rounded-3xl px-8 py-5 flex items-center gap-5 shadow-lg border-l-[6px] border-[#3284C6] shrink-0">
+          <div class="font-display text-[52px] leading-none text-[#FECA66]">3h 03m</div>
+          <div>
+            <div class="font-display text-[21px] leading-tight">Canalización #00066143</div>
+            <div class="font-sans text-[16px] text-slate-300 mt-1">Atendido el mismo 19 nov</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido 2 columnas -->
+      <div class="relative z-10 grid grid-cols-12 gap-8 mt-7 flex-1 min-h-0">
+        <!-- Caso DCI AGAM #00066143 -->
+        <div class="col-span-6 bg-white rounded-3xl p-8 border-2 border-[#3284C6]/45 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-4 py-1.5 rounded-full bg-[#3284C6] text-white font-bold text-[15px]">Caso aclarado · #00066143</span>
+              <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[14px]">Evidencia en Outlook</span>
+            </div>
+            <h3 class="font-display text-[28px] text-[#222221] mb-2">DCI AGAM, S. de R.L. DE C.V. (A391910)</h3>
+            <p class="text-[18px] text-slate-600 mb-5">
+              Confirmado mediante cruce de buzón Outlook y Salesforce: la solicitud <strong>sí fue atendida y canalizada el mismo día de su ingreso</strong>.
+            </p>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-[#F6F4F0] border border-slate-200">
+                <div class="font-bold text-[16px] text-[#3284C6] mb-1">19 nov · 1:00 PM — Ingreso</div>
+                <p class="text-[17px] text-slate-700">Ingresa correo de Jonathan Omar Martínez (<em>omar.martinez@tipmexico.com</em>) a <strong>contactcenter@tipmexico.com</strong> y se genera el caso #00066143.</p>
+              </div>
+              <div class="p-4 rounded-2xl bg-[#F6F4F0] border border-slate-200">
+                <div class="font-bold text-[16px] text-[#EB5B27] mb-1">19 nov · 4:03 PM — Canalización a Seguros</div>
+                <p class="text-[17px] text-slate-700"><strong>Paola Morales</strong> atiende desde Salesforce y canaliza a <strong>atencion.seguros@tipmexico.com</strong> con razón social, número económico y VIN completo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-slate-200 text-[16px] text-slate-600">
+            Capturas compartidas por correo a Alejandrina Sánchez y Memo Llantada el 26 nov.
+          </div>
+        </div>
+
+        <!-- Frentes activos de seguimiento -->
+        <div class="col-span-6 flex flex-col justify-between gap-5">
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-3.5 py-1 rounded-full bg-[#FECA66]/45 text-[#222221] font-bold text-[14px]">En plan de acción</span>
+              <span class="text-[15px] font-semibold text-slate-500">Con Arlette Balderas (TIP)</span>
+            </div>
+            <h3 class="font-display text-[25px] text-[#222221] mb-2">Casos abiertos de Mantenimiento</h3>
+            <p class="text-[18px] text-slate-600 leading-snug">
+              Seguimiento conjunto entre Telat (Miriam Totomoch) y Mantenimiento TIP (Arlette Balderas) enfocado en <strong>confirmaciones de citas</strong> y actualización de estatus para cierre.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-sm">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-3.5 py-1 rounded-full bg-[#3284C6]/15 text-[#3284C6] font-bold text-[14px]">Acuerdo operativo</span>
+              <span class="text-[15px] font-semibold text-slate-500">330 casos Escalados</span>
+            </div>
+            <h3 class="font-display text-[25px] text-[#222221] mb-2">Retroalimentación de áreas resolutoras</h3>
+            <p class="text-[18px] text-slate-600 leading-snug">
+              Definir mecanismo para que Cobranza, Mantenimiento, Siniestros y Tenencias actualicen avances en Salesforce y el asesor pueda responder al cliente sin reabrir hilos.
+            </p>
+          </div>
+
+          <div class="bg-[#222221] text-white rounded-3xl p-7 shadow-md border-l-[6px] border-[#EB5B27]">
+            <div class="text-[14px] font-bold uppercase tracking-wider text-[#FECA66] mb-1">Acuerdo esperado en sesión (27 nov)</div>
+            <h3 class="font-display text-[24px] text-white mb-1">Canalizar revisión Email-to-Case con TI TIP</h3>
+            <p class="text-[17px] text-slate-300 leading-snug">
+              Validar fecha de atención para los casos #00065863 y #00066897 y confirmar liberación de acceso OAuth 2.0 solo lectura.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie corporativo -->
+      <div class="relative z-10 pt-4 mt-4 border-t border-slate-300/70 flex items-center justify-between text-[17px] text-slate-500">
+        <div><strong class="text-[#222221]">Telat Group</strong> · Seguimiento operativo de atención a clientes TIP México</div>
+        <div class="font-bold text-[#222221]">04 / 04</div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Controles flotantes de navegación -->
+  <nav id="nav-controls" aria-label="Navegación de presentación">
+    <button class="nav-btn" id="prevBtn" type="button" title="Anterior (←)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <span id="slide-indicator">01 / 04</span>
+    <button class="nav-btn" id="nextBtn" type="button" title="Siguiente (→)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <button class="nav-btn" id="fsBtn" type="button" title="Pantalla completa (F)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+    </button>
+  </nav>
+
+  <script>
+    (function () {
+      const scaler = document.getElementById('scaler');
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const fsBtn = document.getElementById('fsBtn');
+      const indicator = document.getElementById('slide-indicator');
+      let current = 0;
+
+      function fitViewport() {
+        const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+        scaler.style.transform = 'scale(' + scale + ')';
+      }
+
+      function render(idx) {
+        current = Math.max(0, Math.min(slides.length - 1, idx));
+        slides.forEach((s, i) => s.classList.toggle('active', i === current));
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === slides.length - 1;
+        indicator.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+
+      prevBtn.addEventListener('click', () => render(current - 1));
+      nextBtn.addEventListener('click', () => render(current + 1));
+      fsBtn.addEventListener('click', toggleFullscreen);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          render(current + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          render(current - 1);
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (/^[1-9]$/.test(e.key)) {
+          const n = Number(e.key) - 1;
+          if (n < slides.length) render(n);
+        }
+      });
+
+      window.addEventListener('resize', fitViewport);
+      fitViewport();
+      render(0);
+    })();
+  </script>
+</body>
+</html>
